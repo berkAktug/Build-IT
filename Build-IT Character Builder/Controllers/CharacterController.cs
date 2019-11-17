@@ -12,5 +12,10 @@ namespace Build_IT_Character_Builder.Controllers
         {
             return View();
         }
+
+        public IActionResult TestBuilder()
+        {
+            return View();
+        }
     }
 }
