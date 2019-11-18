@@ -9,6 +9,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+
         body {
             font-family: Arial;
         }
@@ -20,27 +21,27 @@
             background-color: #f1f1f1;
         }
 
-            /* Style the buttons inside the tab */
-            .tab button {
-                background-color: inherit;
-                float: left;
-                border: none;
-                outline: none;
-                cursor: pointer;
-                padding: 14px 16px;
-                transition: 0.3s;
-                font-size: 17px;
-            }
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
 
-                /* Change background color of buttons on hover */
-                .tab button:hover {
-                    background-color: #ddd;
-                }
-
-                /* Create an active/current tablink class */
-                .tab button.active {
-                    background-color: #ccc;
-                }
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
 
         /* Style the tab content */
         .tabcontent {
@@ -49,6 +50,50 @@
             border: 1px solid #ccc;
             border-top: none;
         }
+
+        /*Remove default border in chrome*/
+        button:focus {
+            outline: 0;
+        }
+
+        .button-normal {
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            background-color: white;
+            font-size: 16px;
+            color: black;
+            border: 5px solid black; /* Green */
+            width: 200px;
+            margin: 10px 5px;
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        .button-highlight-race {
+            border: 5px solid orange;
+            background-color: orange;
+        }
+
+        .button-highlight-gender {
+            border: 5px solid lightgreen;
+            background-color: lightgreen;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+
+            width: 100%;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            flex: 1;
+        }
+
     </style>
 </head>
 <body>
@@ -66,8 +111,37 @@
     </div>
 
     <div id="Race" class="tabcontent">
-        <h3>Race</h3>
-        <p>Race is the first element.</p>
+        
+        <div class="row">
+            <div class="column" style="transform: translateX(40px); border-right: gray ridge">
+                <h3>Race</h3>
+                <div class="row">
+                    <button class="button-normal" onclick="highlightRace(event)">Dragonborn</button>
+                    <button class="button-normal" onclick="highlightRace(event)">Dwarf</button>
+                    <button class="button-normal" onclick="highlightRace(event)">Elf</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlightRace(event)">Gnome</button>
+                    <button class="button-normal" onclick="highlightRace(event)">HalfElf</button>
+                    <button class="button-normal" onclick="highlightRace(event)">HalfOrc</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlightRace(event)">Halfling</button>
+                    <button class="button-normal" onclick="highlightRace(event)">Human</button>
+                    <button class="button-normal" onclick="highlightRace(event)">Tiefling</button>
+                </div>
+            </div>
+            <div class="column" style="transform: translateX(100px)">
+                <h3>Gender</h3>
+                <div class="row">
+                    <button class="button-normal" onclick="highlightGender(event)">Male</button>
+                    <button class="button-normal" onclick="highlightGender(event)">Female</button>
+                </div>
+            </div>
+
+        </div>
+
+
     </div>
 
     <div id="Attribute" class="tabcontent">
@@ -101,7 +175,7 @@
     </div>
 
     <script>
-        function openTab(evt, cityName) {
+        function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -111,8 +185,26 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(cityName).style.display = "block";
+            document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
+        }
+
+        function highlightRace(evt) {
+            var i, buttons;
+            buttons = document.getElementsByClassName("button-normal");
+            for (i = 0; i < buttons.length; i++) {
+                buttons[i].className = buttons[i].className.replace(" button-highlight-race", "");
+            }
+            evt.currentTarget.className += " button-highlight-race";
+        }
+
+        function highlightGender(evt) {
+            var i, buttons;
+            buttons = document.getElementsByClassName("button-normal");
+            for (i = 0; i < buttons.length; i++) {
+                buttons[i].className = buttons[i].className.replace(" button-highlight-gender", "");
+            }
+            evt.currentTarget.className += " button-highlight-gender";
         }
     </script>
 
