@@ -1,487 +1,289 @@
 ﻿@{
-
     //Layout = "_OrcPubLayout";
-
 }
-
  
-
  
-
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <style>
-
  
-
         body {
-
             font-family: Arial;
-
         }
-
  
-
         /* Style the tab */
-
         .tab {
-
             overflow: hidden;
-
             border: 1px solid #ccc;
-
             background-color: #f1f1f1;
-
         }
-
  
-
             /* Style the buttons inside the tab */
-
             .tab button {
-
                 background-color: inherit;
-
                 float: left;
-
                 border: none;
-
                 outline: none;
-
                 cursor: pointer;
-
                 padding: 14px 16px;
-
                 transition: 0.3s;
-
                 font-size: 17px;
-
             }
-
  
-
                 /* Change background color of buttons on hover */
-
                 .tab button:hover {
-
                     background-color: #ddd;
-
                 }
-
  
-
                 /* Create an active/current tablink class */
-
                 .tab button.active {
-
                     background-color: #ccc;
-
                 }
-
  
-
         /* Style the tab content */
-
         .tabcontent {
-
             display: none;
-
             padding: 6px 12px;
-
             border: 1px solid #ccc;
-
             border-top: none;
-
         }
-
  
-
         /*Remove default border in chrome*/
-
         :focus {
-
             outline: 0 !important;
-
         }
-
  
-
+ 
         /*Default button style*/
-
         .button-normal {
-
             -webkit-transition-duration: 0.4s; /* Safari */
-
             transition-duration: 0.4s;
-
             background-color: white;
-
             font-size: 16px;
-
             color: black;
-
             border: 5px solid black;
-
             width: 200px;
-
             margin: 10px 5px;
-
             padding: 10px 24px;
-
             border-radius: 12px;
-
             font-weight: bold;
-
         }
-
  
-
         /*Race button style*/
-
         .button-highlight-race {
-
             border: 5px solid orange;
-
             background-color: orange;
-
         }
-
  
-
         /*Gender button style*/
-
         .button-highlight-gender {
-
             border: 5px solid cyan;
-
             background-color: cyan;
-
         }
-
  
-
         /*flex row*/
-
         .row {
-
             display: flex;
-
             flex-direction: row;
-
             width: 100%;
-
         }
-
  
-
         /*flex column*/
-
         .column {
-
             display: flex;
-
             flex-direction: column;
-
             flex-basis: 100%;
-
             flex: 1;
-
         }
-
  
-
         .glyphicon {
-
             font-size: 24px;
-
             padding: 0px;
-
         }
-
     </style>
-
 </head>
-
 <body>
-
     <h2></h2>
-
     <div class="tab">
-
         <button class="tablinks" onclick="openTab(event, 'Race')">Race</button>
-
         <button class="tablinks" onclick="openTab(event, 'Attribute')">Attribute Scores / Feats</button>
-
         <button class="tablinks" onclick="openTab(event, 'Background')">Background</button>
-
         <button class="tablinks" onclick="openTab(event, 'Class')">Class / Level</button>
-
         <button class="tablinks" onclick="openTab(event, 'Spells')">Spells</button>
-
         <button class="tablinks" onclick="openTab(event, 'Proficiencies')">Proficiencies</button>
-
         <button class="tablinks" onclick="openTab(event, 'Equipment')">Equipment</button>
-
     </div>
-
     <div id="Race" class="tabcontent">
-
         <div class="row">
-
             <!--Race selection panel-->
-
             <div class="column" style="transform: translateX(40px); border-right: gray ridge">
-
                 <h3>Race</h3>
-
                 <div class="row">
-
                     <button class="button-normal" onclick="highlightRace(event)">Dragonborn</button>
-
                     <button class="button-normal" onclick="highlightRace(event)">Dwarf</button>
-
                     <button class="button-normal" onclick="highlightRace(event)">Elf</button>
-
                 </div>
-
                 <div class="row">
-
                     <button class="button-normal" onclick="highlightRace(event)">Gnome</button>
-
                     <button class="button-normal" onclick="highlightRace(event)">HalfElf</button>
-
                     <button class="button-normal" onclick="highlightRace(event)">HalfOrc</button>
-
                 </div>
-
                 <div class="row">
-
                     <button class="button-normal" onclick="highlightRace(event)">Halfling</button>
-
                     <button class="button-normal" onclick="highlightRace(event)">Human</button>
-
                     <button class="button-normal" onclick="highlightRace(event)">Tiefling</button>
-
                 </div>
-
             </div>
-
             <!--Gender selection panel-->
-
             <div class="column" style="transform: translateX(100px)">
-
                 <h3>Gender</h3>
-
                 <div class="row">
-
                     <button class="button-normal" onclick="highlightGender(event)">Male</button>
-
                     <button class="button-normal" onclick="highlightGender(event)">Female</button>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
  
-
     <div id="Attribute" class="tabcontent">
-
         <h3>Attribute Scores / Feats</h3>
-
         <div class="column" style="transform: translateX(10px)" )>
-
             <div>
-
                 <div class="row">
-
                     <button class="button-normal">Strength</button>
-
-                    <button class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button><h3>15</h3><button class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
+                    <button id="strAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="strPoint">0</h3>
+                    <button id="strAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
-
                 <div class="row">
-
                     <button class="button-normal">Dexterity</button>
-
-                    <button class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button><h3>15</h3><button class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
+                    <button id="dexAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="dexPoint">0</h3>
+                    <button id="dexAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
-
                 <div class="row">
-
                     <button class="button-normal">Constitution</button>
-
-                    <button class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button><h3>15</h3><button class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
+                    <button id="conAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="conPoint">0</h3>
+                    <button id="conAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
-
                 <div class="row">
-
                     <button class="button-normal">Intelligence</button>
-
-                    <button class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button><h3>15</h3><button class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
+                    <button id="intAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="intPoint">0</h3>
+                    <button id="intAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
-
                 <div class="row">
-
                     <button class="button-normal">Wisdom</button>
-
-                    <button class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button><h3>15</h3><button class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
+                    <button id="wisAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="wisPoint">0</h3>
+                    <button id="wisAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
-
                 <div class="row">
-
                     <button class="button-normal">Charisma</button>
-
-                    <button class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button><h3>15</h3><button class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
+                    <button id="chaAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="chaPoint">0</h3>
+                    <button id="chaAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
-
  
-
             </div>
-
  
-
         </div>
-
  
-
     </div>
-
  
-
     <div id="Background" class="tabcontent">
-
         <h3>Background</h3>
-
         <p>Background is the third element.</p>
-
     </div>
-
  
-
     <div id="Class" class="tabcontent">
-
         <h3>Class</h3>
-
         <p>Class is the fourth element.</p>
-
     </div>
-
  
-
     <div id="Spells" class="tabcontent">
-
         <h3>Spells</h3>
-
         <p>Spells is the fifth element.</p>
-
     </div>
-
  
-
     <div id="Proficiencies" class="tabcontent">
-
         <h3>Proficiencies</h3>
-
         <p>Proficiencies is the sixth element.</p>
-
     </div>
-
  
-
     <div id="Equipment" class="tabcontent">
-
         <h3>Equipment</h3>
-
         <p>Equipment is the seventh element.</p>
-
     </div>
-
  
-
     <script>
 
+        var attribPoints = 50;
+
+        function distributePoints(item_id) {
+
+            let curAttrib = item_id;
+
+            //if (curAttrib.includes("Plus")) {
+                curAttrib = curAttrib.substring(0, 3) + "Point";
+                let header = document.getElementById('curAttrib');
+                header.innerHTML += "asasd";
+                //let number = parseInt(header.innerHTML);
+                //if (attribPoints > 0 && number < 15) {
+                //    number++;
+                //    header.innerHTML = String(number);
+                //    attribPoints--;
+                //}
+              
+            //}
+            //else {
+            //    curAttrib = curAttrib.substring(0, 3) + "Point";
+            //    let header = document.getElementById('curAttrib');
+            //    let number = parseInt(header.innerHTML);
+            //    if (attribPoints < 50 && number > 0) {
+            //        number--;
+            //        header.innerHTML = String(number);
+            //        attribPoints++;
+            //    }
+            //}
+        }
+
+
         function openTab(evt, tabName) {
-
             var i, tabcontent, tablinks;
-
             tabcontent = document.getElementsByClassName("tabcontent");
-
             for (i = 0; i < tabcontent.length; i++) {
-
                 tabcontent[i].style.display = "none";
-
             }
-
             tablinks = document.getElementsByClassName("tablinks");
-
             for (i = 0; i < tablinks.length; i++) {
-
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
-
             }
-
             document.getElementById(tabName).style.display = "block";
-
             evt.currentTarget.className += " active";
-
         }
-
  
-
         function highlightRace(evt) {
-
             var i, buttons;
-
             buttons = document.getElementsByClassName("button-normal");
-
             for (i = 0; i < buttons.length; i++) {
-
                 buttons[i].className = buttons[i].className.replace(" button-highlight-race", "");
-
             }
-
             evt.currentTarget.className += " button-highlight-race";
-
         }
-
  
-
         function highlightGender(evt) {
-
             var i, buttons;
-
             buttons = document.getElementsByClassName("button-normal");
-
             for (i = 0; i < buttons.length; i++) {
-
                 buttons[i].className = buttons[i].className.replace(" button-highlight-gender", "");
-
             }
-
             evt.currentTarget.className += " button-highlight-gender";
-
         }
-
     </script>
-
  
-
 </body>
-
 </html>
