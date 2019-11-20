@@ -153,39 +153,39 @@
             <div>
                 <div class="row">
                     <button class="button-normal">Strength</button>
-                    <button id="strAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="strPoint">0</h3>
-                    <button id="strAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button id="strAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="strPoint">4</h3>
+                    <button id="strAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
                 <div class="row">
                     <button class="button-normal">Dexterity</button>
-                    <button id="dexAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="dexPoint">0</h3>
-                    <button id="dexAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button id="dexAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="dexPoint">4</h3>
+                    <button id="dexAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
                 <div class="row">
                     <button class="button-normal">Constitution</button>
-                    <button id="conAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="conPoint">0</h3>
-                    <button id="conAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button id="conAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="conPoint">4</h3>
+                    <button id="conAttribMinus"class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
                 <div class="row">
                     <button class="button-normal">Intelligence</button>
-                    <button id="intAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="intPoint">0</h3>
-                    <button id="intAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button id="intAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="intPoint">4</h3>
+                    <button id="intAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
                 <div class="row">
                     <button class="button-normal">Wisdom</button>
-                    <button id="wisAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="wisPoint">0</h3>
-                    <button id="wisAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button id="wisAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="wisPoint">4</h3>
+                    <button id="wisAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
                 <div class="row">
                     <button class="button-normal">Charisma</button>
-                    <button id="chaAttribPlus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="chaPoint">0</h3>
-                    <button id="chaAttribMinus" onclick="distributePoints(this.id)" class="btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button id="chaAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <h3 id="chaPoint">4</h3>
+                    <button id="chaAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
                 </div>
  
             </div>
@@ -218,38 +218,35 @@
         <h3>Equipment</h3>
         <p>Equipment is the seventh element.</p>
     </div>
- 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
 
         var attribPoints = 50;
 
-        function distributePoints(item_id) {
+        $(".AttribPlus").click(function () {
+            //debugger;
+            var plusBtn = $(this);
+            var attribScoreHolder = plusBtn.next();
 
-            let curAttrib = item_id;
+            var attribute = parseInt(attribScoreHolder.html());
+            if (attribute <= 17)
+            {
+                attribScoreHolder.html(attribute + 1);
+                attribPoints = attribPoints - 1;
+            }
+        });
 
-            //if (curAttrib.includes("Plus")) {
-                curAttrib = curAttrib.substring(0, 3) + "Point";
-                let header = document.getElementById('curAttrib');
-                header.innerHTML += "asasd";
-                //let number = parseInt(header.innerHTML);
-                //if (attribPoints > 0 && number < 15) {
-                //    number++;
-                //    header.innerHTML = String(number);
-                //    attribPoints--;
-                //}
-              
-            //}
-            //else {
-            //    curAttrib = curAttrib.substring(0, 3) + "Point";
-            //    let header = document.getElementById('curAttrib');
-            //    let number = parseInt(header.innerHTML);
-            //    if (attribPoints < 50 && number > 0) {
-            //        number--;
-            //        header.innerHTML = String(number);
-            //        attribPoints++;
-            //    }
-            //}
-        }
+        $(".AttribMinus").click(function () {
+            //debugger;
+            var plusMinus = $(this);
+            var attribScoreHolder = plusMinus.prev();
+
+            var attribute = parseInt(attribScoreHolder.html());
+            if (attribute >= 4) {
+                attribScoreHolder.html(attribute - 1);
+                attribPoints = attribPoints + 1;
+            }
+        });
 
 
         function openTab(evt, tabName) {
