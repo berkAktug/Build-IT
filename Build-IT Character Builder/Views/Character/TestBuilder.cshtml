@@ -99,6 +99,7 @@
         }
  
         .glyphicon {
+            transform: translateY(5px);
             font-size: 24px;
             padding: 0px;
         }
@@ -152,40 +153,46 @@
         <div class="column" style="transform: translateX(10px)" )>
             <div>
                 <div class="row">
-                    <button class="button-normal">Strength</button>
+                    <h3 style="width: 200px">Strength</h3>
                     <button id="strAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="strPoint">4</h3>
+                    <h3 id="strPoint">4</h3>
                     <button id="strAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button class="button-normal"><div id="strButton" style="height:10px; overflow: hidden; width: 22%; background-color: lightgreen"></div></button>
                 </div>
                 <div class="row">
-                    <button class="button-normal">Dexterity</button>
+                    <h3 style="width: 200px">Dexterity</h3>
                     <button id="dexAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="dexPoint">4</h3>
+                    <h3 id="dexPoint">4</h3>
                     <button id="dexAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button class="button-normal"><div id="dexButton" style="height:10px; overflow: hidden; width: 22%; background-color: lightgreen"></div></button>
                 </div>
                 <div class="row">
-                    <button class="button-normal">Constitution</button>
+                    <h3 style="width: 200px">Constitution</h3>
                     <button id="conAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="conPoint">4</h3>
-                    <button id="conAttribMinus"class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <h3 id="conPoint">4</h3>
+                    <button id="conAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button class="button-normal"><div id="conButton" style="height:10px; overflow: hidden; width: 22%; background-color: lightgreen"></div></button>
                 </div>
                 <div class="row">
-                    <button class="button-normal">Intelligence</button>
+                    <h3 style="width: 200px">Intelligence</h3>
                     <button id="intAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="intPoint">4</h3>
+                    <h3 id="intPoint">4</h3>
                     <button id="intAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button class="button-normal"><div id="intButton" style="height:10px; overflow: hidden; width: 22%; background-color: lightgreen"></div></button>
                 </div>
                 <div class="row">
-                    <button class="button-normal">Wisdom</button>
+                    <h3 style="width: 200px">Wisdom</h3>
                     <button id="wisAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="wisPoint">4</h3>
+                    <h3 id="wisPoint">4</h3>
                     <button id="wisAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button class="button-normal"><div id="wisButton" style="height:10px; overflow: hidden; width: 22%; background-color: lightgreen"></div></button>
                 </div>
                 <div class="row">
-                    <button class="button-normal">Charisma</button>
+                    <h3 style="width: 200px">Charisma</h3>
                     <button id="chaAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                        <h3 id="chaPoint">4</h3>
+                    <h3 id="chaPoint">4</h3>
                     <button id="chaAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
+                    <button class="button-normal"><div id="chaButton" style="height:10px; overflow: hidden; width: 22%; background-color: lightgreen"></div></button>
                 </div>
  
             </div>
@@ -221,7 +228,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
 
-        var attribPoints = 50;
+        var attribPoints = 44;
 
         $(".AttribPlus").click(function () {
             //debugger;
@@ -229,11 +236,12 @@
             var attribScoreHolder = plusBtn.next();
 
             var attribute = parseInt(attribScoreHolder.html());
-            if (attribute <= 17)
+            if (attribute <= 17 && attribPoints > 0)
             {
                 attribScoreHolder.html(attribute + 1);
                 attribPoints = attribPoints - 1;
             }
+            document.getElementById(plusBtn.attr('id').substring(0, 3).concat("Button")).style.width = String(parseInt(attribScoreHolder.html()) * 100 / 18).concat("%");
         });
 
         $(".AttribMinus").click(function () {
@@ -242,10 +250,11 @@
             var attribScoreHolder = plusMinus.prev();
 
             var attribute = parseInt(attribScoreHolder.html());
-            if (attribute >= 4) {
+            if (attribute >= 4 && attribPoints < 50) {
                 attribScoreHolder.html(attribute - 1);
                 attribPoints = attribPoints + 1;
             }
+            document.getElementById(plusMinus.attr('id').substring(0, 3).concat("Button")).style.width = String(parseInt(attribScoreHolder.html()) * 100 / 18).concat("%");
         });
 
 
