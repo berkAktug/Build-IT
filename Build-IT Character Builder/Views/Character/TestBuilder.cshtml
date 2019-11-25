@@ -63,24 +63,36 @@
             background-color: white;
             font-size: 16px;
             color: black;
-            border: 5px solid black;
+            border: 4px solid black;
             width: 200px;
             margin: 10px 5px;
-            padding: 10px 24px;
+            padding: 4px 8px;
             border-radius: 12px;
             font-weight: bold;
         }
- 
+
+        /*Background button style*/
+        .button-highlight-background {
+            border: 4px solid red;
+            background-color: red;
+        }
+
+        /*Class button style*/
+        .button-highlight-class {
+            border: 4px solid mediumpurple;
+            background-color: mediumpurple;
+        }
+
         /*Race button style*/
         .button-highlight-race {
-            border: 5px solid orange;
+            border: 4px solid orange;
             background-color: orange;
         }
  
         /*Gender button style*/
         .button-highlight-gender {
-            border: 5px solid cyan;
-            background-color: cyan;
+            border: 4px solid lightblue;
+            background-color: lightblue;
         }
  
         /*flex row*/
@@ -108,13 +120,11 @@
 <body>
     <h2></h2>
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'Race')">Race</button>
-        <button class="tablinks" onclick="openTab(event, 'Attribute')">Attribute Scores / Feats</button>
+        <button class="tablinks" onclick="openTab(event, 'Race')">Race / Gender</button>
+        <button class="tablinks" onclick="openTab(event, 'Attribute')">Attribute Scores</button>
         <button class="tablinks" onclick="openTab(event, 'Background')">Background</button>
-        <button class="tablinks" onclick="openTab(event, 'Class')">Class / Level</button>
-        <button class="tablinks" onclick="openTab(event, 'Spells')">Spells</button>
+        <button class="tablinks" onclick="openTab(event, 'Class')">Class</button>
         <button class="tablinks" onclick="openTab(event, 'Proficiencies')">Proficiencies</button>
-        <button class="tablinks" onclick="openTab(event, 'Equipment')">Equipment</button>
     </div>
     <div id="Race" class="tabcontent">
         <div class="row">
@@ -122,34 +132,34 @@
             <div class="column" style="transform: translateX(40px); border-right: gray ridge">
                 <h3>Race</h3>
                 <div class="row">
-                    <button class="button-normal" onclick="highlightRace(event)">Dragonborn</button>
-                    <button class="button-normal" onclick="highlightRace(event)">Dwarf</button>
-                    <button class="button-normal" onclick="highlightRace(event)">Elf</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Dragonborn</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Dwarf</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Elf</button>
                 </div>
                 <div class="row">
-                    <button class="button-normal" onclick="highlightRace(event)">Gnome</button>
-                    <button class="button-normal" onclick="highlightRace(event)">HalfElf</button>
-                    <button class="button-normal" onclick="highlightRace(event)">HalfOrc</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Gnome</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">HalfElf</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">HalfOrc</button>
                 </div>
                 <div class="row">
-                    <button class="button-normal" onclick="highlightRace(event)">Halfling</button>
-                    <button class="button-normal" onclick="highlightRace(event)">Human</button>
-                    <button class="button-normal" onclick="highlightRace(event)">Tiefling</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Halfling</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Human</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Tiefling</button>
                 </div>
             </div>
             <!--Gender selection panel-->
             <div class="column" style="transform: translateX(100px)">
                 <h3>Gender</h3>
                 <div class="row">
-                    <button class="button-normal" onclick="highlightGender(event)">Male</button>
-                    <button class="button-normal" onclick="highlightGender(event)">Female</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-gender')">Male</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-gender')">Female</button>
                 </div>
             </div>
         </div>
     </div>
  
     <div id="Attribute" class="tabcontent">
-        <h3>Attribute Scores / Feats</h3>
+        <h3>Attribute Scores</h3>
         <div class="column" style="transform: translateX(10px)" )>
             <div>
                 <div class="row">
@@ -207,29 +217,101 @@
     </div>
  
     <div id="Background" class="tabcontent">
-        <h3>Background</h3>
-        <p>Background is the third element.</p>
+        <div class="row">
+            <!--Race selection panel-->
+            <div class="column" style="transform: translateX(40px)">
+                <h3>Background</h3>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">SpiritReaver</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">FarTraveler</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">BountyHunter</button>
+                </div>                                                      
+                <div class="row">                                         
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Artisan</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Urchin</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Soldier</button>
+                </div>                                                        
+                <div class="row">                                             
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Sailor</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Sage</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Outlander</button>
+                </div>                                                        
+                <div class="row">                                             
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Noble</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Hermit</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">GuildArtisan</button>
+                </div>                                                        
+                <div class="row">                                             
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">FolkHero</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Entertainer</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Criminal</button>
+                </div>
+                <div class="row">
+                    <button style="transform: translateX(105px)" class="button-normal" onclick="highlight(event, ' button-highlight-background')">Charlatan</button>
+                    <button style="transform: translateX(105px)" class="button-normal" onclick="highlight(event, ' button-highlight-background')">Acolyte</button>
+                </div>
+            </div>
+        </div>
     </div>
  
     <div id="Class" class="tabcontent">
-        <h3>Class</h3>
-        <p>Class is the fourth element.</p>
-    </div>
- 
-    <div id="Spells" class="tabcontent">
-        <h3>Spells</h3>
-        <p>Spells is the fifth element.</p>
+        <div class="row">
+            <!--Race selection panel-->
+            <div class="column" style="transform: translateX(40px)">
+                <h3>Class</h3>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Barbarian</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Bard</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Cleric</button>
+                </div>                                                        
+                <div class="row">                                             
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Druid</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Fighter</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Monk</button>
+                </div>                                                        
+                <div class="row">                                             
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Paladin</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Ranger</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Rogue</button>
+                </div>                                                        
+                <div class="row">                                             
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Sorcerer</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Warlock</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Wizard</button>
+                </div>
+            </div>
+        </div>
     </div>
  
     <div id="Proficiencies" class="tabcontent">
-        <h3>Proficiencies</h3>
-        <p>Proficiencies is the sixth element.</p>
+        <div class="row">
+            <!--Race selection panel-->
+            <div class="column" style="transform: translateX(40px)">
+                <h3>Class</h3>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Barbarian</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Bard</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Cleric</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Druid</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Fighter</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Monk</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Paladin</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Ranger</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Rogue</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Sorcerer</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Warlock</button>
+                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Wizard</button>
+                </div>
+            </div>
+        </div>
     </div>
- 
-    <div id="Equipment" class="tabcontent">
-        <h3>Equipment</h3>
-        <p>Equipment is the seventh element.</p>
-    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
 
@@ -277,22 +359,13 @@
             evt.currentTarget.className += " active";
         }
  
-        function highlightRace(evt) {
+        function highlight(evt, type) {
             var i, buttons;
             buttons = document.getElementsByClassName("button-normal");
             for (i = 0; i < buttons.length; i++) {
-                buttons[i].className = buttons[i].className.replace(" button-highlight-race", "");
+                buttons[i].className = buttons[i].className.replace(type, "");
             }
-            evt.currentTarget.className += " button-highlight-race";
-        }
- 
-        function highlightGender(evt) {
-            var i, buttons;
-            buttons = document.getElementsByClassName("button-normal");
-            for (i = 0; i < buttons.length; i++) {
-                buttons[i].className = buttons[i].className.replace(" button-highlight-gender", "");
-            }
-            evt.currentTarget.className += " button-highlight-gender";
+            evt.currentTarget.className += type;
         }
     </script>
  
