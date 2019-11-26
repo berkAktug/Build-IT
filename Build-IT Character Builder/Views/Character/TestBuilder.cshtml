@@ -77,6 +77,12 @@
             background-color: red;
         }
 
+        /*Background button style*/
+        .button-highlight-prof {
+            border: 4px solid yellow;
+            background-color: yellow;
+        }
+
         /*Class button style*/
         .button-highlight-class {
             border: 4px solid mediumpurple;
@@ -157,7 +163,7 @@
             </div>
         </div>
     </div>
- 
+
     <div id="Attribute" class="tabcontent">
         <h3>Attribute Scores</h3>
         <div class="column" style="transform: translateX(10px)" )>
@@ -209,13 +215,13 @@
                     <button id="chaAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
 
                 </div>
- 
+
             </div>
- 
+
         </div>
- 
+
     </div>
- 
+
     <div id="Background" class="tabcontent">
         <div class="row">
             <!--Race selection panel-->
@@ -225,23 +231,23 @@
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">SpiritReaver</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">FarTraveler</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">BountyHunter</button>
-                </div>                                                      
-                <div class="row">                                         
+                </div>
+                <div class="row">
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Artisan</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Urchin</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Soldier</button>
-                </div>                                                        
-                <div class="row">                                             
+                </div>
+                <div class="row">
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Sailor</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Sage</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Outlander</button>
-                </div>                                                        
-                <div class="row">                                             
+                </div>
+                <div class="row">
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Noble</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Hermit</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">GuildArtisan</button>
-                </div>                                                        
-                <div class="row">                                             
+                </div>
+                <div class="row">
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">FolkHero</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Entertainer</button>
                     <button class="button-normal" onclick="highlight(event, ' button-highlight-background')">Criminal</button>
@@ -253,37 +259,8 @@
             </div>
         </div>
     </div>
- 
+
     <div id="Class" class="tabcontent">
-        <div class="row">
-            <!--Race selection panel-->
-            <div class="column" style="transform: translateX(40px)">
-                <h3>Class</h3>
-                <div class="row">
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Barbarian</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Bard</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Cleric</button>
-                </div>                                                        
-                <div class="row">                                             
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Druid</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Fighter</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Monk</button>
-                </div>                                                        
-                <div class="row">                                             
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Paladin</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Ranger</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Rogue</button>
-                </div>                                                        
-                <div class="row">                                             
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Sorcerer</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Warlock</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-class')">Wizard</button>
-                </div>
-            </div>
-        </div>
-    </div>
- 
-    <div id="Proficiencies" class="tabcontent">
         <div class="row">
             <!--Race selection panel-->
             <div class="column" style="transform: translateX(40px)">
@@ -312,7 +289,47 @@
         </div>
     </div>
 
+    <div id="Proficiencies" class="tabcontent">
+        <div class="row">
+            <!--Race selection panel-->
+            <div class="column" style="transform: translateX(40px)">
+                <h3>Porificiencies</h3>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Arcana</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">History</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Investigation</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Nature</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Religion</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">AnimalHandling</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Insight</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Medicine</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Perception</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Deception</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Intimidation</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Performance</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Persuasion</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Athletics</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Acrobatics</button>
+                </div>
+                <div class="row">
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">SleightOfHand</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Stealth</button>
+                    <button class="button-normal" onclick="highlight2Buttons(event, ' button-highlight-prof')">Initiative</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="~/js/CharacterBuilder.js"></script>
     <script>
 
         var attribPoints = 44;
@@ -323,8 +340,7 @@
             var attribScoreHolder = plusBtn.next();
 
             var attribute = parseInt(attribScoreHolder.html());
-            if (attribute <= 17 && attribPoints > 0)
-            {
+            if (attribute <= 17 && attribPoints > 0) {
                 attribScoreHolder.html(attribute + 1);
                 attribPoints = attribPoints - 1;
             }
@@ -358,16 +374,37 @@
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
         }
- 
+
         function highlight(evt, type) {
-            var i, buttons;
-            buttons = document.getElementsByClassName("button-normal");
-            for (i = 0; i < buttons.length; i++) {
-                buttons[i].className = buttons[i].className.replace(type, "");
+            var activeButton = document.getElementsByClassName("button-normal" + type);
+            if (activeButton[0]) {
+                activeButton[0].className = activeButton[0].className.replace(type, "");
             }
             evt.currentTarget.className += type;
+
+            let character = new CharacterBuilder().setRace('race').setGender('gender')
+                .setAttributes([1, 1, 1, 1, 1, 1]).setBackground('background').setClass('class').setProficiency(['prof1', 'prof2']);
+            console.log(character);
         }
+
+        function highlight2Buttons(evt, type) {
+            var edited = false;
+            console.log(evt.currentTarget.className);
+            if (evt.currentTarget.className.includes(type)) {
+                console.log("SA");
+                evt.currentTarget.className = "button-normal";
+                edited = true;
+            }
+            var activeButtons = document.getElementsByClassName("button-normal".concat(type)).length;
+            if (activeButtons < 2 && !edited)
+                evt.currentTarget.className += type;
+
+        }
+
+
+
+
     </script>
- 
+
 </body>
 </html>
