@@ -121,9 +121,35 @@
             font-size: 24px;
             padding: 0px;
         }
+
+        .button-add {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button-add1 {
+            background-color: #4CAF50;
+            color: black;
+            border: 2px solid white;
+        }
+
+            .button-add1:hover {
+                background-color: white;
+                border: 2px solid #4CAF50;
+            }
     </style>
 </head>
-<body>
+<body style="overflow:hidden">
     <h2></h2>
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Race')">Race / Gender</button>
@@ -131,42 +157,41 @@
         <button class="tablinks" onclick="openTab(event, 'Background')">Background</button>
         <button class="tablinks" onclick="openTab(event, 'Class')">Class</button>
         <button class="tablinks" onclick="openTab(event, 'Proficiencies')">Proficiencies</button>
+        <button style="float: right" onclick="createChar()" class="button-add button-add1 createButton">Create Character    <span style="color: green" class="glyphicon glyphicon-plus-sign"></span></button>
     </div>
+    
     <div id="Race" class="tabcontent">
-        <div class="row">
-            <!--Race selection panel-->
-            <div class="column" style="transform: translateX(40px); border-right: gray ridge">
-                <h3>Race</h3>
-                <div class="row">
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Dragonborn</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Dwarf</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Elf</button>
-                </div>
-                <div class="row">
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Gnome</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">HalfElf</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">HalfOrc</button>
-                </div>
-                <div class="row">
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Halfling</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Human</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Tiefling</button>
-                </div>
+        <!--Race selection panel-->
+        <div style="transform: translateX(25px)">
+            <h3>Race</h3>
+            <div class="row">
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Dragonborn</button>
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Dwarf</button>
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Elf</button>
             </div>
-            <!--Gender selection panel-->
-            <div class="column" style="transform: translateX(100px)">
-                <h3>Gender</h3>
-                <div class="row">
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-gender')">Male</button>
-                    <button class="button-normal" onclick="highlight(event, ' button-highlight-gender')">Female</button>
-                </div>
+            <div class="row">
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Gnome</button>
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">HalfElf</button>
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">HalfOrc</button>
+            </div>
+            <div class="row">
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Halfling</button>
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Human</button>
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-race')">Tiefling</button>
+            </div>
+        </div>
+        <!--Gender selection panel-->
+        <div style="transform: translateX(25px)">
+            <h3>Gender</h3>
+            <div class="row">
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-gender')">Male</button>
+                <button class="button-normal" onclick="highlight(event, ' button-highlight-gender')">Female</button>
             </div>
         </div>
     </div>
-
     <div id="Attribute" class="tabcontent">
         <h3>Attribute Scores</h3>
-        <div class="column" style="transform: translateX(10px)" )>
+        <div class="column" style="transform: translateX(25px)" )>
             <div>
                 <div class="row">
                     <h3 style="width: 200px; transform: translateX(10px)">Strength</h3>
@@ -174,7 +199,6 @@
                     <button id="strAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
                     <h3 id="strPoint">4</h3>
                     <button id="strAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
                 </div>
                 <div class="row">
                     <h3 style="width: 200px; transform: translateX(10px)">Dexterity</h3>
@@ -182,7 +206,6 @@
                     <button id="dexAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
                     <h3 id="dexPoint">4</h3>
                     <button id="dexAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
                 </div>
                 <div class="row">
                     <h3 style="width: 200px; transform: translateX(10px)">Constitution</h3>
@@ -197,7 +220,6 @@
                     <button id="intAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
                     <h3 id="intPoint">4</h3>
                     <button id="intAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
                 </div>
                 <div class="row">
                     <h3 style="width: 200px; transform: translateX(10px)">Wisdom</h3>
@@ -205,7 +227,6 @@
                     <button id="wisAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
                     <h3 id="wisPoint">4</h3>
                     <button id="wisAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
                 </div>
                 <div class="row">
                     <h3 style="width: 200px; transform: translateX(10px)">Charisma</h3>
@@ -213,13 +234,9 @@
                     <button id="chaAttribPlus" class="AttribPlus btn btn-link"><span class="glyphicon glyphicon-plus-sign"></span></button>
                     <h3 id="chaPoint">4</h3>
                     <button id="chaAttribMinus" class="AttribMinus btn btn-link"><span class="glyphicon glyphicon-minus-sign"></span></button>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <div id="Background" class="tabcontent">
@@ -381,10 +398,6 @@
                 activeButton[0].className = activeButton[0].className.replace(type, "");
             }
             evt.currentTarget.className += type;
-
-            let character = new CharacterBuilder().setRace('race').setGender('gender')
-                .setAttributes([1, 1, 1, 1, 1, 1]).setBackground('background').setClass('class').setProficiency(['prof1', 'prof2']);
-            console.log(character);
         }
 
         function highlight2Buttons(evt, type) {
@@ -401,9 +414,37 @@
 
         }
 
+        function createChar() {
+            let race = document.getElementsByClassName("button-highlight-race")[0].innerHTML;
+            let gender = document.getElementsByClassName("button-highlight-gender")[0].innerHTML;
+            let background = document.getElementsByClassName("button-highlight-background")[0].innerHTML;
+            let className = document.getElementsByClassName("button-highlight-class")[0].innerHTML;
+
+            let profs = document.getElementsByClassName("button-highlight-prof");
+            let proficiencies = {
+                prof1: profs[0].innerHTML,
+                prof2: profs[1].innerHTML
+            };
+                
+            let attributes = {
+                str: document.getElementById("strPoint").innerHTML,
+                dex: document.getElementById("dexPoint").innerHTML,
+                con: document.getElementById("conPoint").innerHTML,
+                int: document.getElementById("intPoint").innerHTML,
+                wis: document.getElementById("wisPoint").innerHTML,
+                cha: document.getElementById("chaPoint").innerHTML
+            };
 
 
+            let character = new CharacterBuilder().setRace(race).setGender(gender)
+                .setAttributes(attributes)
+                .setBackground(background)
+                .setClass(className)
+                .setProficiency(proficiencies);
 
+            console.log(character);
+
+        }
     </script>
 
 </body>
