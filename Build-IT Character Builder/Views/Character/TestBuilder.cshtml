@@ -493,20 +493,20 @@
             character.CharacterProficiencies = proficiencies;
 
             $.ajax({
+                headers: { 
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json' 
+                },
                 url: "/Character/SetupNewCharacter",
                 type: "POST",
                 dataType: 'json',
                 contentType: "application/jsonrequest; charset=utf-8",
-                data: character,
-
-                success: function (data) {
-                    if (isSuccess == true) {
-                        alert("success");
-                    }
-                    console.log(data);
+                data: JSON.stringify(character),
+                success: function(result) { //we got the response
+                    alert('Successfully called');
                 },
-                error: function (error) {
-                    console.log(error);
+                error: function(jqxhr, status, exception) {
+                    alert('Exception:', exception);
                 }
             });
 
