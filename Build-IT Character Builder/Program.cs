@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Build_IT_Character_Builder
+namespace Character_Builder
 {
     public class Program
     {

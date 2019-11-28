@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Build_IT_Character_Builder.Data
+namespace Character_Builder.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

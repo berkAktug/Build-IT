@@ -1,49 +1,56 @@
 ﻿let Character = function (race, gender, attributes, background, className, proficiencies) {
 
-    this.race = race;
-    this.gender = gender;
-    this.attributes = attributes;
-    this.background = background;
-    this.className = className;
-    this.proficiencies = proficiencies;
+    this.CharacterName;
+    this.CharacterRace = race;
+    this.CharacterGender = gender;
+    this.CharacterAttributes = attributes;
+    this.CharacterBackground = background;
+    this.CharacterClassName = className;
+    this.CharacterProficiencies = proficiencies;
 }
 
 let CharacterBuilder = function () {
 
-    let race;
-    let gender;
-    let attributes;
-    let background;
-    let className;
-    let proficiencies;
+    let CharacterName;
+    let CharacterRace;
+    let CharacterGender;
+    let CharacterAttributes;
+    let CharacterBackground;
+    let CharacterClassName;
+    let CharacterProficiencies;
 
     return {
         setRace: function (race) {
-            this.race = race;
+            this.CharacterRace = race;
+            return this;
+        },
+        setName: function (name) {
+            this.CharacterName = name;
             return this;
         },
         setGender: function (gender) {
-            this.gender = gender;
+            this.CharacterGender = gender;
             return this;
         },
         setAttributes: function (attributes) {
-            this.attributes = attributes;
+            this.CharacterAttributes = attributes;
             return this;
         },
         setBackground: function (background) {
-            this.background = background;
+            this.CharacterBackground = background;
             return this;
         },
         setClass: function (className) {
-            this.className = className;
+            this.CharacterClassName  = className;
             return this;
         },
         setProficiency: function (proficiencies) {
-            this.proficiencies = proficiencies;
+            this.CharacterProficiencies = proficiencies;
             return this;
         },
         build: function () {
-            return new Character(race, gender, attributes, background, className, proficiencies);
+            return new Character(CharacterName, CharacterRace, CharacterGender, CharacterAttributes,
+                CharacterBackground, CharacterClassName, CharacterProficiencies);
         }
     };
 };

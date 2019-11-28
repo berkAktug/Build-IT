@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Build_IT_Character_Builder.Models;
+using Character_Builder.Models;
 
-namespace Build_IT_Character_Builder.Controllers
+namespace Character_Builder.Controllers
 {
     public class HomeController : Controller
     {

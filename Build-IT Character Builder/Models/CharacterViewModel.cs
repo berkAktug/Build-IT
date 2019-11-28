@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Build_IT_Character_Builder.Models
+namespace Character_Builder.Models
 {
     public enum CharacterClassEnumModel
     {
@@ -24,23 +24,23 @@ namespace Build_IT_Character_Builder.Models
 
     public enum CharacterBackgroundEnumModel
     {
-        SpiritReaver,
-        FarTraveler,
-        BountyHunter,
-        Artisan,
-        Urchin,
-        Soldier,
-        Sailor,
-        Sage,
-        Outlander,
-        Noble,
-        Hermit,
-        GuildArtisan,
-        FolkHero,
-        Entertainer,
-        Criminal,
-        Charlatan,
         Acolyte,
+        Artisan,
+        BountyHunter,
+        Charlatan,
+        Criminal,
+        Entertainer,
+        FarTraveler,
+        FolkHero,
+        GuildArtisan,
+        Hermit,
+        Noble,
+        Outlander,
+        Sage,
+        Sailor,
+        Soldier,
+        SpiritReaver,
+        Urchin,
         NONE
     }
 
@@ -50,8 +50,8 @@ namespace Build_IT_Character_Builder.Models
         Dwarf,
         Elf,
         Gnome,
-        HalfElf,
-        HalfOrc,
+        Half_Elf,
+        Half_Orc,
         Halfling,
         Human,
         Tiefling,
@@ -101,5 +101,59 @@ namespace Build_IT_Character_Builder.Models
         public CharacterRaceEnumModel CharacterRace { get; set; }
         public CharacterAttributesModel CharacterAttributes { get; set; }
         public CharacterProficiencyModel CharacterProficiency { get; set; }
+    }
+
+    public class SpellModel
+    {
+        public string Title { get; set; }
+        public string ClassSpell { get; set; }
+        public string SpellSchool { get; set; }
+        public int Level { get; set; }
+        public string Components { get; set; }
+        public string Description { get; set; }
+        public int CastingTime { get; set; }
+    }
+
+    public class FeatureModel
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+    }
+
+    public class CharacterModel
+    {
+        public string Name { get; set; }
+        public CharacterClassEnumModel CharClass { get; set; }
+        public CharacterProficiencyModel Proficiency { get; set; }
+        public CharacterAttributesModel Attributes { get; set; }
+        public int Level { get; set; }
+        public CharacterRaceEnumModel Race { get; set; }
+        public int HitPoints { get; set; }
+        public int ArmourClass { get; set; }
+        public int ProficiencyBonus { get; set; }
+        public List<FeatureModel> Features { get; set; }
+        public List<SpellModel> Spells { get; set; }
+    }
+
+    public class NewCharacterModel
+    {
+        public string CharacterName { get; set; }
+        public CharacterClassEnumModel CharacterClass { get; set; }
+        public int CharacterLevel { get; set; }
+        public CharacterBackgroundEnumModel CharacterBackground { get; set; }
+        public CharacterRaceEnumModel CharacterRace { get; set; }
+        public CharacterProficiencyModel CharacterProficiencies { get; set; }
+        public CharacterAttributesModel CharacterAttributes { get; set; }
+    }
+
+    public class NewCharacterViewModel
+    {
+        public string CharacterName { get; set; }
+        public string CharacterClass { get; set; }
+        public int CharacterLevel { get; set; }
+        public string CharacterBackground { get; set; }
+        public string CharacterRace { get; set; }
+        public List<string> CharacterProficiencies { get; set; }
+        public List<int> CharacterAttributes { get; set; }
     }
 }

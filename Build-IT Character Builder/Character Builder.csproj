@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-Build_IT_Character_Builder-4A0BE0A6-7A8F-4D54-8568-09385099B864</UserSecretsId>
-    <AssemblyName>Build-IT_Character_Builder</AssemblyName>
-    <RootNamespace>Build-IT_Character_Builder</RootNamespace>
+    <AssemblyName>Character_Builder</AssemblyName>
+    <RootNamespace>Character_Builder</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

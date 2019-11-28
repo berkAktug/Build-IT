@@ -1,6 +1,6 @@
 using System;
 
-namespace Build_IT_Character_Builder.Models
+namespace Character_Builder.Models
 {
     public class ErrorViewModel
     {
