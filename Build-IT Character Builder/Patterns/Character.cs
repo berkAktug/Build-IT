@@ -1,12 +1,12 @@
 ﻿using Character_Builder.Models;
-using Character_Builder.Patterns;
+using Character_Builder.Patterns.Creational;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace Character_Builder.Behavioural
+namespace Character_Builder.Patterns
 {
     public enum BonusTypes
     {
@@ -59,7 +59,7 @@ namespace Character_Builder.Behavioural
 
         public void SetupCharacter(NewCharacterModel chartoBuild)
         {
-            Patterns.Creational.CharacterClassAbstractFactory.CharacterClassFactory factory;
+            CharacterClassAbstractFactory.CharacterClassFactory factory;
             switch (chartoBuild.CharacterClass)
             {
                 case CharacterClassEnumModel.Barbarian:
@@ -71,7 +71,7 @@ namespace Character_Builder.Behavioural
                 case CharacterClassEnumModel.Druid:
                     break;
                 case CharacterClassEnumModel.Fighter:
-                    factory = new Patterns.Creational.CharacterClassAbstractFactory.FighterFactory();
+                    factory = new CharacterClassAbstractFactory.FighterFactory();
                     break;
                 case CharacterClassEnumModel.Monk:
                     break;
@@ -80,14 +80,14 @@ namespace Character_Builder.Behavioural
                 case CharacterClassEnumModel.Ranger:
                     break;
                 case CharacterClassEnumModel.Rogue:
-                    factory = new Patterns.Creational.CharacterClassAbstractFactory.RougeFactory();
+                    factory = new CharacterClassAbstractFactory.RougeFactory();
                     break;
                 case CharacterClassEnumModel.Sorcerer:
                     break;
                 case CharacterClassEnumModel.Warlock:
                     break;
                 case CharacterClassEnumModel.Wizard:
-                    factory = new Patterns.Creational.CharacterClassAbstractFactory.WizardFactory();
+                    factory = new CharacterClassAbstractFactory.WizardFactory();
                     break;
                 case CharacterClassEnumModel.NONE:
                 default:
