@@ -25,7 +25,7 @@ namespace Character_Builder.Controllers
         public IActionResult SetupNewCharacter([FromBody] NewCharacterViewModel newCharacter)
         {
             var charName = newCharacter.CharacterName;
-            var charClass = _getCharacterClass(newCharacter.CharacterClass);
+            var charClass = _getCharacterClass(newCharacter.CharacterClassName);
             var charLevel = newCharacter.CharacterLevel;
             var charBackground = _getCharacterBackground(newCharacter.CharacterBackground);
             var charRace = _getCharacterRace(newCharacter.CharacterRace);

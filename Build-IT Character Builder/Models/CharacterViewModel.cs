@@ -58,6 +58,13 @@ namespace Character_Builder.Models
         NONE
     }
 
+    public enum CharacterGenderEnumModel
+    {
+        Male,
+        Female
+    }
+
+
     public class CharacterProficiencyModel
     {
         public bool isArcana { get; set; }
@@ -149,7 +156,8 @@ namespace Character_Builder.Models
     public class NewCharacterViewModel
     {
         public string CharacterName { get; set; }
-        public string CharacterClass { get; set; }
+        public string CharacterClassName { get; set; }
+        public string CharacterGender { get; set; }
         public int CharacterLevel { get; set; }
         public string CharacterBackground { get; set; }
         public string CharacterRace { get; set; }

@@ -377,10 +377,6 @@
             var holder_attribute_scores = plusMinus.prev();
 
             var attribute = parseInt(holder_attribute_scores.html());
-            //if (attribute >= 4 && TotalAttributePoints < 50) {
-            //    holder_attribute_scores.html(attribute - 1);
-            //    TotalAttributePoints = TotalAttributePoints + 1;
-            //}
 
             if (attribute > 8 && TotalAttributePoints <= 27) {
                 if (attribute < 13) {
@@ -435,62 +431,40 @@
 
         function createChar() {
             debugger;
-            var name = "testName";
-            var race = document.getElementsByClassName("button-highlight-race")[0].innerHTML;
-            var gender = document.getElementsByClassName("button-highlight-gender")[0].innerHTML;
-            var background = document.getElementsByClassName("button-highlight-background")[0].innerHTML;
-            var className = document.getElementsByClassName("button-highlight-class")[0].innerHTML;
+            let name = "testName";
+            //let level = 9;
+            let race = document.getElementsByClassName("button-highlight-race")[0].innerHTML;
+            let gender = document.getElementsByClassName("button-highlight-gender")[0].innerHTML;
+            let background = document.getElementsByClassName("button-highlight-background")[0].innerHTML;
+            let className = document.getElementsByClassName("button-highlight-class")[0].innerHTML;
 
-            //var profs = document.getElementsByClassName("button-highlight-prof");
-            //let proficiencies = {
-            //    prof1: profs[0].innerHTML,
-            //    prof2: profs[1].innerHTML
-            //};
-
-            //let attributes = {
-            //    str: document.getElementById("strPoint").innerHTML,
-            //    dex: document.getElementById("dexPoint").innerHTML,
-            //    con: document.getElementById("conPoint").innerHTML,
-            //    int: document.getElementById("intPoint").innerHTML,
-            //    wis: document.getElementById("wisPoint").innerHTML,
-            //    cha: document.getElementById("chaPoint").innerHTML
-            //};
-
-
-            //let character = new CharacterBuilder()
-            //    .setRace(race)
-            //    .setName(name)
-            //    .setGender(gender)
-            //    .setAttributes(attributes)
-            //    .setBackground(background)
-            //    .setClass(className)
-            //    .setProficiency(proficiencies);
-
-            //console.log(character);
-            var attributes = [
-                str = parseInt(document.getElementById("strPoint").innerHTML),
-                dex = parseInt(document.getElementById("dexPoint").innerHTML),
-                con = parseInt(document.getElementById("conPoint").innerHTML),
-                int = parseInt(document.getElementById("intPoint").innerHTML),
-                wis = parseInt(document.getElementById("wisPoint").innerHTML),
-                cha = parseInt(document.getElementById("chaPoint").innerHTML)
-            ];
-
-
-            var profs = document.getElementsByClassName("button-highlight-prof");
+            let profs = document.getElementsByClassName("button-highlight-prof");
             var proficiencies = [
                 profs[0].innerHTML,
                 profs[1].innerHTML
             ];
 
-            var character = new Object;
-            character.CharacterName = name;
-            character.CharacterClass = className;
-            character.CharacterLevel = 2;
-            character.CharacterBackground = background;
-            character.CharacterRace = race;
-            character.CharacterAttributes = attributes;
-            character.CharacterProficiencies = proficiencies;
+            let attributes = [
+                /*str: */parseInt(document.getElementById("strPoint").innerHTML),
+                /*dex: */parseInt(document.getElementById("dexPoint").innerHTML),
+                /*con: */parseInt(document.getElementById("conPoint").innerHTML),
+                /*int: */parseInt(document.getElementById("intPoint").innerHTML),
+                /*wis: */parseInt(document.getElementById("wisPoint").innerHTML),
+                /*cha: */parseInt(document.getElementById("chaPoint").innerHTML)
+            ];
+
+            let character = new CharacterBuilder()
+                .setRace(race)
+                .setName(name)
+                //.setLevel(level)
+                .setGender(gender)
+                .setAttributes(attributes)
+                .setBackground(background)
+                .setClass(className);
+
+            character.setProficiency(proficiencies);
+
+            console.log(character);
 
             $.ajax({
                 headers: { 
@@ -510,10 +484,6 @@
                 }
             });
 
-            //var request = new XMLHttpRequest();
-            //request.open('POST', '/my/url', true);
-            //request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-            //request.send(data);
         }
     </script>
 
