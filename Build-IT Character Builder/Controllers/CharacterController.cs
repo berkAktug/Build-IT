@@ -25,16 +25,27 @@ namespace Character_Builder.Controllers
         public IActionResult SetupNewCharacter([FromBody] NewCharacterViewModel newCharacter)
         {
             var charName = newCharacter.CharacterName;
-            var charClass = _getCharacterClass(newCharacter.CharacterClassName);
-            var charLevel = newCharacter.CharacterLevel;
-            var charBackground = _getCharacterBackground(newCharacter.CharacterBackground);
-            var charRace = _getCharacterRace(newCharacter.CharacterRace);
+            var charClass       = _getCharacterClass(newCharacter.CharacterClassName);
+            var charLevel       = newCharacter.CharacterLevel;
+            var charBackground  = _getCharacterBackground(newCharacter.CharacterBackground);
+            var charRace        = _getCharacterRace(newCharacter.CharacterRace);
             var charProficiency = _getCharacterProfiencies(newCharacter.CharacterProficiencies);
-            var charAttributes = newCharacter.CharacterAttributes;
+            var charAttributes  = _getCharacterAttributes(newCharacter.CharacterAttributes);
+
+            var charToBuild = new NewCharacterModel
+            {
+                CharacterName = charName,
+                CharacterBackground = charBackground,
+                CharacterClass = charClass,
+                CharacterLevel = charLevel,
+                CharacterProficiencies = charProficiency,
+                CharacterRace = charRace,
+                CharacterAttributes = charAttributes
+            };
 
             Character newChar = new Character();
 
-            newChar.SetCharacter(newCharacter);
+            newChar.SetupCharacter(charToBuild);
 
 
             return new JsonResult(new { isSuccess = true });
@@ -42,6 +53,20 @@ namespace Character_Builder.Controllers
 
 
         #region Enum Helpers
+        private CharacterAttributesModel _getCharacterAttributes(List<int> characterAttributes)
+        {
+            var attributes = new CharacterAttributesModel
+            {
+                Strength = characterAttributes[0],
+                Dexterity = characterAttributes[1],
+                Constitution = characterAttributes[2],
+                Intelligence = characterAttributes[3],
+                Wisdom = characterAttributes[4],
+                Charisma = characterAttributes[5]
+            };
+            return attributes;
+        }
+
         private CharacterProficiencyModel _getCharacterProfiencies(List<string> characterProficiencies)
         {
             var proficiencies = new CharacterProficiencyModel

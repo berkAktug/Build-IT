@@ -13,4 +13,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Patterns\Behavioral\" />
+    <Folder Include="Patterns\Object\" />
+    <Folder Include="Patterns\Structural\" />
+  </ItemGroup>
+
 </Project>
