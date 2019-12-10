@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Character_Builder.Patterns.Creational
+namespace Character_Builder.Internal
 {
 
     /// <summary>
@@ -25,4 +25,9 @@ namespace Character_Builder.Patterns.Creational
     /// A concrete product
     /// </summary>
     public class BastardSwordWeapon : Weapons { }
+
+    /// <summary>
+    /// A concrete product
+    /// </summary>
+    public class MaceWeapon : Weapons { }
 }

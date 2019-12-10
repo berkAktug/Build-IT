@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Character_Builder.Internal;
 using Character_Builder.Models;
-using Character_Builder.Patterns;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Character_Builder.Controllers

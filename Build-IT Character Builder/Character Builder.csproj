@@ -14,9 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Patterns\Behavioral\" />
-    <Folder Include="Patterns\Object\" />
-    <Folder Include="Patterns\Structural\" />
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>
