@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Character_Builder.Internal.CharacterClassAbstractFactory
+namespace Character_Builder.Internal
 {
     /// <summary>
     /// The Abstract Factory class, which defines methods for creating abstract objects.

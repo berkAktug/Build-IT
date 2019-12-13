@@ -12,5 +12,26 @@ namespace Character_Builder.Data
             : base(options)
         {
         }
+
+        public DbSet<Character> Characters { get; set; }
+
+        public DbSet<CharacterClass> CharacterClasses { get; set; }
+        public DbSet<CharacterClassFeature> CharacterClassFeatures { get; set; }
+
+        public DbSet<SubClass> SubClasses { get; set; }
+        public DbSet<SubClassFeature> SubClassFeatures { get; set; }
+
+        public DbSet<Feat> Feats { get; set; }
+        public DbSet<FeatFeature> FeatFeatures { get; set; }
+
+        public DbSet<Race> Races { get; set; }
+        public DbSet<RaceFeature> RaceFeatures { get; set; }
+
+        public DbSet<Spell> Spells { get; set; }
+
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    base.OnModelCreating(builder);
+        //}
     }
 }

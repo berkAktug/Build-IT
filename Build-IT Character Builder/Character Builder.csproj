@@ -5,16 +5,18 @@
     <UserSecretsId>aspnet-Build_IT_Character_Builder-4A0BE0A6-7A8F-4D54-8568-09385099B864</UserSecretsId>
     <AssemblyName>Character_Builder</AssemblyName>
     <RootNamespace>Character_Builder</RootNamespace>
+    <ApplicationInsightsResourceId>/subscriptions/6225f224-6dc6-45f2-8949-1a419cd12785/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/Character Builder</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>

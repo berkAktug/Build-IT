@@ -1,4 +1,4 @@
-﻿using Character_Builder.Internal.CharacterClassAbstractFactory;
+﻿using Character_Builder.Internal;
 using Character_Builder.Models;
 using System;
 using System.Collections.Generic;
