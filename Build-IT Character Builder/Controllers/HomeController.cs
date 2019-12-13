@@ -51,21 +51,6 @@ namespace Character_Builder.Controllers
 
             //_context.Feats.Add(data_feat);
 
-            //var id_feature_feat = rand.Next();
-            //var data_featfeature = new Data.FeatFeature
-            //{
-            //    Id = id_feature_feat,
-            //    FeatId = id_feat,
-            //    Name = "Mobile",
-            //    Description = "Run you fools",
-            //};
-
-            ////data_featfeature.FeatId = _context.Feats.FirstOrDefault().Id;
-
-            //_context.FeatFeatures.Add(data_featfeature);
-
-            ////_context.SaveChanges();
-
             ////Create SubClass
             //var id_subclass = rand.Next();
             //var data_subclass = new Data.SubClass

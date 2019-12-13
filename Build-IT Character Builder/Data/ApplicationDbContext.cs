@@ -22,7 +22,6 @@ namespace Character_Builder.Data
         public DbSet<SubClassFeature> SubClassFeatures { get; set; }
 
         public DbSet<Feat> Feats { get; set; }
-        public DbSet<FeatFeature> FeatFeatures { get; set; }
 
         public DbSet<Race> Races { get; set; }
         public DbSet<RaceFeature> RaceFeatures { get; set; }
