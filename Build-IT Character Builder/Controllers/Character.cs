@@ -12,15 +12,20 @@ namespace Character_Builder.Internal
     {
         public void SetupCharacter(NewCharacterModel newCaracter)
         {
+            // Character Class
             CharacterClassFactory classFactory = ClassAssigner(newCaracter.CharacterClass);
-
             classFactory.CreateCharacterClass();
 
+            // Character Background
             BackgroundMethod background = new BackgroundMethod();
             background.SetBackground(newCaracter.CharacterBackground);
             background.ApplyBackground(newCaracter.CharacterProficiencies);
 
-            //newCaracter.CharacterBackground
+            // Character Race 
+            RaceMethod race = new RaceMethod();
+            race.SetRace(newCaracter.CharacterRace);
+            race.ApplyRace(newCaracter.CharacterProficiencies, newCaracter.CharacterAttributes);
+
         }
 
         private CharacterClassFactory ClassAssigner(CharacterClassEnumModel characterClass)
