@@ -4,28 +4,39 @@ using System.Linq;
 using System.Threading.Tasks;
 using Character_Builder.Internal;
 using Character_Builder.Models;
+using Character_Builder.Utils;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Character_Builder.Controllers
 {
     public class CharacterController : Controller
     {
+        private readonly Data.ApplicationDbContext _context;
+
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public CharacterController(Data.ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        {
+            _context = context;
+            _userManager = userManager;
+        }
+               
         public IActionResult CharacterBuilder()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult SetupNewCharacter([FromBody] NewCharacterViewModel newCharacter)
+        public async Task<IActionResult> SetupNewCharacterAsync([FromBody] NewCharacterViewModel newCharacter)
         {
-            var charName = newCharacter.CharacterName;
+            var charName        = newCharacter.CharacterName;
             var charClass       = _getCharacterClass(newCharacter.CharacterClassName);
             var charLevel       = newCharacter.CharacterLevel;
             var charBackground  = _getCharacterBackground(newCharacter.CharacterBackground);
             var charRace        = _getCharacterRace(newCharacter.CharacterRace);
             var charProficiency = _getCharacterProfiencies(newCharacter.CharacterProficiencies);
-            //var charAttributes  = _getCharacterAttributes(newCharacter.CharacterAttributes);
-            var charAttributes = newCharacter.CharacterAttributes;
+            var charAttributes  = newCharacter.CharacterAttributes;
 
             var charToBuild = new NewCharacterModel
             {
@@ -43,214 +54,73 @@ namespace Character_Builder.Controllers
             newChar.SetupCharacter(charToBuild);
 
 
+            var rand = new Random();
+
+            IdentityUser current_user = await _userManager.FindByEmailAsync(User.Identity.Name);
+
+            // Create Character
+            var id_character = rand.Next();
+            var data_character = new Data.Character
+            {
+                Id = id_character,
+
+                FeatId = _context.Feats.FirstOrDefault().Id,
+                CharacterClassId = _context.CharacterClasses.FirstOrDefault().Id,
+                RaceId = _context.Races.FirstOrDefault().Id,
+                SubClassId = _context.SubClasses.FirstOrDefault().Id,
+
+                UserId = current_user.Id,
+                Name = "Testbug",
+
+                AC = 15,
+                HP = 20,
+                AttribStr = 15,
+                AttribDex = 15,
+                AttribCon = 15,
+                AttribInt = 15,
+                AttribWis = 15,
+                AttribCha = 15,
+            };
+
+            _context.Characters.Add(data_character);
+
+            _context.SaveChanges();
+
             return new JsonResult(new { isSuccess = true });
         }
 
-
         #region Enum Helpers
-        //private CharacterAttributesModel _getCharacterAttributes(List<int> characterAttributes)
-        //{
-        //    var attributes = new CharacterAttributesModel
-        //    {
-        //        Strength = characterAttributes[0],
-        //        Dexterity = characterAttributes[1],
-        //        Constitution = characterAttributes[2],
-        //        Intelligence = characterAttributes[3],
-        //        Wisdom = characterAttributes[4],
-        //        Charisma = characterAttributes[5]
-        //    };
-        //    return attributes;
-        //}
-
-        private CharacterProficiencyModel _getCharacterProfiencies(List<string> characterProficiencies)
+        // TODO: MAKE DEFAULT ENUM FOR THINGS CANNOT BE PARSED.
+        private List<CharacterProficiencyEnumModel> _getCharacterProfiencies(List<string> characterProficiencies)
         {
-            var proficiencies = new CharacterProficiencyModel
+            var proficiency_list = new List<CharacterProficiencyEnumModel>(); 
+            foreach(var item in characterProficiencies)
             {
-                isArcana = false,
-                isHistory = false,
-                isInvestigation = false,
-                isNature = false,
-                isReligion = false,
-                isAnimalHandling = false,
-                isInsight = false,
-                isMedicine = false,
-                isPerception = false,
-                isSurvival = false,
-                isDeception = false,
-                isIntimidation = false,
-                isPerformance = false,
-                isPersuasion = false,
-                isAthletics = false,
-                isAcrobatics = false,
-                isSleightOfHand = false,
-                isStealth = false,
-                isInitiative = false
-            };
-
-            foreach (var item in characterProficiencies)
-            {
-                switch (item)
-                {
-                    case "Arcana":
-                        proficiencies.isArcana = true;
-                        break;
-                    case "History":
-                        proficiencies.isHistory = true;
-                        break;
-                    case "Investigation":
-                        proficiencies.isInvestigation = true;
-                        break;
-                    case "Nature":
-                        proficiencies.isNature = true;
-                        break;
-                    case "Religion":
-                        proficiencies.isReligion = true;
-                        break;
-                    case "AnimalHandling":
-                        proficiencies.isAnimalHandling = true;
-                        break;
-                    case "Insight":
-                        proficiencies.isInsight = true;
-                        break;
-                    case "Medicine":
-                        proficiencies.isMedicine = true;
-                        break;
-                    case "Survival":
-                        proficiencies.isSurvival = true;
-                        break;
-                    case "Deception":
-                        proficiencies.isDeception = true;
-                        break;
-                    case "Intimidation":
-                        proficiencies.isIntimidation = true;
-                        break;
-                    case "Performances":
-                        proficiencies.isPerformance = true;
-                        break;
-                    case "Persuasion":
-                        proficiencies.isPersuasion = true;
-                        break;
-                    case "Athletics":
-                        proficiencies.isAthletics = true;
-                        break;
-                    case "Acrobatics":
-                        proficiencies.isAcrobatics = true;
-                        break;
-                    case "SleightOfHand":
-                        proficiencies.isSleightOfHand = true;
-                        break;
-                    case "Stealth":
-                        proficiencies.isStealth = true;
-                        break;
-                    case "Initiative":
-                        proficiencies.isInitiative = true;
-                        break;
-                }
+                var characterProficiency = EnumUtils.ParseEnum<CharacterProficiencyEnumModel>(item);
+                proficiency_list.Add(characterProficiency);
             }
-
-            return proficiencies;
+            return proficiency_list;
         }
 
-
+        // TODO: MAKE DEFAULT ENUM FOR THINGS CANNOT BE PARSED.
         private CharacterBackgroundEnumModel _getCharacterBackground(string backgroundName)
         {
-            switch (backgroundName)
-            {
-                case "Acolyte":
-                    return CharacterBackgroundEnumModel.Acolyte;
-                case "Artisan":
-                    return CharacterBackgroundEnumModel.Artisan;
-                case "BountyHunter":
-                    return CharacterBackgroundEnumModel.BountyHunter;
-                case "Charlatan":
-                    return CharacterBackgroundEnumModel.Charlatan;
-                case "Criminal":
-                    return CharacterBackgroundEnumModel.Criminal;
-                case "Entertainer":
-                    return CharacterBackgroundEnumModel.Entertainer;
-                case "FarTraveler":
-                    return CharacterBackgroundEnumModel.FarTraveler;
-                case "FolkHero":
-                    return CharacterBackgroundEnumModel.FolkHero;
-                case "GuildArtisan":
-                    return CharacterBackgroundEnumModel.GuildArtisan;
-                case "Hermit":
-                    return CharacterBackgroundEnumModel.Hermit;
-                case "Noble":
-                    return CharacterBackgroundEnumModel.Noble;
-                case "Outlander":
-                    return CharacterBackgroundEnumModel.Outlander;
-                case "Sage":
-                    return CharacterBackgroundEnumModel.Sage;
-                case "Sailor":
-                    return CharacterBackgroundEnumModel.Sailor;
-                case "Soldier":
-                    return CharacterBackgroundEnumModel.Soldier;
-                case "SpiritReaver":
-                    return CharacterBackgroundEnumModel.SpiritReaver;
-                case "Urchin":
-                    return CharacterBackgroundEnumModel.Urchin;
-            }
-            return CharacterBackgroundEnumModel.NONE;
+            var character_background = EnumUtils.ParseEnum<CharacterBackgroundEnumModel>(backgroundName);
+            return character_background;
         }
 
+        // TODO: MAKE DEFAULT ENUM FOR THINGS CANNOT BE PARSED.
         private CharacterRaceEnumModel _getCharacterRace(string raceName)
         {
-            switch (raceName)
-            {
-                case "Dragonborn":
-                    return CharacterRaceEnumModel.Dragonborn;
-                case "Dwarf":
-                    return CharacterRaceEnumModel.Dwarf;
-                case "Elf":
-                    return CharacterRaceEnumModel.Elf;
-                case "Gnome":
-                    return CharacterRaceEnumModel.Gnome;
-                case "Half_Elf":
-                    return CharacterRaceEnumModel.Half_Elf;
-                case "Half_Orc":
-                    return CharacterRaceEnumModel.Half_Orc;
-                case "Halfling":
-                    return CharacterRaceEnumModel.Halfling;
-                case "Human":
-                    return CharacterRaceEnumModel.Human;
-                case "Tiefling":
-                    return CharacterRaceEnumModel.Tiefling;
-            }
-            return CharacterRaceEnumModel.NONE;
+            var character_race = EnumUtils.ParseEnum<CharacterRaceEnumModel>(raceName);
+            return character_race;
         }
-
+        
+        // TODO: MAKE DEFAULT ENUM FOR THINGS CANNOT BE PARSED.
         private CharacterClassEnumModel _getCharacterClass(string className)
         {
-            switch (className)
-            {
-                case "Barbarian":
-                    return CharacterClassEnumModel.Barbarian;
-                case "Bard":
-                    return CharacterClassEnumModel.Bard;
-                case "Cleric":
-                    return CharacterClassEnumModel.Cleric;
-                case "Druid":
-                    return CharacterClassEnumModel.Druid;
-                case "Fighter":
-                    return CharacterClassEnumModel.Fighter;
-                case "Monk":
-                    return CharacterClassEnumModel.Monk;
-                case "Paladin":
-                    return CharacterClassEnumModel.Paladin;
-                case "Ranger":
-                    return CharacterClassEnumModel.Ranger;
-                case "Rogue":
-                    return CharacterClassEnumModel.Rogue;
-                case "Sorcerer":
-                    return CharacterClassEnumModel.Sorcerer;
-                case "Warlock":
-                    return CharacterClassEnumModel.Warlock;
-                case "Wizard":
-                    return CharacterClassEnumModel.Wizard;
-            }
-
-            return CharacterClassEnumModel.NONE;
+            var character_class = EnumUtils.ParseEnum<CharacterClassEnumModel>(className);
+            return character_class;
         }
         #endregion
     }

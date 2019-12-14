@@ -25,7 +25,7 @@ namespace Character_Builder.Models
     public enum CharacterBackgroundEnumModel
     {
         Acolyte,
-        Artisan,
+        Archaeologist,
         BountyHunter,
         Charlatan,
         Criminal,
@@ -39,7 +39,7 @@ namespace Character_Builder.Models
         Sage,
         Sailor,
         Soldier,
-        SpiritReaver,
+        StojanowPrisoner,
         Urchin,
         NONE
     }
@@ -64,29 +64,27 @@ namespace Character_Builder.Models
         Female
     }
 
-
-    public class CharacterProficiencyModel
+    public enum CharacterProficiencyEnumModel
     {
-        public bool isArcana { get; set; }
-        public bool isHistory { get; set; }
-        public bool isInvestigation { get; set; }
-        public bool isNature { get; set; }
-        public bool isReligion { get; set; }
-        public bool isAnimalHandling { get; set; }
-        public bool isInsight { get; set; }
-        public bool isMedicine { get; set; }
-        public bool isPerception { get; set; }
-        public bool isSurvival { get; set; }
-        public bool isDeception { get; set; }
-        public bool isIntimidation { get; set; }
-        public bool isPerformance { get; set; }
-        public bool isPersuasion { get; set; }
-        public bool isAthletics { get; set; }
-        public bool isAcrobatics { get; set; }
-        public bool isSleightOfHand { get; set; }
-        public bool isStealth { get; set; }
-
-        public bool isInitiative { get; set; }
+        Arcana,
+        History,
+        Investigation,
+        Nature,
+        Religion,
+        AnimalHandling,
+        Insight,
+        Medicine,
+        Perception,
+        Survival,
+        Deception,
+        Intimidation,
+        Performance,
+        Persuasion,
+        Athletics,
+        Acrobatics,
+        SleightOfHand,
+        Stealth,
+        Initiative
     }
 
     public class CharacterAttributesModel
@@ -107,7 +105,7 @@ namespace Character_Builder.Models
         public CharacterBackgroundEnumModel CharacterBackground { get; set; }
         public CharacterRaceEnumModel CharacterRace { get; set; }
         public CharacterAttributesModel CharacterAttributes { get; set; }
-        public CharacterProficiencyModel CharacterProficiency { get; set; }
+        public CharacterProficiencyEnumModel CharacterProficiency { get; set; }
     }
 
     public class SpellModel
@@ -131,7 +129,7 @@ namespace Character_Builder.Models
     {
         public string Name { get; set; }
         public CharacterClassEnumModel CharClass { get; set; }
-        public CharacterProficiencyModel Proficiency { get; set; }
+        public List<CharacterProficiencyEnumModel> Proficiency { get; set; }
         public CharacterAttributesModel Attributes { get; set; }
         public int Level { get; set; }
         public CharacterRaceEnumModel Race { get; set; }
@@ -145,11 +143,11 @@ namespace Character_Builder.Models
     public class NewCharacterModel
     {
         public string CharacterName { get; set; }
-        public CharacterClassEnumModel CharacterClass { get; set; }
         public int CharacterLevel { get; set; }
+        public CharacterClassEnumModel CharacterClass { get; set; }
         public CharacterBackgroundEnumModel CharacterBackground { get; set; }
         public CharacterRaceEnumModel CharacterRace { get; set; }
-        public CharacterProficiencyModel CharacterProficiencies { get; set; }
+        public List<CharacterProficiencyEnumModel> CharacterProficiencies { get; set; }
         public CharacterAttributesModel CharacterAttributes { get; set; }
     }
 
@@ -158,7 +156,7 @@ namespace Character_Builder.Models
         public string CharacterName { get; set; }
         public string CharacterClassName { get; set; }
         public string CharacterGender { get; set; }
-        public int CharacterLevel { get; set; }
+        public int    CharacterLevel { get; set; }
         public string CharacterBackground { get; set; }
         public string CharacterRace { get; set; }
         public List<string> CharacterProficiencies { get; set; }

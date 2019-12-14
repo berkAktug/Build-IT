@@ -8,77 +8,65 @@ using System.Threading.Tasks;
 
 namespace Character_Builder.Internal
 {
-    public enum ModifiedStatType
-    {
-        Attack,
-        Damage,
-        SpellDC,
-        ArmourClass,
-        HitPoints,
-        Strength,
-        Dexterity,
-        Constitution,
-        Intelligence,
-        Wisdom,
-        Charisma,
-        Inititiave,
-        Dice
-    }
-
-    public enum ModifierType
-    {
-        Bonus,
-        Penalty
-    }
-
-    //public abstract class Features
-    //{
-    //    public string Title;
-    //    public string Description;
-    //    public int MinLevel;
-    //    public int modifier;
-    //    public ModifiedStatType modifiedStat;
-    //}
-    
     public class Character
     {
-        public void SetupCharacter(NewCharacterModel chartoBuild)
+        public void SetupCharacter(NewCharacterModel newCaracter)
+        {
+            CharacterClassFactory classFactory = ClassAssigner(newCaracter.CharacterClass);
+
+            classFactory.CreateCharacterClass();
+
+            BackgroundMethod background = new BackgroundMethod();
+            background.SetBackground(newCaracter.CharacterBackground);
+            background.ApplyBackground(newCaracter.CharacterProficiencies);
+
+            //newCaracter.CharacterBackground
+        }
+
+        private CharacterClassFactory ClassAssigner(CharacterClassEnumModel characterClass)
         {
             CharacterClassFactory classFactory;
-            switch (chartoBuild.CharacterClass)
+            switch (characterClass)
             {
                 case CharacterClassEnumModel.Barbarian:
+                    new NotImplementedException();
                     break;
                 case CharacterClassEnumModel.Bard:
+                    new NotImplementedException();
                     break;
                 case CharacterClassEnumModel.Cleric:
-                    classFactory = new ClericFactory();
-                    break;
+                    return classFactory = new ClericFactory();
                 case CharacterClassEnumModel.Druid:
+                    new NotImplementedException();
                     break;
                 case CharacterClassEnumModel.Fighter:
-                    classFactory = new FighterFactory();
-                    break;
+                    return classFactory = new FighterFactory();
                 case CharacterClassEnumModel.Monk:
+                    new NotImplementedException();
                     break;
                 case CharacterClassEnumModel.Paladin:
+                    new NotImplementedException();
                     break;
                 case CharacterClassEnumModel.Ranger:
+                    new NotImplementedException();
                     break;
                 case CharacterClassEnumModel.Rogue:
-                    classFactory = new RougeFactory();
-                    break;
+                    return classFactory = new RougeFactory();
                 case CharacterClassEnumModel.Sorcerer:
+                    new NotImplementedException();
                     break;
                 case CharacterClassEnumModel.Warlock:
+                    new NotImplementedException();
                     break;
                 case CharacterClassEnumModel.Wizard:
-                    classFactory = new WizardFactory();
-                    break;
+                    return classFactory = new WizardFactory();
                 case CharacterClassEnumModel.NONE:
+                    new NotImplementedException();
+                    break;
                 default:
                     break;
             }
+            return classFactory = new NoClassFactory();
         }
     }
 }

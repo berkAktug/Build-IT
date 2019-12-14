@@ -56,4 +56,12 @@ namespace Character_Builder.Internal
             return new ClericClass();
         }
     }
+
+    public class NoClassFactory : CharacterClassFactory
+    {
+        public override CharacterClass CreateCharacterClass()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
