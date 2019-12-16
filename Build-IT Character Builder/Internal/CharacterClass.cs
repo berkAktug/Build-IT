@@ -20,7 +20,7 @@ namespace Character_Builder.Internal
             this.protectedLevel = protectedLevel;
         }
 
-        public abstract List<int> GetFeatureIDList(ApplicationDbContext context);
+        public abstract List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context);
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Barbarian.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -53,7 +53,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Bard.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -71,7 +71,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Cleric.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -89,7 +89,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Druid.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -107,7 +107,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Fighter.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -125,7 +125,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Monk.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -143,7 +143,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Paladin.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -161,7 +161,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Ranger.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -179,7 +179,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Rogue.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -197,7 +197,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Sorcerer.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -215,7 +215,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Warlock.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -233,7 +233,7 @@ namespace Character_Builder.Internal
             _ClassName = CharacterClassEnumModel.Wizard.ToString();
         }
 
-        public override List<int> GetFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
         }
@@ -242,9 +242,9 @@ namespace Character_Builder.Internal
     #region Character_Class_Helper
     public class CharacterClassHelper
     {
-        public static List<int> GetFeatureIDList(ApplicationDbContext context, string className, int classLevel)
+        public static List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context, string className, int classLevel)
         {
-            List<int> class_feature_ID_list = new List<int>();
+            List<CharacterFeatureModel> classFeatureIDList = new List<CharacterFeatureModel>();
 
             var class_entity = context.CharacterClasses.Where(x => x.Name == className);
 
@@ -254,10 +254,15 @@ namespace Character_Builder.Internal
 
             foreach (var item in levelized_features)
             {
-                class_feature_ID_list.Add(item.Id);
+                CharacterFeatureModel classFeature = new CharacterFeatureModel
+                {
+                    FeatureType = FeatureTypes.CharacterClass,
+                    ID = item.Id
+                };
+                classFeatureIDList.Add(classFeature);
             }
 
-            return class_feature_ID_list;
+            return classFeatureIDList;
         }
     }
     #endregion

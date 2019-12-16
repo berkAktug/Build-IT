@@ -17,24 +17,32 @@ namespace Character_Builder.Internal
             _context = context;
         }
 
-        public void SetupCharacter(NewCharacterModel newCaracter)
+        public void SetupCharacter(NewCharacterModel newCharacter)
         {
-            // Character Class
-            CharacterClassFactory classFactory = ClassAssigner(newCaracter.CharacterClass);
-            classFactory.CreateCharacterClass(newCaracter.CharacterLevel);
+            var FeatureIDList = new List<CharacterFeatureModel>();
 
+            // Character Class
+            CharacterClassFactory classFactory = ClassAssigner(newCharacter.CharacterClass);
+            classFactory.CreateCharacterClass(newCharacter.CharacterLevel);
+            
             // Character Class Features
-            var class_feature_id_list = classFactory.GetClassFeatureIDList(_context);
+            var tmp_class_Id_list = classFactory.GetClassFeatureIDList(_context);
+            FeatureIDList.Union(tmp_class_Id_list);
 
             // Character Background
             BackgroundMethod background = new BackgroundMethod();
-            background.SetBackground(newCaracter.CharacterBackground);
-            background.ApplyBackground(newCaracter.CharacterProficiencies);
+            background.SetBackground(newCharacter.CharacterBackground);
+            background.ApplyBackground(newCharacter.CharacterProficiencies);
 
             // Character Race 
             RaceMethod race = new RaceMethod();
-            race.SetRace(newCaracter.CharacterRace);
-            race.ApplyRace(newCaracter.CharacterProficiencies, newCaracter.CharacterAttributes);
+            race.SetRace(newCharacter.CharacterRace);
+            race.ApplyRace(newCharacter.CharacterProficiencies, newCharacter.CharacterAttributes);
+
+            // Character Race Features
+            var tmp_race_Id_list = race.GetRaceFeatureIDList(_context);
+            FeatureIDList.Union(tmp_race_Id_list);
+
 
         }
 

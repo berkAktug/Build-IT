@@ -13,7 +13,7 @@ namespace Character_Builder.Internal
     {
         public abstract CharacterClass CreateCharacterClass(int level);
 
-        public abstract List<int> GetClassFeatureIDList(ApplicationDbContext context);
+        public abstract List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context);
     }
 
 
@@ -31,7 +31,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -51,7 +51,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -71,7 +71,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -91,7 +91,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -111,7 +111,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -131,7 +131,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -151,7 +151,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -171,7 +171,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -191,7 +191,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -211,7 +211,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -231,7 +231,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -250,7 +250,7 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -263,7 +263,7 @@ namespace Character_Builder.Internal
             throw new NotImplementedException();
         }
 
-        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             throw new NotImplementedException();
         }
