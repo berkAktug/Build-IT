@@ -10,11 +10,20 @@ namespace Character_Builder.Internal
 {
     public class Character
     {
+        private readonly Data.ApplicationDbContext _context;
+
+        public Character(Data.ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public void SetupCharacter(NewCharacterModel newCaracter)
         {
             // Character Class
             CharacterClassFactory classFactory = ClassAssigner(newCaracter.CharacterClass);
-            classFactory.CreateCharacterClass();
+            classFactory.CreateCharacterClass(newCaracter.CharacterLevel);
+            var class_feature_id_list = classFactory.GetCharacterFeatureIDs(_context);
+
 
             // Character Background
             BackgroundMethod background = new BackgroundMethod();
