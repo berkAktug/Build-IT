@@ -27,13 +27,8 @@ namespace Character_Builder.Controllers
             return View();
         }
 
-        private async Task<IdentityUser> getCurrentUserAsync()
-        {
-            return await _userManager.FindByEmailAsync(User.Identity.Name);
-        }
-
         [HttpPost]
-        public IActionResult SetupNewCharacter([FromBody] InsertCharacterModel newCharacter)
+        public async Task<IActionResult> SetupNewCharacterAsync([FromBody] InsertCharacterModel newCharacter)
         {
             var charName = newCharacter.CharacterName;
             var charClass = _getCharacterClass(newCharacter.CharacterClassName);
@@ -60,37 +55,38 @@ namespace Character_Builder.Controllers
             newChar.SetupCharacter(charToBuild);
 
 
-            //var rand = new Random();
+            var rand = new Random();
 
-            //var current_user = getCurrentUserAsync();
+            var current_user = await _userManager.FindByEmailAsync(User.Identity.Name);
 
-            //// Create Character
-            //var id_character = rand.Next();
-            //var data_character = new Data.Character
-            //{
-            //    Id = id_character,
+            // Create Character
+            var id_character = rand.Next();
+            var data_character = new Data.Character
+            {
+                Id = id_character,
 
-            //    FeatId = _context.Feats.FirstOrDefault().Id,
-            //    CharacterClassId = _context.CharacterClasses.FirstOrDefault().Id,
-            //    RaceId = _context.Races.FirstOrDefault().Id,
-            //    SubClassId = _context.SubClasses.FirstOrDefault().Id,
+                FeatId = _context.Feats.FirstOrDefault().Id,
+                CharacterClassId = _context.CharacterClasses.FirstOrDefault().Id,
+                RaceId = _context.Races.FirstOrDefault().Id,
+                SubClassId = _context.SubClasses.FirstOrDefault().Id,
+                BackgroundId = _context.Backgrounds.FirstOrDefault().Id,
 
-            //    UserId = current_user.Id,
-            //    Name = "Testbug",
+                UserId = current_user.Id,
+                Name = "Testbug",
 
-            //    AC = 15,
-            //    HP = 20,
-            //    AttribStr = 15,
-            //    AttribDex = 15,
-            //    AttribCon = 15,
-            //    AttribInt = 15,
-            //    AttribWis = 15,
-            //    AttribCha = 15,
-            //};
+                AC = 15,
+                HP = 20,
+                AttribStr = 15,
+                AttribDex = 15,
+                AttribCon = 15,
+                AttribInt = 15,
+                AttribWis = 15,
+                AttribCha = 15,
+            };
 
-            //_context.Characters.Add(data_character);
+            _context.Characters.Add(data_character);
 
-            //_context.SaveChanges();
+            _context.SaveChanges();
 
             return new JsonResult(new { isSuccess = true });
         }

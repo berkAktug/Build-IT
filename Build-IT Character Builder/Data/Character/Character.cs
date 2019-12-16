@@ -13,6 +13,7 @@ namespace Character_Builder.Data
         public int?     FeatId { get; set; }
         public int      RaceId { get; set; }
         public string   UserId { get; set; }
+        public int      BackgroundId { get; set; }
 
         // Meta Data
         public string Name { get; set; }
