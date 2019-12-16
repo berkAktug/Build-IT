@@ -28,15 +28,15 @@ namespace Character_Builder.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SetupNewCharacterAsync([FromBody] NewCharacterViewModel newCharacter)
+        public IActionResult SetupNewCharacter([FromBody] NewCharacterViewModel newCharacter)
         {
-            var charName        = newCharacter.CharacterName;
-            var charClass       = _getCharacterClass(newCharacter.CharacterClassName);
-            var charLevel       = newCharacter.CharacterLevel;
-            var charBackground  = _getCharacterBackground(newCharacter.CharacterBackground);
-            var charRace        = _getCharacterRace(newCharacter.CharacterRace);
+            var charName = newCharacter.CharacterName;
+            var charClass = _getCharacterClass(newCharacter.CharacterClassName);
+            var charLevel = newCharacter.CharacterLevel;
+            var charBackground = _getCharacterBackground(newCharacter.CharacterBackground);
+            var charRace = _getCharacterRace(newCharacter.CharacterRace);
             var charProficiency = _getCharacterProfiencies(newCharacter.CharacterProficiencies);
-            var charAttributes  = newCharacter.CharacterAttributes;
+            var charAttributes = newCharacter.CharacterAttributes;
 
             var charToBuild = new NewCharacterModel
             {
@@ -54,37 +54,37 @@ namespace Character_Builder.Controllers
             newChar.SetupCharacter(charToBuild);
 
 
-            var rand = new Random();
+            //var rand = new Random();
 
-            IdentityUser current_user = await _userManager.FindByEmailAsync(User.Identity.Name);
+            //IdentityUser current_user = await _userManager.FindByEmailAsync(User.Identity.Name);
 
-            // Create Character
-            var id_character = rand.Next();
-            var data_character = new Data.Character
-            {
-                Id = id_character,
+            //// Create Character
+            //var id_character = rand.Next();
+            //var data_character = new Data.Character
+            //{
+            //    Id = id_character,
 
-                FeatId = _context.Feats.FirstOrDefault().Id,
-                CharacterClassId = _context.CharacterClasses.FirstOrDefault().Id,
-                RaceId = _context.Races.FirstOrDefault().Id,
-                SubClassId = _context.SubClasses.FirstOrDefault().Id,
+            //    FeatId = _context.Feats.FirstOrDefault().Id,
+            //    CharacterClassId = _context.CharacterClasses.FirstOrDefault().Id,
+            //    RaceId = _context.Races.FirstOrDefault().Id,
+            //    SubClassId = _context.SubClasses.FirstOrDefault().Id,
 
-                UserId = current_user.Id,
-                Name = "Testbug",
+            //    UserId = current_user.Id,
+            //    Name = "Testbug",
 
-                AC = 15,
-                HP = 20,
-                AttribStr = 15,
-                AttribDex = 15,
-                AttribCon = 15,
-                AttribInt = 15,
-                AttribWis = 15,
-                AttribCha = 15,
-            };
+            //    AC = 15,
+            //    HP = 20,
+            //    AttribStr = 15,
+            //    AttribDex = 15,
+            //    AttribCon = 15,
+            //    AttribInt = 15,
+            //    AttribWis = 15,
+            //    AttribCha = 15,
+            //};
 
-            _context.Characters.Add(data_character);
+            //_context.Characters.Add(data_character);
 
-            _context.SaveChanges();
+            //_context.SaveChanges();
 
             return new JsonResult(new { isSuccess = true });
         }

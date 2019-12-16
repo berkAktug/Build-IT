@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Character_Builder.Models.UsersViewModel>
+
+@{
+    ViewData["Title"] = "ListUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListUsers</h2>
+
+<div>
+    <h4>Users</h4>
+    <hr />
+    @foreach (var item in Model)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(modelItem => item.Username)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelItem => item.Username)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(modelItem => item.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelItem => item.Email)
+            </dd>
+        </dl>
+    }
+</div>
