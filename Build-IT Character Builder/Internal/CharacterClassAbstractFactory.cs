@@ -32,7 +32,7 @@ namespace Character_Builder.Internal
 
         public override List<int> GetCharacterFeatureIDs(ApplicationDbContext context)
         {
-            return _Class.GetFeatures(context);
+            return _Class.GetFeatureIDList(context);
         }
     }
 
@@ -51,7 +51,7 @@ namespace Character_Builder.Internal
 
         public override List<int> GetCharacterFeatureIDs(ApplicationDbContext context)
         {
-            return _Class.GetFeatures(context);
+            return _Class.GetFeatureIDList(context);
         }
     }
 
@@ -71,7 +71,7 @@ namespace Character_Builder.Internal
 
         public override List<int> GetCharacterFeatureIDs(ApplicationDbContext context)
         {
-            return _Class.GetFeatures(context);
+            return _Class.GetFeatureIDList(context);
         }
     }
 
@@ -91,7 +91,7 @@ namespace Character_Builder.Internal
 
         public override List<int> GetCharacterFeatureIDs(ApplicationDbContext context)
         {
-            return _Class.GetFeatures(context);
+            return _Class.GetFeatureIDList(context);
         }
     }
 

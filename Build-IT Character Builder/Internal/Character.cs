@@ -22,8 +22,9 @@ namespace Character_Builder.Internal
             // Character Class
             CharacterClassFactory classFactory = ClassAssigner(newCaracter.CharacterClass);
             classFactory.CreateCharacterClass(newCaracter.CharacterLevel);
-            var class_feature_id_list = classFactory.GetCharacterFeatureIDs(_context);
 
+            // Character Class Features
+            var class_feature_id_list = classFactory.GetCharacterFeatureIDs(_context);
 
             // Character Background
             BackgroundMethod background = new BackgroundMethod();
