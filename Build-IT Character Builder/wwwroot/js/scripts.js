@@ -79,58 +79,58 @@ function highlight2Buttons(evt, type) {
 }
 
 function createChar() {
-    debugger;
-    let name = "testName";
-    //let level = 9;
-    let race = document.getElementsByClassName("button-highlight-race")[0].innerHTML;
-    let gender = document.getElementsByClassName("button-highlight-gender")[0].innerHTML;
-    let background = document.getElementsByClassName("button-highlight-background")[0].innerHTML;
-    let className = document.getElementsByClassName("button-highlight-class")[0].innerHTML;
+	debugger;
+	let name = "testName";
+	//let level = 9;
+	let race = document.getElementsByClassName("button-highlight-race")[0].innerHTML;
+	let gender = document.getElementsByClassName("button-highlight-gender")[0].innerHTML;
+	let background = document.getElementsByClassName("button-highlight-background")[0].innerHTML;
+	let className = document.getElementsByClassName("button-highlight-class")[0].innerHTML;
 
-    let profs = document.getElementsByClassName("button-highlight-prof");
-    var proficiencies = [
-        profs[0].innerHTML,
-        profs[1].innerHTML
-    ];
+	let profs = document.getElementsByClassName("button-highlight-prof");
+	var proficiencies = [
+		profs[0].innerHTML,
+		profs[1].innerHTML
+	];
 
-    let attributes = [
+	let attributes = [
                 /*str: */parseInt(document.getElementById("strPoint").innerHTML),
                 /*dex: */parseInt(document.getElementById("dexPoint").innerHTML),
                 /*con: */parseInt(document.getElementById("conPoint").innerHTML),
                 /*int: */parseInt(document.getElementById("intPoint").innerHTML),
                 /*wis: */parseInt(document.getElementById("wisPoint").innerHTML),
                 /*cha: */parseInt(document.getElementById("chaPoint").innerHTML)
-    ];
+	];
 
-    let character = new CharacterBuilder()
-        .setRace(race)
-        .setName(name)
-        //.setLevel(level)
-        .setGender(gender)
-        .setAttributes(attributes)
-        .setBackground(background)
-        .setClass(className);
+	let character = new CharacterBuilder()
+		.setRace(race)
+		.setName(name)
+		//.setLevel(level)
+		.setGender(gender)
+		.setAttributes(attributes)
+		.setBackground(background)
+		.setClass(className);
 
-    character.setProficiency(proficiencies);
+	character.setProficiency(proficiencies);
 
-    console.log(character);
+	console.log(character);
 
-    $.ajax({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        url: "/Character/SetupNewCharacter",
-        type: "POST",
-        dataType: 'json',
-        contentType: "application/jsonrequest; charset=utf-8",
-        data: JSON.stringify(character),
-        success: function (result) { //we got the response
-            alert('Successfully called');
-        },
-        error: function (jqxhr, status, exception) {
-            alert('Exception:', exception);
-        }
-    });
+	$.ajax({
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		url: "/Character/SetupNewCharacter",
+		type: "POST",
+		dataType: 'json',
+		contentType: "application/jsonrequest; charset=utf-8",
+		data: JSON.stringify(character),
+		success: function (result) { //we got the response
+			alert('Successfully called');
+		},
+		error: function (jqxhr, status, exception) {
+			alert('Exception:', exception);
+		}
+	});
 
 }

@@ -28,15 +28,24 @@ namespace Character_Builder.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SetupNewCharacterAsync([FromBody] InsertCharacterModel newCharacter)
+        [HttpPost]
+        public IActionResult SetupNewCharacter([FromBody] NewCharacterViewModel newCharacter)
         {
             var charName = newCharacter.CharacterName;
             var charClass = _getCharacterClass(newCharacter.CharacterClassName);
-            //var charLevel = newCharacter.CharacterLevel;
+            var charLevel = 0;//newCharacter.CharacterLevel;
             var charBackground = _getCharacterBackground(newCharacter.CharacterBackground);
             var charRace = _getCharacterRace(newCharacter.CharacterRace);
             var charProficiency = _getCharacterProfiencies(newCharacter.CharacterProficiencies);
             var charAttributes = newCharacter.CharacterAttributes;
+
+            CharacterAttributesModel attrib = new CharacterAttributesModel();
+            attrib.Strength = charAttributes[0];
+            attrib.Dexterity = charAttributes[1];
+            attrib.Constitution = charAttributes[2];
+            attrib.Intelligence = charAttributes[3];
+            attrib.Wisdom = charAttributes[4];
+            attrib.Charisma = charAttributes[5];
 
             var charToBuild = new NewCharacterModel
             {
@@ -47,46 +56,13 @@ namespace Character_Builder.Controllers
                 CharacterLevel = 3,
                 CharacterProficiencies = charProficiency,
                 CharacterRace = charRace,
-                CharacterAttributes = charAttributes
+                CharacterAttributes = attrib
             };
 
             Character newChar = new Character(_context);
 
             newChar.SetupCharacter(charToBuild);
 
-
-            var rand = new Random();
-
-            var current_user = await _userManager.FindByEmailAsync(User.Identity.Name);
-
-            // Create Character
-            var id_character = rand.Next();
-            var data_character = new Data.Character
-            {
-                Id = id_character,
-
-                FeatId = _context.Feats.FirstOrDefault().Id,
-                CharacterClassId = _context.CharacterClasses.FirstOrDefault().Id,
-                RaceId = _context.Races.FirstOrDefault().Id,
-                SubClassId = _context.SubClasses.FirstOrDefault().Id,
-                BackgroundId = _context.Backgrounds.FirstOrDefault().Id,
-
-                UserId = current_user.Id,
-                Name = "Testbug",
-
-                AC = 15,
-                HP = 20,
-                AttribStr = 15,
-                AttribDex = 15,
-                AttribCon = 15,
-                AttribInt = 15,
-                AttribWis = 15,
-                AttribCha = 15,
-            };
-
-            _context.Characters.Add(data_character);
-
-            _context.SaveChanges();
 
             return new JsonResult(new { isSuccess = true });
         }

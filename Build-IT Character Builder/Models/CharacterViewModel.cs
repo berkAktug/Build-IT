@@ -162,4 +162,16 @@ namespace Character_Builder.Models
         public List<string> CharacterProficiencies { get; set; }
         public CharacterAttributesModel CharacterAttributes { get; set; }
     }
+
+    public class NewCharacterViewModel
+    {
+        public string CharacterName { get; set; }
+        public string CharacterClassName { get; set; }
+        public string CharacterGender { get; set; }
+        public int CharacterLevel { get; set; }
+        public string CharacterBackground { get; set; }
+        public string CharacterRace { get; set; }
+        public List<string> CharacterProficiencies { get; set; }
+        public List<int> CharacterAttributes { get; set; }
+    }
 }
