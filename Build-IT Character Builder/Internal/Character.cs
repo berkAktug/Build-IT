@@ -24,7 +24,7 @@ namespace Character_Builder.Internal
             classFactory.CreateCharacterClass(newCaracter.CharacterLevel);
 
             // Character Class Features
-            var class_feature_id_list = classFactory.GetCharacterFeatureIDs(_context);
+            var class_feature_id_list = classFactory.GetClassFeatureIDList(_context);
 
             // Character Background
             BackgroundMethod background = new BackgroundMethod();
@@ -44,35 +44,27 @@ namespace Character_Builder.Internal
             switch (characterClass)
             {
                 case CharacterClassEnumModel.Barbarian:
-                    new NotImplementedException();
-                    break;
+                    return classFactory = new BarbarianFactory();
                 case CharacterClassEnumModel.Bard:
-                    new NotImplementedException();
-                    break;
+                    return classFactory = new BardFactory();
                 case CharacterClassEnumModel.Cleric:
                     return classFactory = new ClericFactory();
                 case CharacterClassEnumModel.Druid:
-                    new NotImplementedException();
-                    break;
+                    return classFactory = new Druidactory();
                 case CharacterClassEnumModel.Fighter:
                     return classFactory = new FighterFactory();
                 case CharacterClassEnumModel.Monk:
-                    new NotImplementedException();
-                    break;
+                    return classFactory = new MonkFactory();
                 case CharacterClassEnumModel.Paladin:
-                    new NotImplementedException();
-                    break;
+                    return classFactory = new PaladinFactory();
                 case CharacterClassEnumModel.Ranger:
-                    new NotImplementedException();
-                    break;
+                    return classFactory = new RangerFactory();
                 case CharacterClassEnumModel.Rogue:
                     return classFactory = new RougeFactory();
                 case CharacterClassEnumModel.Sorcerer:
-                    new NotImplementedException();
-                    break;
+                    return classFactory = new SorcererFactory();
                 case CharacterClassEnumModel.Warlock:
-                    new NotImplementedException();
-                    break;
+                    return classFactory = new WarlockFactory();
                 case CharacterClassEnumModel.Wizard:
                     return classFactory = new WizardFactory();
                 case CharacterClassEnumModel.NONE:

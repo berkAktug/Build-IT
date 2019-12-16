@@ -13,24 +13,25 @@ namespace Character_Builder.Internal
     {
         public abstract CharacterClass CreateCharacterClass(int level);
 
-        public abstract List<int> GetCharacterFeatureIDs(ApplicationDbContext context);
+        public abstract List<int> GetClassFeatureIDList(ApplicationDbContext context);
     }
+
 
     /// <summary>
     /// An abstract product.
     /// </summary>
-    public class RougeFactory : CharacterClassFactory
+    public class BarbarianFactory : CharacterClassFactory
     {
-        private RogueClass _Class;
+        private BarbarianClass _Class;
 
         public override CharacterClass CreateCharacterClass(int level)
         {
-            _Class = new RogueClass(level);
+            _Class = new BarbarianClass(level);
 
             return _Class;
         }
 
-        public override List<int> GetCharacterFeatureIDs(ApplicationDbContext context)
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -39,37 +40,18 @@ namespace Character_Builder.Internal
     /// <summary>
     /// An abstract product.
     /// </summary>
-    public class WizardFactory : CharacterClassFactory
+    public class BardFactory : CharacterClassFactory
     {
-        private WizardClass _Class;
+        private BardClass _Class;
+
         public override CharacterClass CreateCharacterClass(int level)
         {
-            _Class = new WizardClass(level);
+            _Class = new BardClass(level);
 
             return _Class;
         }
 
-        public override List<int> GetCharacterFeatureIDs(ApplicationDbContext context)
-        {
-            return _Class.GetFeatureIDList(context);
-        }
-    }
-
-    /// <summary>
-    /// An abstract product.
-    /// </summary>
-    public class FighterFactory : CharacterClassFactory
-    {
-        private FighterClass _Class;
-
-        public override CharacterClass CreateCharacterClass(int level)
-        {
-            _Class = new FighterClass(level);
-
-            return _Class;
-        }
-
-        public override List<int> GetCharacterFeatureIDs(ApplicationDbContext context)
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -89,7 +71,186 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
-        public override List<int> GetCharacterFeatureIDs(ApplicationDbContext context)
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        {
+            return _Class.GetFeatureIDList(context);
+        }
+    }
+
+    /// <summary>
+    /// An abstract product.
+    /// </summary>
+    public class Druidactory : CharacterClassFactory
+    {
+        private DruidClass _Class;
+
+        public override CharacterClass CreateCharacterClass(int level)
+        {
+            _Class = new DruidClass(level);
+
+            return _Class;
+        }
+
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        {
+            return _Class.GetFeatureIDList(context);
+        }
+    }
+
+    /// <summary>
+    /// An abstract product.
+    /// </summary>
+    public class FighterFactory : CharacterClassFactory
+    {
+        private FighterClass _Class;
+
+        public override CharacterClass CreateCharacterClass(int level)
+        {
+            _Class = new FighterClass(level);
+
+            return _Class;
+        }
+
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        {
+            return _Class.GetFeatureIDList(context);
+        }
+    }
+
+    /// <summary>
+    /// An abstract product.
+    /// </summary>
+    public class MonkFactory : CharacterClassFactory
+    {
+        private MonkClass _Class;
+
+        public override CharacterClass CreateCharacterClass(int level)
+        {
+            _Class = new MonkClass(level);
+
+            return _Class;
+        }
+
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        {
+            return _Class.GetFeatureIDList(context);
+        }
+    }
+
+    /// <summary>
+    /// An abstract product.
+    /// </summary>
+    public class PaladinFactory : CharacterClassFactory
+    {
+        private PaladinClass _Class;
+
+        public override CharacterClass CreateCharacterClass(int level)
+        {
+            _Class = new PaladinClass(level);
+
+            return _Class;
+        }
+
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        {
+            return _Class.GetFeatureIDList(context);
+        }
+    }
+
+    /// <summary>
+    /// An abstract product.
+    /// </summary>
+    public class RangerFactory : CharacterClassFactory
+    {
+        private RangerClass _Class;
+
+        public override CharacterClass CreateCharacterClass(int level)
+        {
+            _Class = new RangerClass(level);
+
+            return _Class;
+        }
+
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        {
+            return _Class.GetFeatureIDList(context);
+        }
+    }
+
+    /// <summary>
+    /// An abstract product.
+    /// </summary>
+    public class RougeFactory : CharacterClassFactory
+    {
+        private RogueClass _Class;
+
+        public override CharacterClass CreateCharacterClass(int level)
+        {
+            _Class = new RogueClass(level);
+
+            return _Class;
+        }
+
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        {
+            return _Class.GetFeatureIDList(context);
+        }
+    }
+
+    /// <summary>
+    /// An abstract product.
+    /// </summary>
+    public class SorcererFactory : CharacterClassFactory
+    {
+        private SorcererClass _Class;
+
+        public override CharacterClass CreateCharacterClass(int level)
+        {
+            _Class = new SorcererClass(level);
+
+            return _Class;
+        }
+
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        {
+            return _Class.GetFeatureIDList(context);
+        }
+    }
+
+    /// <summary>
+    /// An abstract product.
+    /// </summary>
+    public class WarlockFactory : CharacterClassFactory
+    {
+        private WarlockClass _Class;
+
+        public override CharacterClass CreateCharacterClass(int level)
+        {
+            _Class = new WarlockClass(level);
+
+            return _Class;
+        }
+
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
+        {
+            return _Class.GetFeatureIDList(context);
+        }
+    }
+
+    /// <summary>
+    /// An abstract product.
+    /// </summary>
+    public class WizardFactory : CharacterClassFactory
+    {
+        private WizardClass _Class;
+        public override CharacterClass CreateCharacterClass(int level)
+        {
+            _Class = new WizardClass(level);
+
+            return _Class;
+        }
+
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
         }
@@ -102,7 +263,7 @@ namespace Character_Builder.Internal
             throw new NotImplementedException();
         }
 
-        public override List<int> GetCharacterFeatureIDs(ApplicationDbContext context)
+        public override List<int> GetClassFeatureIDList(ApplicationDbContext context)
         {
             throw new NotImplementedException();
         }
