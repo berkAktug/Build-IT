@@ -28,11 +28,11 @@ namespace Character_Builder.Controllers
         }
 
         [HttpPost]
-        public IActionResult SetupNewCharacter([FromBody] NewCharacterViewModel newCharacter)
+        public IActionResult SetupNewCharacter([FromBody] InsertCharacterModel newCharacter)
         {
             var charName = newCharacter.CharacterName;
             var charClass = _getCharacterClass(newCharacter.CharacterClassName);
-            var charLevel = newCharacter.CharacterLevel;
+            //var charLevel = newCharacter.CharacterLevel;
             var charBackground = _getCharacterBackground(newCharacter.CharacterBackground);
             var charRace = _getCharacterRace(newCharacter.CharacterRace);
             var charProficiency = _getCharacterProfiencies(newCharacter.CharacterProficiencies);
@@ -43,7 +43,8 @@ namespace Character_Builder.Controllers
                 CharacterName = charName,
                 CharacterBackground = charBackground,
                 CharacterClass = charClass,
-                CharacterLevel = charLevel,
+                //CharacterLevel = charLevel,
+                CharacterLevel = 3,
                 CharacterProficiencies = charProficiency,
                 CharacterRace = charRace,
                 CharacterAttributes = charAttributes
