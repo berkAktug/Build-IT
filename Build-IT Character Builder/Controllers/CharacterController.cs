@@ -50,7 +50,7 @@ namespace Character_Builder.Controllers
                 CharacterAttributes = charAttributes
             };
 
-            Character newChar = new Character();
+            Character newChar = new Character(_context);
 
             newChar.SetupCharacter(charToBuild);
 

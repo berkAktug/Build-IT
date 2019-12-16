@@ -29,6 +29,7 @@ namespace Character_Builder.Data
         public virtual SubClass SubClass { get; set; }
         public virtual Feat Feat { get; set; }
         public virtual Race Race { get; set; }
+        public virtual Background Background { get; set; }
 
         public virtual ICollection<Spell> Spells { get; set; }
     }

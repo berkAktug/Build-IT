@@ -26,6 +26,9 @@ namespace Character_Builder.Data
         public DbSet<Race> Races { get; set; }
         public DbSet<RaceFeature> RaceFeatures { get; set; }
 
+        public DbSet<Background> Backgrounds { get; set; }
+        public DbSet<BackgroundFeature> BackgroundFeatures { get; set; }
+
         public DbSet<Spell> Spells { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder builder)
