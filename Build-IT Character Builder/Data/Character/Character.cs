@@ -7,13 +7,10 @@ namespace Character_Builder.Data
 {
     public class Character
     {
-        public int      Id { get; set; }
-        public int      CharacterClassId { get; set; }
-        public int?     SubClassId { get; set; }
-        public int?     FeatId { get; set; }
-        public int      RaceId { get; set; }
-        public string   UserId { get; set; }
-        public int      BackgroundId { get; set; }
+        public int Id { get; set; }
+        public int CharacterClassId { get; set; }
+        public int RaceId { get; set; }
+        public int BackgroundId { get; set; }
 
         // Meta Data
         public string Name { get; set; }
@@ -27,8 +24,6 @@ namespace Character_Builder.Data
         public int AttribCha { get; set; }
 
         public virtual CharacterClass CharacterClass { get; set; }
-        public virtual SubClass SubClass { get; set; }
-        public virtual Feat Feat { get; set; }
         public virtual Race Race { get; set; }
         public virtual Background Background { get; set; }
 

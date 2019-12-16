@@ -14,6 +14,8 @@ namespace Character_Builder.Internal
         public abstract CharacterClass CreateCharacterClass(int level);
 
         public abstract List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context);
+
+        public abstract string GetCharacterClassName();
     }
 
 
@@ -29,6 +31,11 @@ namespace Character_Builder.Internal
             _Class = new BarbarianClass(level);
 
             return _Class;
+        }
+
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
         }
 
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -51,6 +58,11 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
+        }
+
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
@@ -69,6 +81,11 @@ namespace Character_Builder.Internal
             _Class = new ClericClass(level);
 
             return _Class;
+        }
+
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
         }
 
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -91,6 +108,11 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
+        }
+
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
@@ -109,6 +131,11 @@ namespace Character_Builder.Internal
             _Class = new FighterClass(level);
 
             return _Class;
+        }
+
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
         }
 
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -131,6 +158,11 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
+        }
+
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
@@ -149,6 +181,11 @@ namespace Character_Builder.Internal
             _Class = new PaladinClass(level);
 
             return _Class;
+        }
+
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
         }
 
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -171,6 +208,11 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
+        }
+
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
@@ -189,6 +231,11 @@ namespace Character_Builder.Internal
             _Class = new RogueClass(level);
 
             return _Class;
+        }
+
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
         }
 
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -211,6 +258,11 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
+        }
+
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
@@ -229,6 +281,11 @@ namespace Character_Builder.Internal
             _Class = new WarlockClass(level);
 
             return _Class;
+        }
+
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
         }
 
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -250,6 +307,11 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override string GetCharacterClassName()
+        {
+            return _Class.GetClassName();
+        }
+
         public override List<CharacterFeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             return _Class.GetFeatureIDList(context);
@@ -259,6 +321,11 @@ namespace Character_Builder.Internal
     public class NoClassFactory : CharacterClassFactory
     {
         public override CharacterClass CreateCharacterClass(int level)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GetCharacterClassName()
         {
             throw new NotImplementedException();
         }

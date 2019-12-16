@@ -10,10 +10,9 @@ namespace Character_Builder.Internal
     public abstract class RaceStrategy
     {
         public abstract void ApplyAttribute(CharacterAttributesModel characterAttributes);
-        //public abstract void ApplyLanguage();
         //public abstract void ApplySpell();
-        public abstract void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies);
-        public abstract List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context);
+        public abstract void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies);
+        public abstract List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context);
     }
 
     public class DragornbornRace : RaceStrategy
@@ -24,12 +23,12 @@ namespace Character_Builder.Internal
             RaceHelper.AdjustAttribute(characterAttributes.Charisma, true, 1);
         }
 
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, CharacterRaceEnumModel.Dragonborn.ToString());
+            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Dragonborn.ToString());
         }
     }
 
@@ -39,13 +38,12 @@ namespace Character_Builder.Internal
         {
             RaceHelper.AdjustAttribute(characterAttributes.Constitution, true, 2);
         }
-
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, CharacterRaceEnumModel.Dwarf.ToString());
+            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Dwarf.ToString());
         }
     }
 
@@ -56,14 +54,14 @@ namespace Character_Builder.Internal
             RaceHelper.AdjustAttribute(characterAttributes.Dexterity, true, 2);
         }
 
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         {
-            RaceHelper.AddProficiency(characterProficiencies, CharacterProficiencyEnumModel.Perception);
+            RaceHelper.AddProficiency(characterProficiencies, ProficiencyEnumModel.Perception);
         }
 
-        public override List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, CharacterRaceEnumModel.Elf.ToString());
+            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Elf.ToString());
         }
     }
 
@@ -74,12 +72,12 @@ namespace Character_Builder.Internal
             RaceHelper.AdjustAttribute(characterAttributes.Intelligence, true, 2);
         }
 
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, CharacterRaceEnumModel.Gnome.ToString());
+            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Gnome.ToString());
         }
     }
 
@@ -93,16 +91,16 @@ namespace Character_Builder.Internal
             RaceHelper.AdjustAttribute(characterAttributes.Charisma, true, 2);
         }
 
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         {
             // Temporary Solution as officially half elfs can choice their attribute bonueses.
-            RaceHelper.AddProficiency(characterProficiencies, CharacterProficiencyEnumModel.Perception);
-            RaceHelper.AddProficiency(characterProficiencies, CharacterProficiencyEnumModel.Persuasion);
+            RaceHelper.AddProficiency(characterProficiencies, ProficiencyEnumModel.Perception);
+            RaceHelper.AddProficiency(characterProficiencies, ProficiencyEnumModel.Persuasion);
         }
 
-        public override List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, CharacterRaceEnumModel.Half_Elf.ToString());
+            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Half_Elf.ToString());
         }
     }
 
@@ -114,14 +112,14 @@ namespace Character_Builder.Internal
             RaceHelper.AdjustAttribute(characterAttributes.Constitution, true, 1);
         }
 
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         {
-            RaceHelper.AddProficiency(characterProficiencies, CharacterProficiencyEnumModel.Intimidation);
+            RaceHelper.AddProficiency(characterProficiencies, ProficiencyEnumModel.Intimidation);
         }
 
-        public override List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, CharacterRaceEnumModel.Half_Orc.ToString());
+            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Half_Orc.ToString());
         }
     }
 
@@ -132,12 +130,12 @@ namespace Character_Builder.Internal
             RaceHelper.AdjustAttribute(characterAttributes.Dexterity, true, 2);
         }
 
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, CharacterRaceEnumModel.Halfling.ToString());
+            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Halfling.ToString());
         }
     }
 
@@ -153,12 +151,12 @@ namespace Character_Builder.Internal
             RaceHelper.AdjustAttribute(characterAttributes.Charisma, true, 1);
         }
 
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, CharacterRaceEnumModel.Human.ToString());
+            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Human.ToString());
         }
     }
 
@@ -170,12 +168,12 @@ namespace Character_Builder.Internal
             RaceHelper.AdjustAttribute(characterAttributes.Charisma, true, 2);
         }
 
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> characterProficiencies)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, CharacterRaceEnumModel.Tiefling.ToString());
+            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Tiefling.ToString());
         }
     }
 
@@ -185,66 +183,66 @@ namespace Character_Builder.Internal
 
         public void SetRaceWithName(string raceName)
         {
-            var race_enum = EnumUtils.ParseEnum<CharacterRaceEnumModel>(raceName);
+            var race_enum = EnumUtils.ParseEnum<RaceEnumModel>(raceName);
             SetRace(race_enum);
         }
 
-        public void SetRace(CharacterRaceEnumModel raceEnum)
+        public void SetRace(RaceEnumModel raceEnum)
         {
             switch (raceEnum)
             {
-                case CharacterRaceEnumModel.Dragonborn:
+                case RaceEnumModel.Dragonborn:
                     _raceStrategy = new DragornbornRace();
                     break;
-                case CharacterRaceEnumModel.Dwarf:
+                case RaceEnumModel.Dwarf:
                     _raceStrategy = new DwarfRace();
                     break;
-                case CharacterRaceEnumModel.Elf:
+                case RaceEnumModel.Elf:
                     _raceStrategy = new ElfRace();
                     break;
-                case CharacterRaceEnumModel.Gnome:
+                case RaceEnumModel.Gnome:
                     _raceStrategy = new GnomeRace();
                     break;
-                case CharacterRaceEnumModel.Half_Elf:
+                case RaceEnumModel.Half_Elf:
                     _raceStrategy = new HalfElfRace();
                     break;
-                case CharacterRaceEnumModel.Half_Orc:
+                case RaceEnumModel.Half_Orc:
                     _raceStrategy = new HalfOrcRace();
                     break;
-                case CharacterRaceEnumModel.Halfling:
+                case RaceEnumModel.Halfling:
                     _raceStrategy = new HalflingRace();
                     break;
-                case CharacterRaceEnumModel.Human:
+                case RaceEnumModel.Human:
                     _raceStrategy = new HumanRace();
                     break;
-                case CharacterRaceEnumModel.Tiefling:
+                case RaceEnumModel.Tiefling:
                     _raceStrategy = new TieflingRace();
                     break;
-                case CharacterRaceEnumModel.NONE:
+                case RaceEnumModel.NONE:
                 default:
                     new NotImplementedException();
                     break;
             }
         }
 
-        public void ApplyRace(List<CharacterProficiencyEnumModel> proficiencyList, 
+        public void ApplyRace(List<ProficiencyEnumModel> proficiencyList, 
             CharacterAttributesModel attributeList)
         {
             _raceStrategy.ApplyProficiency(proficiencyList);
             _raceStrategy.ApplyAttribute(attributeList);
         }
 
-        public List<CharacterFeatureModel> GetRaceFeatureIDList(ApplicationDbContext context)
+        public List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
         {
-            return _raceStrategy.GetRaceFeatureIDList(context);
+            return _raceStrategy.GetFeatureIDList(context);
         }
     }
 
     #region Character_Race_Helper
     public class RaceHelper
     {
-        public static void AddProficiency(List<CharacterProficiencyEnumModel> proficiencyList,
-            CharacterProficiencyEnumModel proficiency)
+        public static void AddProficiency(List<ProficiencyEnumModel> proficiencyList,
+            ProficiencyEnumModel proficiency)
         {
             if(! proficiencyList.Contains(proficiency))
             {

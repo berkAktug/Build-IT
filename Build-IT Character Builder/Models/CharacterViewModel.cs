@@ -22,7 +22,7 @@ namespace Character_Builder.Models
         NONE
     }
 
-    public enum CharacterBackgroundEnumModel
+    public enum BackgroundEnumModel
     {
         Acolyte,
         Archaeologist,
@@ -44,7 +44,7 @@ namespace Character_Builder.Models
         NONE
     }
 
-    public enum CharacterRaceEnumModel
+    public enum RaceEnumModel
     {
         Dragonborn,
         Dwarf,
@@ -64,7 +64,7 @@ namespace Character_Builder.Models
         Female
     }
 
-    public enum CharacterProficiencyEnumModel
+    public enum ProficiencyEnumModel
     {
         Arcana,
         History,
@@ -102,10 +102,10 @@ namespace Character_Builder.Models
         public string CharacterName { get; set; }
         public CharacterClassEnumModel CharacterClass { get; set; }
         public int CharacterClassLevel { get; set; }
-        public CharacterBackgroundEnumModel CharacterBackground { get; set; }
-        public CharacterRaceEnumModel CharacterRace { get; set; }
+        public BackgroundEnumModel CharacterBackground { get; set; }
+        public RaceEnumModel CharacterRace { get; set; }
         public CharacterAttributesModel CharacterAttributes { get; set; }
-        public CharacterProficiencyEnumModel CharacterProficiency { get; set; }
+        public ProficiencyEnumModel CharacterProficiency { get; set; }
     }
 
     public class SpellModel
@@ -129,10 +129,10 @@ namespace Character_Builder.Models
     {
         public string Name { get; set; }
         public CharacterClassEnumModel CharClass { get; set; }
-        public List<CharacterProficiencyEnumModel> Proficiency { get; set; }
+        public List<ProficiencyEnumModel> Proficiency { get; set; }
         public CharacterAttributesModel Attributes { get; set; }
         public int Level { get; set; }
-        public CharacterRaceEnumModel Race { get; set; }
+        public RaceEnumModel Race { get; set; }
         public int HitPoints { get; set; }
         public int ArmourClass { get; set; }
         public int ProficiencyBonus { get; set; }
@@ -145,9 +145,9 @@ namespace Character_Builder.Models
         public string CharacterName { get; set; }
         public int CharacterLevel { get; set; }
         public CharacterClassEnumModel CharacterClass { get; set; }
-        public CharacterBackgroundEnumModel CharacterBackground { get; set; }
-        public CharacterRaceEnumModel CharacterRace { get; set; }
-        public List<CharacterProficiencyEnumModel> CharacterProficiencies { get; set; }
+        public BackgroundEnumModel CharacterBackground { get; set; }
+        public RaceEnumModel CharacterRace { get; set; }
+        public List<ProficiencyEnumModel> CharacterProficiencies { get; set; }
         public CharacterAttributesModel CharacterAttributes { get; set; }
     }
 

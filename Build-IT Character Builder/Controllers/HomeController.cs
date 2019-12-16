@@ -5,21 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Character_Builder.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace Character_Builder.Controllers
 {
     public class HomeController : Controller
     {
-
         private readonly Data.ApplicationDbContext _context;
 
-        private readonly UserManager<IdentityUser> _userManager;
-
-        public HomeController(Data.ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public HomeController(Data.ApplicationDbContext context)
         {
             _context = context;
-            _userManager = userManager;
         }
 
         public IActionResult Index()

@@ -38,10 +38,75 @@ namespace Character_Builder.Internal
             race.ApplyRace(newCharacter.CharacterProficiencies, newCharacter.CharacterAttributes);
 
             // Character Race Features
-            var tmp_race_Id_list = race.GetRaceFeatureIDList(_context);
+            var tmp_race_Id_list = race.GetFeatureIDList(_context);
             FeatureIDList.Union(tmp_race_Id_list);
 
+            // Yazdir
+            var tmp_attrib_str = newCharacter.CharacterAttributes.Strength;
+            // Yazdir
+            var tmp_attrib_dex = newCharacter.CharacterAttributes.Dexterity;
+            // Yazdir
+            var tmp_attrib_con = newCharacter.CharacterAttributes.Constitution;
+            // Yazdir
+            var tmp_attrib_int = newCharacter.CharacterAttributes.Intelligence;
+            // Yazdir
+            var tmp_attrib_wis = newCharacter.CharacterAttributes.Wisdom;
+            // Yazdir
+            var tmp_attrib_cha = newCharacter.CharacterAttributes.Charisma;
 
+            // Yazdir
+            var tmp_class_name = classFactory.GetCharacterClassName();
+            var tmp_class_feature_id_lists = classFactory.GetClassFeatureIDList(_context);
+            // Yazdir
+            List<string> tmp_class_feature_list_name = new List<string>();
+            // Yazdir
+            List<string> tmp_class_feature_list_desc = new List<string>();
+            // Yazdir
+            List<int> tmp_class_feature_list_level = new List<int>();
+
+            foreach (var id in tmp_class_feature_id_lists)
+            {
+                var feature_class = _context.CharacterClassFeatures.Find(id);
+                tmp_class_feature_list_name.Add(feature_class.Name);
+                tmp_class_feature_list_desc.Add(feature_class.Description);
+                tmp_class_feature_list_level.Add(feature_class.LevelRequirement);
+            }
+
+            var tmp_race_feature_id_lists = race.GetFeatureIDList(_context);
+            // Yazdir
+            List<string> tmp_race_feature_list_name = new List<string>();
+            // Yazdir
+            List<string> tmp_race_feature_list_desc = new List<string>();
+
+            foreach (var id in tmp_race_feature_id_lists)
+            {
+                var feature_race = _context.RaceFeatures.Find(id);
+                tmp_race_feature_list_name.Add(feature_race.Name);
+                tmp_race_feature_list_desc.Add(feature_race.Description);
+            }
+
+            var tmp_background_feature_id_lists = background.GetFeatureIDlist(_context);
+            // Yazdir
+            List<string> tmp_background_feature_list_name = new List<string>();
+            // Yazdir
+            List<string> tmp_background_feature_list_desc = new List<string>();
+
+
+            foreach (var id in tmp_background_feature_id_lists)
+            {
+                var feature_background = _context.BackgroundFeatures.Find(id);
+                tmp_background_feature_list_name.Add(feature_background.Name);
+                tmp_background_feature_list_desc.Add(feature_background.Description);
+            }
+
+            // Yazdir
+            var tmp_proficiencies = newCharacter.CharacterProficiencies;
+
+            // Yazdir
+            var tmp_race_name = newCharacter.CharacterRace.ToString();
+
+            // Yazdir
+            var tmp_character_level = newCharacter.CharacterLevel;
         }
 
         private CharacterClassFactory ClassAssigner(CharacterClassEnumModel characterClass)

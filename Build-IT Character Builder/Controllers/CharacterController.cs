@@ -14,12 +14,9 @@ namespace Character_Builder.Controllers
     {
         private readonly Data.ApplicationDbContext _context;
 
-        private readonly UserManager<IdentityUser> _userManager;
-
-        public CharacterController(Data.ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public CharacterController(Data.ApplicationDbContext context)
         {
             _context = context;
-            _userManager = userManager;
         }
 
         public IActionResult CharacterBuilder()
@@ -28,12 +25,11 @@ namespace Character_Builder.Controllers
         }
 
         [HttpPost]
-        [HttpPost]
         public IActionResult SetupNewCharacter([FromBody] NewCharacterViewModel newCharacter)
         {
             var charName = newCharacter.CharacterName;
             var charClass = _getCharacterClass(newCharacter.CharacterClassName);
-            var charLevel = 0;//newCharacter.CharacterLevel;
+            //var charLevel = newCharacter.CharacterLevel;
             var charBackground = _getCharacterBackground(newCharacter.CharacterBackground);
             var charRace = _getCharacterRace(newCharacter.CharacterRace);
             var charProficiency = _getCharacterProfiencies(newCharacter.CharacterProficiencies);
@@ -63,34 +59,33 @@ namespace Character_Builder.Controllers
 
             newChar.SetupCharacter(charToBuild);
 
-
             return new JsonResult(new { isSuccess = true });
         }
 
         #region Enum Helpers
         // TODO: MAKE DEFAULT ENUM FOR THINGS CANNOT BE PARSED.
-        private List<CharacterProficiencyEnumModel> _getCharacterProfiencies(List<string> characterProficiencies)
+        private List<ProficiencyEnumModel> _getCharacterProfiencies(List<string> characterProficiencies)
         {
-            var proficiency_list = new List<CharacterProficiencyEnumModel>(); 
+            var proficiency_list = new List<ProficiencyEnumModel>(); 
             foreach(var item in characterProficiencies)
             {
-                var characterProficiency = EnumUtils.ParseEnum<CharacterProficiencyEnumModel>(item);
+                var characterProficiency = EnumUtils.ParseEnum<ProficiencyEnumModel>(item);
                 proficiency_list.Add(characterProficiency);
             }
             return proficiency_list;
         }
 
         // TODO: MAKE DEFAULT ENUM FOR THINGS CANNOT BE PARSED.
-        private CharacterBackgroundEnumModel _getCharacterBackground(string backgroundName)
+        private BackgroundEnumModel _getCharacterBackground(string backgroundName)
         {
-            var character_background = EnumUtils.ParseEnum<CharacterBackgroundEnumModel>(backgroundName);
+            var character_background = EnumUtils.ParseEnum<BackgroundEnumModel>(backgroundName);
             return character_background;
         }
 
         // TODO: MAKE DEFAULT ENUM FOR THINGS CANNOT BE PARSED.
-        private CharacterRaceEnumModel _getCharacterRace(string raceName)
+        private RaceEnumModel _getCharacterRace(string raceName)
         {
-            var character_race = EnumUtils.ParseEnum<CharacterRaceEnumModel>(raceName);
+            var character_race = EnumUtils.ParseEnum<RaceEnumModel>(raceName);
             return character_race;
         }
         

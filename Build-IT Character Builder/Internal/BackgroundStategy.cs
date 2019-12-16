@@ -1,4 +1,5 @@
-﻿using Character_Builder.Models;
+﻿using Character_Builder.Data;
+using Character_Builder.Models;
 using Character_Builder.Utils;
 using System;
 using System.Collections.Generic;
@@ -9,162 +10,249 @@ namespace Character_Builder.Internal
 {
     public abstract class BackgroundStategy
     {
-        public abstract void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList);
+        public abstract void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList);
+        public abstract List<CharacterFeatureModel> GetFeatureIDList(Data.ApplicationDbContext context);
+
         //public abstract void ApplyLanguage(List<CharacterProficiencyEnumModel> proficiencyList);
         //public abstract void ApplyTools(List<CharacterProficiencyEnumModel> proficiencyList);
     }
 
     public class AcolyteBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Insight,
-                CharacterProficiencyEnumModel.Religion);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Insight,
+                ProficiencyEnumModel.Religion);
+        }
+
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Acolyte.ToString());
         }
     }
 
     public class ArchaeologistBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.History,
-                CharacterProficiencyEnumModel.Survival);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.History,
+                ProficiencyEnumModel.Survival);
+        }
+
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Archaeologist.ToString());
         }
     }
 
     public class BountyHunterBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.History,
-                CharacterProficiencyEnumModel.Survival);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.History,
+                ProficiencyEnumModel.Survival);
+        }
+
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.BountyHunter.ToString());
         }
     }
 
     public class CharlatanBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Deception,
-                CharacterProficiencyEnumModel.SleightOfHand);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Deception,
+                ProficiencyEnumModel.SleightOfHand);
+        }
+
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Charlatan.ToString());
         }
     }
 
     public class CriminalBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Deception,
-                CharacterProficiencyEnumModel.Stealth);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Deception,
+                ProficiencyEnumModel.Stealth);
+        }
+
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Criminal.ToString());
         }
     }
 
     public class EntertainerBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Acrobatics,
-                CharacterProficiencyEnumModel.Performance);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Acrobatics,
+                ProficiencyEnumModel.Performance);
+        }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Entertainer.ToString());
         }
     }
 
     public class FarTravellerBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Insight,
-                CharacterProficiencyEnumModel.Perception);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Insight,
+                ProficiencyEnumModel.Perception);
         }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.FarTraveler.ToString());
+        }
+
     }
 
     public class FolkHeroBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.AnimalHandling,
-                CharacterProficiencyEnumModel.Survival);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.AnimalHandling,
+                ProficiencyEnumModel.Survival);
         }
+
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.FolkHero.ToString());
+        }
+
     }
 
     public class GuildArtisanBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Insight,
-                CharacterProficiencyEnumModel.Persuasion);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Insight,
+                ProficiencyEnumModel.Persuasion);
         }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.GuildArtisan.ToString());
+        }
+
     }
 
     public class HermitBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Medicine,
-                CharacterProficiencyEnumModel.Religion);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Medicine,
+                ProficiencyEnumModel.Religion);
         }
+
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Hermit.ToString());
+        }
+
     }
 
     public class NobleBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.History,
-                CharacterProficiencyEnumModel.Persuasion);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.History,
+                ProficiencyEnumModel.Persuasion);
         }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Noble.ToString());
+        }
+
     }
 
     public class OutlanderBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Athletics,
-                CharacterProficiencyEnumModel.Survival);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Athletics,
+                ProficiencyEnumModel.Survival);
         }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Outlander.ToString());
+        }
+
     }
 
     public class SageBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Arcana,
-                CharacterProficiencyEnumModel.History);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Arcana,
+                ProficiencyEnumModel.History);
         }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Sage.ToString());
+        }
+
     }
 
     public class SailorBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Athletics,
-                CharacterProficiencyEnumModel.History);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Athletics,
+                ProficiencyEnumModel.History);
+        }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Sailor.ToString());
         }
     }
 
     public class SoldierBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Athletics,
-                CharacterProficiencyEnumModel.Intimidation);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Athletics,
+                ProficiencyEnumModel.Intimidation);
         }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Soldier.ToString());
+        }
+
     }
 
     public class StojanowPrisonerBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.Deception,
-                CharacterProficiencyEnumModel.Perception);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Deception,
+                ProficiencyEnumModel.Perception);
         }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.StojanowPrisoner.ToString());
+        }
+
     }
 
     public class UrchinBackground : BackgroundStategy
     {
-        public override void ApplyProficiency(List<CharacterProficiencyEnumModel> proficiencyList)
+        public override void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList)
         {
-            BackgroundHelper.AddProficiency(proficiencyList, CharacterProficiencyEnumModel.SleightOfHand,
-                CharacterProficiencyEnumModel.Stealth);
+            BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.SleightOfHand,
+                ProficiencyEnumModel.Stealth);
         }
+        public override List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context)
+        {
+            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Urchin.ToString());
+        }
+
     }
 
     public class BackgroundMethod
@@ -173,83 +261,87 @@ namespace Character_Builder.Internal
 
         public void SetBackgroundWithName(string backgroundName)
         {
-            var character_background = EnumUtils.ParseEnum<CharacterBackgroundEnumModel>(backgroundName);
+            var character_background = EnumUtils.ParseEnum<BackgroundEnumModel>(backgroundName);
             SetBackground(character_background);
         }
 
-        public void SetBackground(CharacterBackgroundEnumModel backgroundEnum)
+        public void SetBackground(BackgroundEnumModel backgroundEnum)
         {
             switch (backgroundEnum)
             {
-                case CharacterBackgroundEnumModel.Acolyte:
+                case BackgroundEnumModel.Acolyte:
                     _backgroundStrategy = new AcolyteBackground();
                     break;
-                case CharacterBackgroundEnumModel.Archaeologist:
+                case BackgroundEnumModel.Archaeologist:
                     _backgroundStrategy = new ArchaeologistBackground();
                     break;
-                case CharacterBackgroundEnumModel.BountyHunter:
+                case BackgroundEnumModel.BountyHunter:
                     _backgroundStrategy = new BountyHunterBackground();
                     break;
-                case CharacterBackgroundEnumModel.Charlatan:
+                case BackgroundEnumModel.Charlatan:
                     _backgroundStrategy = new CharlatanBackground();
                     break;
-                case CharacterBackgroundEnumModel.Criminal:
+                case BackgroundEnumModel.Criminal:
                     _backgroundStrategy = new CriminalBackground();
                     break;
-                case CharacterBackgroundEnumModel.Entertainer:
+                case BackgroundEnumModel.Entertainer:
                     _backgroundStrategy = new EntertainerBackground();
                     break;
-                case CharacterBackgroundEnumModel.FarTraveler:
+                case BackgroundEnumModel.FarTraveler:
                     _backgroundStrategy = new FarTravellerBackground();
                     break;
-                case CharacterBackgroundEnumModel.FolkHero:
+                case BackgroundEnumModel.FolkHero:
                     _backgroundStrategy = new FolkHeroBackground();
                     break;
-                case CharacterBackgroundEnumModel.GuildArtisan:
+                case BackgroundEnumModel.GuildArtisan:
                     _backgroundStrategy = new GuildArtisanBackground();
                     break;
-                case CharacterBackgroundEnumModel.Hermit:
+                case BackgroundEnumModel.Hermit:
                     _backgroundStrategy = new HermitBackground();
                     break;
-                case CharacterBackgroundEnumModel.Noble:
+                case BackgroundEnumModel.Noble:
                     _backgroundStrategy = new NobleBackground();
                     break;
-                case CharacterBackgroundEnumModel.Outlander:
+                case BackgroundEnumModel.Outlander:
                     _backgroundStrategy = new OutlanderBackground();
                     break;
-                case CharacterBackgroundEnumModel.Sage:
+                case BackgroundEnumModel.Sage:
                     _backgroundStrategy = new SageBackground();
                     break;
-                case CharacterBackgroundEnumModel.Sailor:
+                case BackgroundEnumModel.Sailor:
                     _backgroundStrategy = new SailorBackground();
                     break;
-                case CharacterBackgroundEnumModel.Soldier:
+                case BackgroundEnumModel.Soldier:
                     _backgroundStrategy = new SoldierBackground();
                     break;
-                case CharacterBackgroundEnumModel.StojanowPrisoner:
+                case BackgroundEnumModel.StojanowPrisoner:
                     _backgroundStrategy = new StojanowPrisonerBackground();
                     break;
-                case CharacterBackgroundEnumModel.Urchin:
+                case BackgroundEnumModel.Urchin:
                     _backgroundStrategy = new UrchinBackground();
                     break;
-                case CharacterBackgroundEnumModel.NONE:
+                case BackgroundEnumModel.NONE:
                 default:
                     new NotImplementedException();
                     break;
             }
         }
 
-        public void ApplyBackground(List<CharacterProficiencyEnumModel> proficiencyList)
+        public void ApplyBackground(List<ProficiencyEnumModel> proficiencyList)
         {
             _backgroundStrategy.ApplyProficiency(proficiencyList);
+        }
 
+        public List<CharacterFeatureModel> GetFeatureIDlist(ApplicationDbContext context)
+        {
+            return _backgroundStrategy.GetFeatureIDList(context);
         }
     }
 
     public class BackgroundHelper
     {
-        public static void AddProficiency(List<CharacterProficiencyEnumModel> proficiencyList,
-            CharacterProficiencyEnumModel prof1, CharacterProficiencyEnumModel prof2)
+        public static void AddProficiency(List<ProficiencyEnumModel> proficiencyList,
+            ProficiencyEnumModel prof1, ProficiencyEnumModel prof2)
         {
             if (!proficiencyList.Contains(prof1))
             {
@@ -260,6 +352,26 @@ namespace Character_Builder.Internal
                 proficiencyList.Add(prof2);
             }
         }
-    }
 
+        public static List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context, string backgroundName)
+        {
+            var background_feature_ID_list = new List<CharacterFeatureModel>();
+
+            var background_entity = context.Backgrounds
+                .Where(x => x.Name == backgroundName)
+                .SelectMany(x => x.BackgroundFeatures);
+
+            foreach (var item in background_entity)
+            {
+                var tmp_feature_model = new CharacterFeatureModel
+                {
+                    FeatureType = FeatureTypes.Background,
+                    ID = item.Id
+                };
+
+                background_feature_ID_list.Add(tmp_feature_model);
+            }
+            return background_feature_ID_list;
+        }
+    }
 }
