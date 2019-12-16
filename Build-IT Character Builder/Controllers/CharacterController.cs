@@ -21,10 +21,15 @@ namespace Character_Builder.Controllers
             _context = context;
             _userManager = userManager;
         }
-               
+
         public IActionResult CharacterBuilder()
         {
             return View();
+        }
+
+        private async Task<IdentityUser> getCurrentUserAsync()
+        {
+            return await _userManager.FindByEmailAsync(User.Identity.Name);
         }
 
         [HttpPost]
@@ -57,7 +62,7 @@ namespace Character_Builder.Controllers
 
             //var rand = new Random();
 
-            //IdentityUser current_user = await _userManager.FindByEmailAsync(User.Identity.Name);
+            //var current_user = getCurrentUserAsync();
 
             //// Create Character
             //var id_character = rand.Next();
