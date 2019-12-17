@@ -12,7 +12,7 @@ namespace Character_Builder.Internal
         public abstract void ApplyAttribute(CharacterAttributesModel characterAttributes);
         //public abstract void ApplySpell();
         public abstract void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies);
-        public abstract List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context);
+        public abstract List<FeatureModel> GetFeatureList(ApplicationDbContext context);
     }
 
     public class DragornbornRace : RaceStrategy
@@ -26,9 +26,9 @@ namespace Character_Builder.Internal
         public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Dragonborn.ToString());
+            return RaceHelper.GetFeatureList(context, RaceEnumModel.Dragonborn.ToString());
         }
     }
 
@@ -41,9 +41,9 @@ namespace Character_Builder.Internal
         public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Dwarf.ToString());
+            return RaceHelper.GetFeatureList(context, RaceEnumModel.Dwarf.ToString());
         }
     }
 
@@ -59,9 +59,9 @@ namespace Character_Builder.Internal
             RaceHelper.AddProficiency(characterProficiencies, ProficiencyEnumModel.Perception);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Elf.ToString());
+            return RaceHelper.GetFeatureList(context, RaceEnumModel.Elf.ToString());
         }
     }
 
@@ -75,9 +75,9 @@ namespace Character_Builder.Internal
         public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Gnome.ToString());
+            return RaceHelper.GetFeatureList(context, RaceEnumModel.Gnome.ToString());
         }
     }
 
@@ -98,9 +98,9 @@ namespace Character_Builder.Internal
             RaceHelper.AddProficiency(characterProficiencies, ProficiencyEnumModel.Persuasion);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Half_Elf.ToString());
+            return RaceHelper.GetFeatureList(context, RaceEnumModel.Half_Elf.ToString());
         }
     }
 
@@ -117,9 +117,9 @@ namespace Character_Builder.Internal
             RaceHelper.AddProficiency(characterProficiencies, ProficiencyEnumModel.Intimidation);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Half_Orc.ToString());
+            return RaceHelper.GetFeatureList(context, RaceEnumModel.Half_Orc.ToString());
         }
     }
 
@@ -133,9 +133,9 @@ namespace Character_Builder.Internal
         public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Halfling.ToString());
+            return RaceHelper.GetFeatureList(context, RaceEnumModel.Halfling.ToString());
         }
     }
 
@@ -154,9 +154,9 @@ namespace Character_Builder.Internal
         public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Human.ToString());
+            return RaceHelper.GetFeatureList(context, RaceEnumModel.Human.ToString());
         }
     }
 
@@ -171,9 +171,9 @@ namespace Character_Builder.Internal
         public override void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies)
         { }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return RaceHelper.GetFeatureIDList(context, RaceEnumModel.Tiefling.ToString());
+            return RaceHelper.GetFeatureList(context, RaceEnumModel.Tiefling.ToString());
         }
     }
 
@@ -225,16 +225,16 @@ namespace Character_Builder.Internal
             }
         }
 
-        public void ApplyRace(List<ProficiencyEnumModel> proficiencyList, 
+        public void ApplyRace(List<ProficiencyEnumModel> proficiencyList,
             CharacterAttributesModel attributeList)
         {
             _raceStrategy.ApplyProficiency(proficiencyList);
             _raceStrategy.ApplyAttribute(attributeList);
         }
 
-        public List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return _raceStrategy.GetFeatureIDList(context);
+            return _raceStrategy.GetFeatureList(context);
         }
     }
 
@@ -244,7 +244,7 @@ namespace Character_Builder.Internal
         public static void AddProficiency(List<ProficiencyEnumModel> proficiencyList,
             ProficiencyEnumModel proficiency)
         {
-            if(! proficiencyList.Contains(proficiency))
+            if (!proficiencyList.Contains(proficiency))
             {
                 proficiencyList.Add(proficiency);
             }
@@ -252,10 +252,10 @@ namespace Character_Builder.Internal
 
         public static void AdjustAttribute(int attribute, bool isIncrement, int modifier)
         {
-            if(isIncrement)
+            if (isIncrement)
             {
                 attribute += modifier;
-                if(attribute > 20)
+                if (attribute > 20)
                 {
                     attribute = 20;
                 }
@@ -270,24 +270,26 @@ namespace Character_Builder.Internal
             }
         }
 
-        public static List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context, string raceName)
+        public static List<FeatureModel> GetFeatureList(ApplicationDbContext context, string raceName)
         {
-            var race_feature_ID_list = new List<CharacterFeatureIdModel>();
+            var raceFeatureList = new List<FeatureModel>();
 
-            var race_entity = context.Races.Where(x => x.Name == raceName).SelectMany(x => x.RaceFeatures);
+            var race_entity = context.Races
+                                    .Where(x => x.Name == raceName)
+                                    .SelectMany(x => x.RaceFeatures);
 
             foreach (var item in race_entity)
             {
-                var tmp_feature_model = new CharacterFeatureIdModel
+                var race_feature = new FeatureModel
                 {
-                    FeatureType = FeatureTypes.Race,
-                    ID = item.Id
+                    Title = item.Race.Name,
+                    Description = item.Description,
+                    FeatureType = FeatureTypes.CharacterClass
                 };
 
-                race_feature_ID_list.Add(tmp_feature_model);
+                raceFeatureList.Add(race_feature);
             }
-
-            return race_feature_ID_list;
+            return raceFeatureList;
         }
     }
     #endregion

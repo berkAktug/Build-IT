@@ -20,7 +20,6 @@ namespace Character_Builder.Internal
 
         public CharacterModel SetupCharacter(NewCharacterModel newCharacter)
         {
-            var FeatureIDList = new List<CharacterFeatureIdModel>();
             var FeatureList = new List<FeatureModel>();
 
             // Character Class
@@ -28,13 +27,15 @@ namespace Character_Builder.Internal
             classFactory.CreateCharacterClass(newCharacter.CharacterLevel);
             
             // Character Class Features
-            var tmp_class_Id_list = classFactory.GetClassFeatureIDList(_context);
-            FeatureIDList.Union(tmp_class_Id_list);
+            FeatureList.Union(classFactory.GetClassFeatureIDList(_context));
 
             // Character Background
             BackgroundMethod background = new BackgroundMethod();
             background.SetBackground(newCharacter.CharacterBackground);
             background.ApplyBackground(newCharacter.CharacterProficiencies);
+
+            // Character Background Features 
+            FeatureList.Union(background.GetFeatureList(_context));
 
             // Character Race 
             RaceMethod race = new RaceMethod();
@@ -42,60 +43,7 @@ namespace Character_Builder.Internal
             race.ApplyRace(newCharacter.CharacterProficiencies, newCharacter.CharacterAttributes);
 
             // Character Race Features
-            var tmp_race_Id_list = race.GetFeatureIDList(_context);
-            FeatureIDList.Union(tmp_race_Id_list);
-
-            // Yazdir
-            var tmp_class_name = classFactory.GetCharacterClassName();
-
-            var tmp_feature_id_list = classFactory.GetClassFeatureIDList(_context);
-            foreach (var item in tmp_feature_id_list)
-            {
-                var db_feature_class = _context.CharacterClassFeatures.Find(item.ID);
-                var class_feature = new FeatureModel
-                {
-                    Title = db_feature_class.Name,
-                    Description = db_feature_class.Description,
-                    LevelRequirement = db_feature_class.LevelRequirement,
-                    FeatureType = FeatureTypes.CharacterClass
-                };
-                FeatureList.Add(class_feature);
-            }
-
-            tmp_feature_id_list = race.GetFeatureIDList(_context);
-            foreach (var item in tmp_feature_id_list)
-            {
-                var db_feature_race = _context.RaceFeatures.Find(item.ID);
-                var race_feature = new FeatureModel
-                {
-                    Title = db_feature_race.Name,
-                    Description = db_feature_race.Description,
-                    FeatureType = FeatureTypes.Race
-                };
-                FeatureList.Add(race_feature);
-            }
-
-            tmp_feature_id_list = background.GetFeatureIDlist(_context);
-            foreach (var item in tmp_feature_id_list)
-            {
-                var db_feature_background = _context.BackgroundFeatures.Find(item.ID);
-                var background_feature = new FeatureModel
-                {
-                    Title = db_feature_background.Name,
-                    Description = db_feature_background.Description,
-                    FeatureType = FeatureTypes.Background
-                };
-                FeatureList.Add(background_feature);
-            }
-
-            // Yazdir
-            var tmp_proficiencies = newCharacter.CharacterProficiencies;
-
-            // Yazdir
-            var tmp_race_name = newCharacter.CharacterRace.ToString();
-
-            // Yazdir
-            var tmp_character_level = newCharacter.CharacterLevel;
+            FeatureList.Union(race.GetFeatureList(_context));
 
             var finishedCharacter = new CharacterModel
             {

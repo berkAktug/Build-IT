@@ -11,7 +11,7 @@ namespace Character_Builder.Internal
     public abstract class BackgroundStategy
     {
         public abstract void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList);
-        public abstract List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context);
+        public abstract List<FeatureModel> GetFeatureList(ApplicationDbContext context);
 
         //public abstract void ApplyLanguage(List<CharacterProficiencyEnumModel> proficiencyList);
         //public abstract void ApplyTools(List<CharacterProficiencyEnumModel> proficiencyList);
@@ -25,9 +25,9 @@ namespace Character_Builder.Internal
                 ProficiencyEnumModel.Religion);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Acolyte.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Acolyte.ToString());
         }
     }
 
@@ -39,9 +39,9 @@ namespace Character_Builder.Internal
                 ProficiencyEnumModel.Survival);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Archaeologist.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Archaeologist.ToString());
         }
     }
 
@@ -53,9 +53,9 @@ namespace Character_Builder.Internal
                 ProficiencyEnumModel.Survival);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.BountyHunter.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.BountyHunter.ToString());
         }
     }
 
@@ -67,9 +67,9 @@ namespace Character_Builder.Internal
                 ProficiencyEnumModel.SleightOfHand);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Charlatan.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Charlatan.ToString());
         }
     }
 
@@ -81,9 +81,9 @@ namespace Character_Builder.Internal
                 ProficiencyEnumModel.Stealth);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Criminal.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Criminal.ToString());
         }
     }
 
@@ -94,9 +94,9 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Acrobatics,
                 ProficiencyEnumModel.Performance);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Entertainer.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Entertainer.ToString());
         }
     }
 
@@ -107,9 +107,9 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Insight,
                 ProficiencyEnumModel.Perception);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.FarTraveler.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.FarTraveler.ToString());
         }
 
     }
@@ -122,9 +122,9 @@ namespace Character_Builder.Internal
                 ProficiencyEnumModel.Survival);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.FolkHero.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.FolkHero.ToString());
         }
 
     }
@@ -136,9 +136,9 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Insight,
                 ProficiencyEnumModel.Persuasion);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.GuildArtisan.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.GuildArtisan.ToString());
         }
 
     }
@@ -151,9 +151,9 @@ namespace Character_Builder.Internal
                 ProficiencyEnumModel.Religion);
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Hermit.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Hermit.ToString());
         }
 
     }
@@ -165,11 +165,10 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.History,
                 ProficiencyEnumModel.Persuasion);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Noble.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Noble.ToString());
         }
-
     }
 
     public class OutlanderBackground : BackgroundStategy
@@ -179,11 +178,10 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Athletics,
                 ProficiencyEnumModel.Survival);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Outlander.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Outlander.ToString());
         }
-
     }
 
     public class SageBackground : BackgroundStategy
@@ -193,11 +191,10 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Arcana,
                 ProficiencyEnumModel.History);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Sage.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Sage.ToString());
         }
-
     }
 
     public class SailorBackground : BackgroundStategy
@@ -207,9 +204,9 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Athletics,
                 ProficiencyEnumModel.History);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Sailor.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Sailor.ToString());
         }
     }
 
@@ -220,9 +217,9 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Athletics,
                 ProficiencyEnumModel.Intimidation);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Soldier.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Soldier.ToString());
         }
 
     }
@@ -234,9 +231,9 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.Deception,
                 ProficiencyEnumModel.Perception);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.StojanowPrisoner.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.StojanowPrisoner.ToString());
         }
 
     }
@@ -248,9 +245,9 @@ namespace Character_Builder.Internal
             BackgroundHelper.AddProficiency(proficiencyList, ProficiencyEnumModel.SleightOfHand,
                 ProficiencyEnumModel.Stealth);
         }
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return BackgroundHelper.GetFeatureIDList(context, BackgroundEnumModel.Urchin.ToString());
+            return BackgroundHelper.GetFeatureList(context, BackgroundEnumModel.Urchin.ToString());
         }
 
     }
@@ -332,9 +329,9 @@ namespace Character_Builder.Internal
             _backgroundStrategy.ApplyProficiency(proficiencyList);
         }
 
-        public List<CharacterFeatureIdModel> GetFeatureIDlist(ApplicationDbContext context)
+        public List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return _backgroundStrategy.GetFeatureIDList(context);
+            return _backgroundStrategy.GetFeatureList(context);
         }
     }
 
@@ -353,25 +350,27 @@ namespace Character_Builder.Internal
             }
         }
 
-        public static List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context, string backgroundName)
+        public static List<FeatureModel> GetFeatureList(ApplicationDbContext context, string backgroundName)
         {
-            var background_feature_ID_list = new List<CharacterFeatureIdModel>();
+            var backgroundFeatureList = new List<FeatureModel>();
 
             var background_entity = context.Backgrounds
-                .Where(x => x.Name == backgroundName)
-                .SelectMany(x => x.BackgroundFeatures);
+                                    .Where(x => x.Name == backgroundName)
+                                    .SelectMany(x => x.BackgroundFeatures);
 
             foreach (var item in background_entity)
             {
-                var tmp_feature_model = new CharacterFeatureIdModel
+                var background_feature = new FeatureModel
                 {
-                    FeatureType = FeatureTypes.Background,
-                    ID = item.Id
+                    Title = item.Background.Name,
+                    Description = item.Description,
+                    FeatureType = FeatureTypes.CharacterClass
                 };
 
-                background_feature_ID_list.Add(tmp_feature_model);
+                backgroundFeatureList.Add(background_feature);
             }
-            return background_feature_ID_list;
+            return backgroundFeatureList;
         }
     }
 }
+ 

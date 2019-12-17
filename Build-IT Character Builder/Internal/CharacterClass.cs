@@ -20,7 +20,7 @@ namespace Character_Builder.Internal
             this.protectedLevel = protectedLevel;
         }
 
-        public abstract List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context);
+        public abstract List<FeatureModel> GetFeatureList(ApplicationDbContext context);
 
         public abstract string GetClassName();
     }
@@ -42,9 +42,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -65,9 +65,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -88,9 +88,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -111,9 +111,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -134,9 +134,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -157,9 +157,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -180,9 +180,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -203,9 +203,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -226,9 +226,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -249,9 +249,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -272,9 +272,9 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
@@ -295,36 +295,37 @@ namespace Character_Builder.Internal
             return _ClassName;
         }
 
-        public override List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
-            return CharacterClassHelper.GetFeatureIDList(context, _ClassName, protectedLevel);
+            return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
     }
 
     #region Character_Class_Helper
     public class CharacterClassHelper
     {
-        public static List<CharacterFeatureIdModel> GetFeatureIDList(ApplicationDbContext context, string className, int classLevel)
+        public static List<FeatureModel> GetFeatureList(ApplicationDbContext context, string className, int classLevel)
         {
-            List<CharacterFeatureIdModel> classFeatureIDList = new List<CharacterFeatureIdModel>();
+            var classFeatureList = new List<FeatureModel>();
 
-            var class_entity = context.CharacterClasses.Where(x => x.Name == className);
-
-            var levelized_features = class_entity
+            var levelized_features = context.CharacterClasses
+                                        .Where(x => x.Name == className)
                                         .SelectMany(x => x.CharacterClassFeatures)
                                         .Where(feature => feature.LevelRequirement <= classLevel);
 
             foreach (var item in levelized_features)
             {
-                CharacterFeatureIdModel classFeature = new CharacterFeatureIdModel
+                var class_feature = new FeatureModel
                 {
-                    FeatureType = FeatureTypes.CharacterClass,
-                    ID = item.Id
+                    Title = item.CharacterClass.Name,
+                    Description = item.Description,
+                    LevelRequirement = item.LevelRequirement,
+                    FeatureType = FeatureTypes.CharacterClass
                 };
-                classFeatureIDList.Add(classFeature);
+                classFeatureList.Add(class_feature);
             }
 
-            return classFeatureIDList;
+            return classFeatureList;
         }
     }
     #endregion

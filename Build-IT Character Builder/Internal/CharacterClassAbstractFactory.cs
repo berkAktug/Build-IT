@@ -14,7 +14,7 @@ namespace Character_Builder.Internal
     {
         public abstract CharacterClass CreateCharacterClass(int level);
 
-        public abstract List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context);
+        public abstract List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context);
 
         public abstract string GetCharacterClassName();
     }
@@ -39,9 +39,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -64,9 +64,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -89,9 +89,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -114,9 +114,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -139,9 +139,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -164,9 +164,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -189,9 +189,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -214,9 +214,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -239,9 +239,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -264,9 +264,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -289,9 +289,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -313,9 +313,9 @@ namespace Character_Builder.Internal
             return _Class.GetClassName();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
-            return _Class.GetFeatureIDList(context);
+            return _Class.GetFeatureList(context);
         }
     }
 
@@ -331,7 +331,7 @@ namespace Character_Builder.Internal
             throw new NotImplementedException();
         }
 
-        public override List<CharacterFeatureIdModel> GetClassFeatureIDList(ApplicationDbContext context)
+        public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
         {
             throw new NotImplementedException();
         }
