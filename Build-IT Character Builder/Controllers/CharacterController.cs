@@ -57,7 +57,10 @@ namespace Character_Builder.Controllers
 
             Character newChar = new Character(_context);
 
-            newChar.SetupCharacter(charToBuild);
+            CharacterModel finishedCharacter = newChar.SetupCharacter(charToBuild);
+
+            // Adjust excel according to finished Character
+            newChar.saveToExcel(charToBuild);
 
             return new JsonResult(new { isSuccess = true });
         }

@@ -58,7 +58,7 @@ namespace Character_Builder.Models
         NONE
     }
 
-    public enum CharacterGenderEnumModel
+    public enum GenderEnumModel
     {
         Male,
         Female
@@ -85,6 +85,13 @@ namespace Character_Builder.Models
         SleightOfHand,
         Stealth,
         Initiative
+    }
+
+    public enum FeatureTypes
+    {
+        CharacterClass,
+        Background,
+        Race
     }
 
 }

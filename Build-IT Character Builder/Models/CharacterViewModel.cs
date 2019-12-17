@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 namespace Character_Builder.Models
 {
 
+    public class CharacterFeatureIdModel
+    {
+        public FeatureTypes FeatureType { get; set; }
+        public int ID { get; set; }
+    }
+
     public class CharacterAttributesModel
     {
         public int Strength { get; set; }
@@ -40,17 +46,19 @@ namespace Character_Builder.Models
 
     public class FeatureModel
     {
+        public FeatureTypes FeatureType { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public int? LevelRequirement { get; set; }
     }
 
     public class CharacterModel
     {
         public string Name { get; set; }
-        public CharacterClassEnumModel CharClass { get; set; }
-        public List<ProficiencyEnumModel> Proficiency { get; set; }
-        public CharacterAttributesModel Attributes { get; set; }
         public int Level { get; set; }
+        public CharacterClassEnumModel CharacterClass { get; set; }
+        public List<ProficiencyEnumModel> Proficiencies { get; set; }
+        public CharacterAttributesModel Attributes { get; set; }
         public RaceEnumModel Race { get; set; }
         public int HitPoints { get; set; }
         public int ArmourClass { get; set; }

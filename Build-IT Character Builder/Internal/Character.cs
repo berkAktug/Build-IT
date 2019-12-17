@@ -18,9 +18,10 @@ namespace Character_Builder.Internal
             _context = context;
         }
 
-        public void SetupCharacter(NewCharacterModel newCharacter)
+        public CharacterModel SetupCharacter(NewCharacterModel newCharacter)
         {
-            var FeatureIDList = new List<CharacterFeatureModel>();
+            var FeatureIDList = new List<CharacterFeatureIdModel>();
+            var FeatureList = new List<FeatureModel>();
 
             // Character Class
             CharacterClassFactory classFactory = ClassAssigner(newCharacter.CharacterClass);
@@ -45,61 +46,46 @@ namespace Character_Builder.Internal
             FeatureIDList.Union(tmp_race_Id_list);
 
             // Yazdir
-            var tmp_attrib_str = newCharacter.CharacterAttributes.Strength;
-            // Yazdir
-            var tmp_attrib_dex = newCharacter.CharacterAttributes.Dexterity;
-            // Yazdir
-            var tmp_attrib_con = newCharacter.CharacterAttributes.Constitution;
-            // Yazdir
-            var tmp_attrib_int = newCharacter.CharacterAttributes.Intelligence;
-            // Yazdir
-            var tmp_attrib_wis = newCharacter.CharacterAttributes.Wisdom;
-            // Yazdir
-            var tmp_attrib_cha = newCharacter.CharacterAttributes.Charisma;
-
-            // Yazdir
             var tmp_class_name = classFactory.GetCharacterClassName();
-            var tmp_class_feature_id_lists = classFactory.GetClassFeatureIDList(_context);
-            // Yazdir
-            List<string> tmp_class_feature_list_name = new List<string>();
-            // Yazdir
-            List<string> tmp_class_feature_list_desc = new List<string>();
-            // Yazdir
-            List<int> tmp_class_feature_list_level = new List<int>();
 
-            foreach (var item in tmp_class_feature_id_lists)
+            var tmp_feature_id_list = classFactory.GetClassFeatureIDList(_context);
+            foreach (var item in tmp_feature_id_list)
             {
-                var feature_class = _context.CharacterClassFeatures.Find(item.ID);
-                tmp_class_feature_list_name.Add(feature_class.Name);
-                tmp_class_feature_list_desc.Add(feature_class.Description);
-                tmp_class_feature_list_level.Add(feature_class.LevelRequirement);
+                var db_feature_class = _context.CharacterClassFeatures.Find(item.ID);
+                var class_feature = new FeatureModel
+                {
+                    Title = db_feature_class.Name,
+                    Description = db_feature_class.Description,
+                    LevelRequirement = db_feature_class.LevelRequirement,
+                    FeatureType = FeatureTypes.CharacterClass
+                };
+                FeatureList.Add(class_feature);
             }
 
-            List<CharacterFeatureModel> tmp_race_feature_id_lists = race.GetFeatureIDList(_context);
-            // Yazdir
-            List<string> tmp_race_feature_list_name = new List<string>();
-            // Yazdir
-            List<string> tmp_race_feature_list_desc = new List<string>();
-
-            foreach (var item in tmp_race_feature_id_lists)
+            tmp_feature_id_list = race.GetFeatureIDList(_context);
+            foreach (var item in tmp_feature_id_list)
             {
-                var feature_race = _context.RaceFeatures.Find(item.ID);
-                tmp_race_feature_list_name.Add(feature_race.Name);
-                tmp_race_feature_list_desc.Add(feature_race.Description);
+                var db_feature_race = _context.RaceFeatures.Find(item.ID);
+                var race_feature = new FeatureModel
+                {
+                    Title = db_feature_race.Name,
+                    Description = db_feature_race.Description,
+                    FeatureType = FeatureTypes.Race
+                };
+                FeatureList.Add(race_feature);
             }
 
-            var tmp_background_feature_id_lists = background.GetFeatureIDlist(_context);
-            // Yazdir
-            List<string> tmp_background_feature_list_name = new List<string>();
-            // Yazdir
-            List<string> tmp_background_feature_list_desc = new List<string>();
-
-
-            foreach (var item in tmp_background_feature_id_lists)
+            tmp_feature_id_list = background.GetFeatureIDlist(_context);
+            foreach (var item in tmp_feature_id_list)
             {
-                var feature_background = _context.BackgroundFeatures.Find(item.ID);
-                tmp_background_feature_list_name.Add(feature_background.Name);
-                tmp_background_feature_list_desc.Add(feature_background.Description);
+                var db_feature_background = _context.BackgroundFeatures.Find(item.ID);
+                var background_feature = new FeatureModel
+                {
+                    Title = db_feature_background.Name,
+                    Description = db_feature_background.Description,
+                    FeatureType = FeatureTypes.Background
+                };
+                FeatureList.Add(background_feature);
             }
 
             // Yazdir
@@ -110,6 +96,23 @@ namespace Character_Builder.Internal
 
             // Yazdir
             var tmp_character_level = newCharacter.CharacterLevel;
+
+            var finishedCharacter = new CharacterModel
+            {
+                ArmourClass = 15, // GET THIS AC FROM CLASS FACTORY.
+                Attributes = newCharacter.CharacterAttributes,
+                CharacterClass = newCharacter.CharacterClass,
+                Features = FeatureList,
+                HitPoints = 40, // GET THIS HP FROM CLASS FACTORY
+                Race = newCharacter.CharacterRace,
+                Spells = new List<SpellModel>(), // TODO: Implement.
+                Level = newCharacter.CharacterLevel,
+                Name = newCharacter.CharacterName,
+                Proficiencies = newCharacter.CharacterProficiencies,
+                ProficiencyBonus = 2 // GET THIS FROM CLASS FACTORY!
+            };
+
+            return finishedCharacter;
         }
 
         public void saveToExcel(NewCharacterModel character)
@@ -118,10 +121,12 @@ namespace Character_Builder.Internal
 
             using (var fs = new FileStream(newFile, FileMode.Create, FileAccess.Write))
             {
-
                 IWorkbook workbook = new XSSFWorkbook();
 
                 ISheet sheet1 = workbook.CreateSheet("CharacterSheet");
+
+                //int row_base = 10;
+                short row_stat = 10 * 20;
 
                 //D&D Banner
                 IRow row = sheet1.CreateRow(0);
@@ -150,32 +155,32 @@ namespace Character_Builder.Internal
 
                 //Attributes
                 row = sheet1.CreateRow(3);
-                row.Height = 10 * 20;
+                row.Height = row_stat;
                 var Str = character.CharacterAttributes.Strength;
                 row.CreateCell(0).SetCellValue("Strength: " + Str);
 
                 row = sheet1.CreateRow(4);
-                row.Height = 10 * 20;
+                row.Height = row_stat;
                 var Dex = character.CharacterAttributes.Dexterity;
                 row.CreateCell(0).SetCellValue("Dexterity: " + Dex);
 
                 row = sheet1.CreateRow(5);
-                row.Height = 10 * 20;
+                row.Height = row_stat;
                 var Con = character.CharacterAttributes.Constitution;
                 row.CreateCell(0).SetCellValue("Constitution: " + Con);
 
                 row = sheet1.CreateRow(6);
-                row.Height = 10 * 20;
+                row.Height = row_stat;
                 var Int = character.CharacterAttributes.Intelligence;
                 row.CreateCell(0).SetCellValue("Intelligence: " + Int);
 
                 row = sheet1.CreateRow(7);
-                row.Height = 10 * 20;
+                row.Height = row_stat;
                 var Wis = character.CharacterAttributes.Wisdom;
                 row.CreateCell(0).SetCellValue("Wisdom: " + Wis);
 
                 row = sheet1.CreateRow(8);
-                row.Height = 10 * 20;
+                row.Height = row_stat;
                 var Cha = character.CharacterAttributes.Charisma;
                 row.CreateCell(0).SetCellValue("Charisma: " + Cha);
 
