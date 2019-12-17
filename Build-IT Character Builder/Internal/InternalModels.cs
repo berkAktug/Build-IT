@@ -8,9 +8,7 @@ namespace Character_Builder.Internal
     public enum FeatureTypes
     {
         CharacterClass,
-        SubClass,
         Background,
-        Feat,
         Race
     }
 

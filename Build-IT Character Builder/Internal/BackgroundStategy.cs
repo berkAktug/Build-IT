@@ -11,7 +11,7 @@ namespace Character_Builder.Internal
     public abstract class BackgroundStategy
     {
         public abstract void ApplyProficiency(List<ProficiencyEnumModel> proficiencyList);
-        public abstract List<CharacterFeatureModel> GetFeatureIDList(Data.ApplicationDbContext context);
+        public abstract List<CharacterFeatureModel> GetFeatureIDList(ApplicationDbContext context);
 
         //public abstract void ApplyLanguage(List<CharacterProficiencyEnumModel> proficiencyList);
         //public abstract void ApplyTools(List<CharacterProficiencyEnumModel> proficiencyList);

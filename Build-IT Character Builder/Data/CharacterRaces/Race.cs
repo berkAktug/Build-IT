@@ -5,12 +5,8 @@ using System.Threading.Tasks;
 
 namespace Character_Builder.Data
 {
-    public class Race
+    public class Race : Details
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-
         public virtual ICollection<RaceFeature> RaceFeatures { get; set; }
     }
 }

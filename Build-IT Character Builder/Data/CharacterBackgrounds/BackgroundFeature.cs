@@ -7,8 +7,7 @@ namespace Character_Builder.Data
 {
     public class BackgroundFeature : Feature
     {
-        public int SubClassId { get; set; }
-        public int LevelRequirement { get; set; }
+        public int BackgroundId { get; set; }
 
         public virtual Background Background { get; set; }
     }

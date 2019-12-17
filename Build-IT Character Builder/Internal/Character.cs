@@ -67,23 +67,23 @@ namespace Character_Builder.Internal
             // Yazdir
             List<int> tmp_class_feature_list_level = new List<int>();
 
-            foreach (var id in tmp_class_feature_id_lists)
+            foreach (var item in tmp_class_feature_id_lists)
             {
-                var feature_class = _context.CharacterClassFeatures.Find(id);
+                var feature_class = _context.CharacterClassFeatures.Find(item.ID);
                 tmp_class_feature_list_name.Add(feature_class.Name);
                 tmp_class_feature_list_desc.Add(feature_class.Description);
                 tmp_class_feature_list_level.Add(feature_class.LevelRequirement);
             }
 
-            var tmp_race_feature_id_lists = race.GetFeatureIDList(_context);
+            List<CharacterFeatureModel> tmp_race_feature_id_lists = race.GetFeatureIDList(_context);
             // Yazdir
             List<string> tmp_race_feature_list_name = new List<string>();
             // Yazdir
             List<string> tmp_race_feature_list_desc = new List<string>();
 
-            foreach (var id in tmp_race_feature_id_lists)
+            foreach (var item in tmp_race_feature_id_lists)
             {
-                var feature_race = _context.RaceFeatures.Find(id);
+                var feature_race = _context.RaceFeatures.Find(item.ID);
                 tmp_race_feature_list_name.Add(feature_race.Name);
                 tmp_race_feature_list_desc.Add(feature_race.Description);
             }
@@ -95,9 +95,9 @@ namespace Character_Builder.Internal
             List<string> tmp_background_feature_list_desc = new List<string>();
 
 
-            foreach (var id in tmp_background_feature_id_lists)
+            foreach (var item in tmp_background_feature_id_lists)
             {
-                var feature_background = _context.BackgroundFeatures.Find(id);
+                var feature_background = _context.BackgroundFeatures.Find(item.ID);
                 tmp_background_feature_list_name.Add(feature_background.Name);
                 tmp_background_feature_list_desc.Add(feature_background.Description);
             }
