@@ -274,15 +274,17 @@ namespace Character_Builder.Internal
         {
             var raceFeatureList = new List<FeatureModel>();
 
-            var race_entity = context.Races
-                                    .Where(x => x.Name == raceName)
-                                    .SelectMany(x => x.RaceFeatures);
+            var race_id = context.Races
+                                    .Where(x => x.Name == raceName).Select(x => x.Id).First();
+            //.SelectMany(x => x.RaceFeatures);
+            IQueryable<RaceFeature> race_entity = context.RaceFeatures.Where(x => x.RaceId == race_id);
 
-            foreach (var item in race_entity)
+            foreach (RaceFeature item in race_entity)
             {
                 var race_feature = new FeatureModel
                 {
-                    Title = item.Race.Name,
+                    //Title = item.Race.Name,
+                    Title = raceName,
                     Description = item.Description,
                     FeatureType = FeatureTypes.CharacterClass
                 };

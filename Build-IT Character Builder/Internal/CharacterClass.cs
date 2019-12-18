@@ -25,6 +25,8 @@ namespace Character_Builder.Internal
         public abstract List<SpellModel> GetSpellList(ApplicationDbContext context);
 
         public abstract string GetClassName();
+
+        public abstract int GetHitPoints();
     }
 
     /// <summary>
@@ -54,6 +56,11 @@ namespace Character_Builder.Internal
             var spellListHelper = new NullSpells();
             return spellListHelper.GetSpellList(context, protectedLevel);
         }
+
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(12, protectedLevel);
+        }
     }
 
     /// <summary>
@@ -76,6 +83,11 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(8, protectedLevel);
         }
 
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
@@ -107,6 +119,11 @@ namespace Character_Builder.Internal
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
 
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(8, protectedLevel);
+        }
+
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
             var spellListHelper = new ClericSpells();
@@ -134,6 +151,11 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(8, protectedLevel);
         }
 
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
@@ -165,6 +187,12 @@ namespace Character_Builder.Internal
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
 
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(10, protectedLevel);
+        }
+
+
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
             var spellListHelper = new NullSpells();
@@ -192,6 +220,11 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(8, protectedLevel);
         }
 
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
@@ -223,6 +256,11 @@ namespace Character_Builder.Internal
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
 
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(10, protectedLevel);
+        }
+
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
             var spellListHelper = new NullSpells();
@@ -252,6 +290,11 @@ namespace Character_Builder.Internal
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
 
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(10, protectedLevel);
+        }
+        
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
             var spellListHelper = new NullSpells();
@@ -281,6 +324,11 @@ namespace Character_Builder.Internal
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
 
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(8, protectedLevel);
+        }
+        
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
             var spellListHelper = new NullSpells();
@@ -308,6 +356,11 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(6, protectedLevel);
         }
 
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
@@ -339,6 +392,11 @@ namespace Character_Builder.Internal
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
 
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(8, protectedLevel);
+        }
+
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
             var spellListHelper = new WarlockSpells();
@@ -366,6 +424,11 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override int GetHitPoints()
+        {
+            return CharacterClassHelper.GetHitPoints(6, protectedLevel);
         }
 
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
@@ -400,6 +463,11 @@ namespace Character_Builder.Internal
             }
 
             return classFeatureList;
+        }
+
+        internal static int GetHitPoints(int hitDice, int protectedLevel)
+        {
+            return ((hitDice/2 + 1) * protectedLevel);
         }
     }
     #endregion

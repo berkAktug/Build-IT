@@ -21,5 +21,7 @@ namespace Character_Builder.Data
         public string CastingTimeType { get; set; }
 
         public string School { get; set; }
+
+        public virtual IList<CharacterSpell> CharacterSpells { get; set; }
     }
 }

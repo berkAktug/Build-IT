@@ -27,6 +27,6 @@ namespace Character_Builder.Data
         public virtual Race Race { get; set; }
         public virtual Background Background { get; set; }
 
-        public virtual ICollection<Spell> Spells { get; set; }
+        public virtual ICollection<CharacterSpell> CharacterSpells { get; set; }
     }
 }

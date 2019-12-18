@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Character_Builder.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -24,6 +24,12 @@ namespace Character_Builder.Data
         public DbSet<Background> Backgrounds { get; set; }
         public DbSet<BackgroundFeature> BackgroundFeatures { get; set; }
 
+        public DbSet<CharacterSpell> CharacterSpells { get; set; }
         public DbSet<Spell> Spells { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<CharacterSpell>().HasKey(cs => new { cs.CharacterId, cs.SpellId});
+        }
     }
 }

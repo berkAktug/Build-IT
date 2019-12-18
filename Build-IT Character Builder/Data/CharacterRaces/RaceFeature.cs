@@ -9,6 +9,6 @@ namespace Character_Builder.Data
     {
         public int RaceId { get; set; }
 
-        public virtual Race Race { get; set; }
+        //public virtual Race Race { get; set; }
     }
 }

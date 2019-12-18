@@ -27,11 +27,20 @@ namespace Character_Builder.Internal
             CharacterClassFactory classFactory = ClassAssigner(newCharacter.CharacterClass);
             classFactory.CreateCharacterClass(newCharacter.CharacterLevel);
 
+            int CharacterHP = classFactory.GetCharacterHP();
+            int CharacterAC = classFactory.GetCharacterAC();
+            int ProficiencyBonus = _GetProficiencyBonus(newCharacter.CharacterLevel);
+
             // Character Class Spells
-            SpellList.Union(classFactory.GetSpellsList(_context));
+            var classSpells = classFactory.GetSpellsList(_context);
+
+            foreach (var item in classSpells)
+            {
+                SpellList.Add(item);
+            }
 
             // Character Class Features
-            FeatureList.Union(classFactory.GetClassFeatureIDList(_context));
+            FeatureList.Concat(classFactory.GetClassFeatureIDList(_context));
 
             // Character Background
             BackgroundMethod background = new BackgroundMethod();
@@ -39,7 +48,7 @@ namespace Character_Builder.Internal
             background.ApplyBackground(newCharacter.CharacterProficiencies);
 
             // Character Background Features
-            FeatureList.Union(background.GetFeatureList(_context));
+            FeatureList.Concat(background.GetFeatureList(_context));
 
             // Character Race 
             RaceMethod race = new RaceMethod();
@@ -47,24 +56,48 @@ namespace Character_Builder.Internal
             race.ApplyRace(newCharacter.CharacterProficiencies, newCharacter.CharacterAttributes);
 
             // Character Race Features
-            FeatureList.Union(race.GetFeatureList(_context));
+            FeatureList.Concat(race.GetFeatureList(_context));
 
             var finishedCharacter = new CharacterModel
             {
-                ArmourClass = 15, // GET THIS AC FROM CLASS FACTORY.
+                ArmourClass = CharacterAC, 
                 Attributes = newCharacter.CharacterAttributes,
                 CharacterClass = newCharacter.CharacterClass,
                 Features = FeatureList,
-                HitPoints = 40, // GET THIS HP FROM CLASS FACTORY
+                HitPoints = CharacterHP, 
                 Race = newCharacter.CharacterRace,
                 Spells = SpellList,
                 Level = newCharacter.CharacterLevel,
                 Name = newCharacter.CharacterName,
                 Proficiencies = newCharacter.CharacterProficiencies,
-                ProficiencyBonus = 2 // GET THIS FROM CLASS FACTORY!
+                ProficiencyBonus = ProficiencyBonus 
             };
 
             return finishedCharacter;
+        }
+
+        private int _GetProficiencyBonus(int characterLevel)
+        {
+            if (characterLevel < 5)
+            {
+                return 2;
+            }
+            else if (characterLevel < 9)
+            {
+                return 3;
+            }
+            else if (characterLevel < 12)
+            {
+                return 4;
+            }
+            else if (characterLevel < 15)
+            {
+                return 5;
+            }
+            else
+            {
+                return 6;
+            }
         }
 
         public void saveToExcel(NewCharacterModel character)

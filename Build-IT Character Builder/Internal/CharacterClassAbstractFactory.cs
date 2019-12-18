@@ -19,6 +19,10 @@ namespace Character_Builder.Internal
         public abstract string GetCharacterClassName();
 
         public abstract List<SpellModel> GetSpellsList(ApplicationDbContext context);
+
+        public abstract int GetCharacterAC();
+
+        public abstract int GetCharacterHP();
     }
 
 
@@ -36,9 +40,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 17;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -50,6 +64,8 @@ namespace Character_Builder.Internal
         {
             return _Class.GetSpellList(context);
         }
+
+
     }
 
     /// <summary>
@@ -66,9 +82,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 15;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -97,9 +123,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 18;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -128,9 +164,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 16;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -159,9 +205,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 19;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -190,9 +246,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 18;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -221,9 +287,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 19;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -252,9 +328,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 15;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -283,9 +369,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 14;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -314,9 +410,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 13;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -345,9 +451,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 16;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -375,9 +491,19 @@ namespace Character_Builder.Internal
             return _Class;
         }
 
+        public override int GetCharacterAC()
+        {
+            return 12;
+        }
+
         public override string GetCharacterClassName()
         {
             return _Class.GetClassName();
+        }
+
+        public override int GetCharacterHP()
+        {
+            return _Class.GetHitPoints();
         }
 
         public override List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context)
@@ -399,7 +525,17 @@ namespace Character_Builder.Internal
             throw new NotImplementedException();
         }
 
+        public override int GetCharacterAC()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string GetCharacterClassName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int GetCharacterHP()
         {
             throw new NotImplementedException();
         }

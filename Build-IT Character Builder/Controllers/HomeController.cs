@@ -45,16 +45,18 @@ namespace Character_Builder.Controllers
         {
             List<UsersViewModel> userList = new List<UsersViewModel>();
 
-            foreach (var item in _context.Users)
-            {
+            //foreach (var item in _context.Users)
+            //{
                 var user = new UsersViewModel
                 {
-                    Username = item.UserName,
-                    Email = item.Email
+                    //Username = item.UserName,
+                    //Email = item.Email
+                    Username = "",
+                    Email = ""
                 };
 
                 userList.Add(user);
-            }
+            //}
 
             return View(userList);
         }
