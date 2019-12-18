@@ -22,18 +22,6 @@ namespace Character_Builder.Models
         NONE
     }
 
-    public enum SpellSchoolEnumModel
-    {
-        abjuration,
-        conjuration,
-        divination,
-        enchantment,
-        evocation,
-        illusion,
-        necromancy,
-        transmutation
-    }
-
     public enum BackgroundEnumModel
     {
         Acolyte,

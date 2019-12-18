@@ -21,15 +21,11 @@ namespace Character_Builder.Internal
         public CharacterModel SetupCharacter(NewCharacterModel newCharacter)
         {
             var FeatureList = new List<FeatureModel>();
-            var SpellList = new List<SpellModel>();
 
             // Character Class
             CharacterClassFactory classFactory = ClassAssigner(newCharacter.CharacterClass);
             classFactory.CreateCharacterClass(newCharacter.CharacterLevel);
-
-            // Character Class Spells
-            SpellList.Union(classFactory.GetSpellsList(_context));
-
+            
             // Character Class Features
             FeatureList.Union(classFactory.GetClassFeatureIDList(_context));
 
@@ -38,7 +34,7 @@ namespace Character_Builder.Internal
             background.SetBackground(newCharacter.CharacterBackground);
             background.ApplyBackground(newCharacter.CharacterProficiencies);
 
-            // Character Background Features
+            // Character Background Features 
             FeatureList.Union(background.GetFeatureList(_context));
 
             // Character Race 
@@ -57,7 +53,7 @@ namespace Character_Builder.Internal
                 Features = FeatureList,
                 HitPoints = 40, // GET THIS HP FROM CLASS FACTORY
                 Race = newCharacter.CharacterRace,
-                Spells = SpellList,
+                Spells = new List<SpellModel>(), // TODO: Implement.
                 Level = newCharacter.CharacterLevel,
                 Name = newCharacter.CharacterName,
                 Proficiencies = newCharacter.CharacterProficiencies,
