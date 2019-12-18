@@ -109,13 +109,12 @@ function createChar() {
 		.setGender(gender)
 		.setAttributes(attributes)
 		.setBackground(background)
-		.setClass(className);
-
-	character.setProficiency(proficiencies);
+		.setClass(className)
+		.setProficiency(proficiencies);
 
 	console.log(character);
 
-	$.ajax({
+		$.ajax({
 		headers: {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json'
@@ -124,13 +123,10 @@ function createChar() {
 		type: "POST",
 		dataType: 'json',
 		contentType: "application/jsonrequest; charset=utf-8",
-		data: JSON.stringify(character),
-		success: function (result) { //we got the response
-			alert('Successfully called');
-		},
-		error: function (jqxhr, status, exception) {
-			alert('Exception:', exception);
-		}
-	});
+		data: JSON.stringify(character)
+	}).done(function (excel) {
 
+		var response = excel;
+		window.location = '/Character/Download?fileName=' + response.fileName;
+	});
 }
