@@ -17,6 +17,8 @@ namespace Character_Builder.Internal
         public abstract List<FeatureModel> GetClassFeatureIDList(ApplicationDbContext context);
 
         public abstract string GetCharacterClassName();
+
+        public abstract List<SpellModel> GetSpellsList(ApplicationDbContext context);
     }
 
 
@@ -43,6 +45,11 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
     }
 
     /// <summary>
@@ -68,6 +75,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -93,6 +106,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -118,6 +137,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -143,6 +168,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -168,6 +199,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -193,6 +230,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -218,6 +261,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -243,6 +292,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -268,6 +323,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -293,6 +354,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     /// <summary>
@@ -317,6 +384,12 @@ namespace Character_Builder.Internal
         {
             return _Class.GetFeatureList(context);
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            return _Class.GetSpellList(context);
+        }
+
     }
 
     public class NoClassFactory : CharacterClassFactory
@@ -335,5 +408,11 @@ namespace Character_Builder.Internal
         {
             throw new NotImplementedException();
         }
+
+        public override List<SpellModel> GetSpellsList(ApplicationDbContext context)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

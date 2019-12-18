@@ -22,6 +22,8 @@ namespace Character_Builder.Internal
 
         public abstract List<FeatureModel> GetFeatureList(ApplicationDbContext context);
 
+        public abstract List<SpellModel> GetSpellList(ApplicationDbContext context);
+
         public abstract string GetClassName();
     }
 
@@ -46,6 +48,12 @@ namespace Character_Builder.Internal
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new NullSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
+        }
     }
 
     /// <summary>
@@ -68,6 +76,12 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new BardSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
         }
     }
 
@@ -92,6 +106,12 @@ namespace Character_Builder.Internal
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new ClericSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
+        }
     }
 
     /// <summary>
@@ -114,6 +134,12 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new DruidSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
         }
     }
 
@@ -138,6 +164,12 @@ namespace Character_Builder.Internal
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new NullSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
+        }
     }
 
     /// <summary>
@@ -160,6 +192,12 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new NullSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
         }
     }
 
@@ -184,6 +222,12 @@ namespace Character_Builder.Internal
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new NullSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
+        }
     }
 
     /// <summary>
@@ -206,6 +250,12 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new NullSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
         }
     }
 
@@ -230,6 +280,12 @@ namespace Character_Builder.Internal
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new NullSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
+        }
     }
 
     /// <summary>
@@ -252,6 +308,12 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new SorcererSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
         }
     }
 
@@ -276,6 +338,12 @@ namespace Character_Builder.Internal
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new WarlockSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
+        }
     }
 
     /// <summary>
@@ -298,6 +366,12 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return CharacterClassHelper.GetFeatureList(context, _ClassName, protectedLevel);
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellListHelper = new WizardSpells();
+            return spellListHelper.GetSpellList(context, protectedLevel);
         }
     }
 

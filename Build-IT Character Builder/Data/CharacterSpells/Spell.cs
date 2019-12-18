@@ -17,6 +17,9 @@ namespace Character_Builder.Data
         public int Duration { get; set; }
         public string DurationType { get; set; }
 
+        public int CastingTime { get; set; }
+        public string CastingTimeType { get; set; }
+
         public string School { get; set; }
     }
 }

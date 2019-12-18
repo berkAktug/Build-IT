@@ -36,13 +36,16 @@ namespace Character_Builder.Models
     public class SpellModel
     {
         public string Title { get; set; }
-        public string ClassSpell { get; set; }
-        public string SpellSchool { get; set; }
+        public string School { get; set; }
         public int Level { get; set; }
         public string Components { get; set; }
         public string Description { get; set; }
         public int CastingTime { get; set; }
+        public string CastingTimeType { get; set; }
+        public int SpellRange { get; set; }
+        public string SpellRangeType { get; set; }
     }
+
 
     public class FeatureModel
     {
