@@ -147,15 +147,18 @@ namespace Character_Builder.Controllers
                 row.CreateCell(0).SetCellValue("Charisma: " + Cha);
                 row.GetCell(0).CellStyle = style2;
 
+
+                // 2th column row counter
+                int row_counter = 3;
                 //background
-                row = sheet1.GetRow(3);
+                row = sheet1.GetRow(row_counter);
                 row.Height = (short)-1;
                 var background = character.Background;
                 row.CreateCell(1).SetCellValue("Background: " + background);
                 row.GetCell(1).CellStyle = style1;
 
                 //proficiencies
-                row = sheet1.GetRow(4);
+                row = sheet1.GetRow(++row_counter);
                 row.Height = (short)-1;
                 var proficiencies = character.Proficiencies;
                 string profStr = "";
@@ -168,27 +171,34 @@ namespace Character_Builder.Controllers
                 row.GetCell(1).CellStyle = style1;
 
                 //armour class
-                row = sheet1.GetRow(5);
+                row = sheet1.GetRow(++row_counter);
                 row.Height = (short)-1;
                 var armClass = character.ArmourClass;
                 row.CreateCell(1).SetCellValue("Armour Class: " + armClass);
                 row.GetCell(1).CellStyle = style1;
 
                 //features
-                row = sheet1.GetRow(6);
-                row.Height = (short)-1;
+                //row = sheet1.GetRow(++row_counter);
+                //row.Height = (short)-1;
                 var features = character.Features;
-                string featStr = "dummy feature";
+                string featStr = "";
                 foreach (var feat in features)
                 {
-                    featStr += feat + "  &  ";
+                    row = sheet1.CreateRow(++row_counter);
+                    row = sheet1.GetRow(row_counter);
+                    row.Height = (short)-1;
+
+                    featStr = feat.Title + ": ";
+                    featStr += feat.Description +  " ;";
+
+                    //featStr = featStr.Substring(0, featStr.Length - 5);
+                    row.CreateCell(1).SetCellValue("Feature: " + featStr);
+                    row.GetCell(1).CellStyle = style1;
                 }
-                featStr = featStr.Substring(0, featStr.Length - 5);
-                row.CreateCell(1).SetCellValue("Features: " + featStr);
-                row.GetCell(1).CellStyle = style1;
 
                 //spells
-                row = sheet1.GetRow(7);
+                row = sheet1.CreateRow(++row_counter);
+                row = sheet1.GetRow(row_counter);
                 row.Height = (short)-1;
                 var spells = character.Spells;
                 string spellStr = "";

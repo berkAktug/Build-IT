@@ -40,7 +40,12 @@ namespace Character_Builder.Internal
             }
 
             // Character Class Features
-            FeatureList.Concat(classFactory.GetClassFeatureIDList(_context));
+            var classFeatures = classFactory.GetClassFeatureIDList(_context);
+
+            foreach (var item in classFeatures)
+            {
+                FeatureList.Add(item);
+            }
 
             // Character Background
             BackgroundMethod background = new BackgroundMethod();
@@ -48,15 +53,25 @@ namespace Character_Builder.Internal
             background.ApplyBackground(newCharacter.CharacterProficiencies);
 
             // Character Background Features
-            FeatureList.Concat(background.GetFeatureList(_context));
+            var backgroundFeatures = background.GetFeatureList(_context);
 
+            foreach (var item in backgroundFeatures)
+            {
+                FeatureList.Add(item);
+            }
+            
             // Character Race 
             RaceMethod race = new RaceMethod();
             race.SetRace(newCharacter.CharacterRace);
             race.ApplyRace(newCharacter.CharacterProficiencies, newCharacter.CharacterAttributes);
 
             // Character Race Features
-            FeatureList.Concat(race.GetFeatureList(_context));
+            var raceFeatures = race.GetFeatureList(_context);
+
+            foreach (var item in raceFeatures)
+            {
+                FeatureList.Add(item);
+            }
 
             var finishedCharacter = new CharacterModel
             {
