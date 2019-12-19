@@ -30,7 +30,7 @@ namespace Character_Builder.Controllers
         {
             var charName = newCharacter.CharacterName;
             var charClass = _getCharacterClass(newCharacter.CharacterClassName);
-            //var charLevel = newCharacter.CharacterLevel;
+            var charLevel = newCharacter.CharacterLevel;
             var charBackground = _getCharacterBackground(newCharacter.CharacterBackground);
             var charRace = _getCharacterRace(newCharacter.CharacterRace);
             var charProficiency = _getCharacterProfiencies(newCharacter.CharacterProficiencies);
@@ -49,8 +49,7 @@ namespace Character_Builder.Controllers
                 CharacterName = charName,
                 CharacterBackground = charBackground,
                 CharacterClass = charClass,
-                //CharacterLevel = charLevel,
-                CharacterLevel = 3,
+                CharacterLevel = charLevel,
                 CharacterProficiencies = charProficiency,
                 CharacterRace = charRace,
                 CharacterAttributes = attrib
@@ -67,7 +66,7 @@ namespace Character_Builder.Controllers
 
         public ActionResult saveToExcel(CharacterModel character)
         {
-            string fileName = string.Format("DD_CharacterSheet-{0:d}.xlsx", DateTime.Now).Replace("/", "-");
+            string fileName = string.Format("DD_CharacterSheet-{0:d}.xlsx", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
             using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
             {
                 IWorkbook workbook = new XSSFWorkbook();
@@ -151,11 +150,11 @@ namespace Character_Builder.Controllers
                 //background
                 row = sheet1.GetRow(3);
                 row.Height = (short)-1;
-                var background = "annesiz";
+                var background = character.Background;
                 row.CreateCell(1).SetCellValue("Background: " + background);
                 row.GetCell(1).CellStyle = style1;
 
-                //background
+                //proficiencies
                 row = sheet1.GetRow(4);
                 row.Height = (short)-1;
                 var proficiencies = character.Proficiencies;
@@ -164,9 +163,26 @@ namespace Character_Builder.Controllers
                 {
                     profStr += proficiency + "  &  ";
                 }
-
                 profStr = profStr.Substring(0, profStr.Length - 5);
                 row.CreateCell(1).SetCellValue("Proficiencies: " + profStr);
+                row.GetCell(1).CellStyle = style1;
+
+                row = sheet1.CreateRow(5);
+                row.Height = (short)-1;
+                var armClass = character.ArmourClass;
+                row.CreateCell(1).SetCellValue("Armour Class: " + armClass);
+                row.GetCell(1).CellStyle = style1;
+
+                row = sheet1.CreateRow(6);
+                row.Height = (short)-1;
+                var features = character.Features;
+                string featStr = "CHARACTERMODEL'E FEATURE EKLENECEK";
+                foreach (var feat in features)
+                {
+                    featStr += feat + "  &  ";
+                }
+                featStr = featStr.Substring(0, featStr.Length - 5);
+                row.CreateCell(1).SetCellValue("Features: " + featStr);
                 row.GetCell(1).CellStyle = style1;
 
                 sheet1.AutoSizeColumn(0);

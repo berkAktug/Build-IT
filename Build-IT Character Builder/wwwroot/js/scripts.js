@@ -81,7 +81,7 @@ function highlight2Buttons(evt, type) {
 function createChar() {
 	debugger;
 	let name = "testName";
-	//let level = 9;
+	let level = "9";
 	let race = document.getElementsByClassName("button-highlight-race")[0].innerHTML;
 	let gender = document.getElementsByClassName("button-highlight-gender")[0].innerHTML;
 	let background = document.getElementsByClassName("button-highlight-background")[0].innerHTML;
@@ -105,10 +105,10 @@ function createChar() {
 	let character = new CharacterBuilder()
 		.setRace(race)
 		.setName(name)
-		//.setLevel(level)
+		.setLevel(level)
 		.setGender(gender)
-		.setAttributes(attributes)
-		.setBackground(background)
+        .setAttributes(attributes)
+        .setBackground(background)
 		.setClass(className)
 		.setProficiency(proficiencies);
 

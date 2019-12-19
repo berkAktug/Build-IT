@@ -25,7 +25,7 @@ namespace Character_Builder.Internal
 
             // Character Class
             CharacterClassFactory classFactory = ClassAssigner(newCharacter.CharacterClass);
-            classFactory.CreateCharacterClass(newCharacter.CharacterLevel);
+            classFactory.CreateCharacterClass(int.Parse(newCharacter.CharacterLevel));
 
             int CharacterHP = classFactory.GetCharacterHP();
             int CharacterAC = classFactory.GetCharacterAC();
@@ -60,8 +60,9 @@ namespace Character_Builder.Internal
 
             var finishedCharacter = new CharacterModel
             {
-                ArmourClass = CharacterAC, 
+                ArmourClass = CharacterAC,
                 Attributes = newCharacter.CharacterAttributes,
+                Background = newCharacter.CharacterBackground,
                 CharacterClass = newCharacter.CharacterClass,
                 Features = FeatureList,
                 HitPoints = CharacterHP, 
@@ -76,21 +77,23 @@ namespace Character_Builder.Internal
             return finishedCharacter;
         }
 
-        private int _GetProficiencyBonus(int characterLevel)
+        private int _GetProficiencyBonus(string characterLevel)
         {
-            if (characterLevel < 5)
+            int charlevelInt = int.Parse(characterLevel);
+
+            if (charlevelInt < 5)
             {
                 return 2;
             }
-            else if (characterLevel < 9)
+            else if (charlevelInt < 9)
             {
                 return 3;
             }
-            else if (characterLevel < 12)
+            else if (charlevelInt < 12)
             {
                 return 4;
             }
-            else if (characterLevel < 15)
+            else if (charlevelInt < 15)
             {
                 return 5;
             }

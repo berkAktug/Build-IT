@@ -26,7 +26,7 @@ namespace Character_Builder.Models
     {
         public string CharacterName { get; set; }
         public CharacterClassEnumModel CharacterClass { get; set; }
-        public int CharacterClassLevel { get; set; }
+        public string CharacterClassLevel { get; set; }
         public BackgroundEnumModel CharacterBackground { get; set; }
         public RaceEnumModel CharacterRace { get; set; }
         public CharacterAttributesModel CharacterAttributes { get; set; }
@@ -58,7 +58,8 @@ namespace Character_Builder.Models
     public class CharacterModel
     {
         public string Name { get; set; }
-        public int Level { get; set; }
+        public BackgroundEnumModel Background { get; set; }
+        public string Level { get; set; }
         public CharacterClassEnumModel CharacterClass { get; set; }
         public List<ProficiencyEnumModel> Proficiencies { get; set; }
         public CharacterAttributesModel Attributes { get; set; }
@@ -73,7 +74,7 @@ namespace Character_Builder.Models
     public class NewCharacterModel
     {
         public string CharacterName { get; set; }
-        public int CharacterLevel { get; set; }
+        public string CharacterLevel { get; set; }
         public CharacterClassEnumModel CharacterClass { get; set; }
         public BackgroundEnumModel CharacterBackground { get; set; }
         public RaceEnumModel CharacterRace { get; set; }
@@ -86,7 +87,7 @@ namespace Character_Builder.Models
         public string CharacterName { get; set; }
         public string CharacterClassName { get; set; }
         public string CharacterGender { get; set; }
-        //public int    CharacterLevel { get; set; }
+        public string CharacterLevel { get; set; }
         public string CharacterBackground { get; set; }
         public string CharacterRace { get; set; }
         public List<string> CharacterProficiencies { get; set; }
@@ -98,7 +99,7 @@ namespace Character_Builder.Models
         public string CharacterName { get; set; }
         public string CharacterClassName { get; set; }
         public string CharacterGender { get; set; }
-        public int CharacterLevel { get; set; }
+        public string CharacterLevel { get; set; }
         public string CharacterBackground { get; set; }
         public string CharacterRace { get; set; }
         public List<string> CharacterProficiencies { get; set; }

@@ -1,8 +1,8 @@
-﻿let Character = function (name, race, /*level, */gender, attributes, background, className, proficiencies) {
+﻿let Character = function (name, race, level, gender, attributes, background, className, proficiencies) {
 
     this.CharacterName = name;
     this.CharacterRace = race;
-    //this.CharacterLevel = level;
+    this.CharacterLevel = level;
     this.CharacterGender = gender;
     this.CharacterAttributes = attributes;
     this.CharacterBackground = background;
@@ -14,7 +14,7 @@ let CharacterBuilder = function () {
 
     let CharacterName;
     let CharacterRace;
-    //let CharacterLevel;
+    let CharacterLevel;
     let CharacterGender;
     let CharacterAttributes;
     let CharacterBackground;
@@ -30,10 +30,10 @@ let CharacterBuilder = function () {
             this.CharacterName = name;
             return this;
         },
-        //setLevel: function (level) {
-        //    this.CharacterLevel = level;
-        //    return this;
-        //},
+        setLevel: function (level) {
+            this.CharacterLevel = level;
+            return this;
+        },
         setGender: function (gender) {
             this.CharacterGender = gender;
             return this;
@@ -55,7 +55,7 @@ let CharacterBuilder = function () {
             return this;
         },
         build: function () {
-            return new Character(CharacterName, CharacterRace, /*CharacterLevel, */CharacterGender, CharacterAttributes,
+            return new Character(CharacterName, CharacterRace, CharacterLevel, CharacterGender, CharacterAttributes,
                 CharacterBackground, CharacterClassName, CharacterProficiencies);
         }
     };

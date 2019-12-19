@@ -362,7 +362,7 @@ namespace Character_Builder.Internal
             {
                 var background_feature = new FeatureModel
                 {
-                    Title = item.Background.Name,
+                    Title = item.Name,
                     Description = item.Description,
                     FeatureType = FeatureTypes.CharacterClass
                 };
