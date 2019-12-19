@@ -49,7 +49,8 @@ namespace Character_Builder.Controllers
                 CharacterName = charName,
                 CharacterBackground = charBackground,
                 CharacterClass = charClass,
-                CharacterLevel = charLevel,
+                //CharacterLevel = charLevel,
+                CharacterLevel = "3",
                 CharacterProficiencies = charProficiency,
                 CharacterRace = charRace,
                 CharacterAttributes = attrib

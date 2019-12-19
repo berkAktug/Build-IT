@@ -53,8 +53,8 @@ namespace Character_Builder.Internal
 
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
-            var spellListHelper = new NullSpells();
-            return spellListHelper.GetSpellList(context, protectedLevel);
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
         }
 
         public override int GetHitPoints()
@@ -195,8 +195,8 @@ namespace Character_Builder.Internal
 
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
-            var spellListHelper = new NullSpells();
-            return spellListHelper.GetSpellList(context, protectedLevel);
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
         }
     }
 
@@ -229,8 +229,8 @@ namespace Character_Builder.Internal
 
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
-            var spellListHelper = new NullSpells();
-            return spellListHelper.GetSpellList(context, protectedLevel);
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
         }
     }
 
@@ -263,8 +263,8 @@ namespace Character_Builder.Internal
 
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
-            var spellListHelper = new NullSpells();
-            return spellListHelper.GetSpellList(context, protectedLevel);
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
         }
     }
 
@@ -297,8 +297,8 @@ namespace Character_Builder.Internal
         
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
-            var spellListHelper = new NullSpells();
-            return spellListHelper.GetSpellList(context, protectedLevel);
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
         }
     }
 
@@ -331,8 +331,8 @@ namespace Character_Builder.Internal
         
         public override List<SpellModel> GetSpellList(ApplicationDbContext context)
         {
-            var spellListHelper = new NullSpells();
-            return spellListHelper.GetSpellList(context, protectedLevel);
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
         }
     }
 

@@ -13,6 +13,7 @@ namespace Character_Builder.Internal
         //public abstract void ApplySpell();
         public abstract void ApplyProficiency(List<ProficiencyEnumModel> characterProficiencies);
         public abstract List<FeatureModel> GetFeatureList(ApplicationDbContext context);
+        public abstract List<SpellModel> GetSpellList(ApplicationDbContext context);
     }
 
     public class DragornbornRace : RaceStrategy
@@ -30,6 +31,12 @@ namespace Character_Builder.Internal
         {
             return RaceHelper.GetFeatureList(context, RaceEnumModel.Dragonborn.ToString());
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellHelper = new DragonbornSpells();
+            return spellHelper.GetSpellList(context, 0);
+        }
     }
 
     public class DwarfRace : RaceStrategy
@@ -44,6 +51,12 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return RaceHelper.GetFeatureList(context, RaceEnumModel.Dwarf.ToString());
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
         }
     }
 
@@ -63,6 +76,12 @@ namespace Character_Builder.Internal
         {
             return RaceHelper.GetFeatureList(context, RaceEnumModel.Elf.ToString());
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellHelper = new ElfSpells();
+            return spellHelper.GetSpellList(context, 0);
+        }
     }
 
     public class GnomeRace : RaceStrategy
@@ -78,6 +97,12 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return RaceHelper.GetFeatureList(context, RaceEnumModel.Gnome.ToString());
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
         }
     }
 
@@ -102,6 +127,12 @@ namespace Character_Builder.Internal
         {
             return RaceHelper.GetFeatureList(context, RaceEnumModel.Half_Elf.ToString());
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
+        }
     }
 
     public class HalfOrcRace : RaceStrategy
@@ -121,6 +152,12 @@ namespace Character_Builder.Internal
         {
             return RaceHelper.GetFeatureList(context, RaceEnumModel.Half_Orc.ToString());
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
+        }
     }
 
     public class HalflingRace : RaceStrategy
@@ -136,6 +173,13 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return RaceHelper.GetFeatureList(context, RaceEnumModel.Halfling.ToString());
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellHelper = new HalflingSpells();
+            return spellHelper.GetSpellList(context, 0);
+
         }
     }
 
@@ -158,6 +202,12 @@ namespace Character_Builder.Internal
         {
             return RaceHelper.GetFeatureList(context, RaceEnumModel.Human.ToString());
         }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
+        }
     }
 
     public class TieflingRace : RaceStrategy
@@ -174,6 +224,12 @@ namespace Character_Builder.Internal
         public override List<FeatureModel> GetFeatureList(ApplicationDbContext context)
         {
             return RaceHelper.GetFeatureList(context, RaceEnumModel.Tiefling.ToString());
+        }
+
+        public override List<SpellModel> GetSpellList(ApplicationDbContext context)
+        {
+            var spellHelper = NullSpells.Instance;
+            return spellHelper;
         }
     }
 

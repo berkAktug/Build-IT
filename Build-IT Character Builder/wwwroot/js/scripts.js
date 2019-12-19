@@ -107,7 +107,7 @@ function createChar() {
 	let character = new CharacterBuilder()
 		.setRace(race)
 		.setName(name)
-		.setLevel(level)
+		//.setLevel(level)
 		.setGender(gender)
         .setAttributes(attributes)
         .setBackground(background)
