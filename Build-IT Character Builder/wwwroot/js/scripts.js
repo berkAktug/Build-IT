@@ -44,6 +44,7 @@ $(".AttribMinus").click(function () {
 
 
 
+
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -83,7 +84,7 @@ function highlight2Buttons(evt, type) {
 function createChar() {
 	debugger;
 	let name = "testName";
-	let level = "9";
+	let level = document.getElementById("lvlPoint").innerHTML;
 	let race = document.getElementsByClassName("button-highlight-race")[0].innerHTML;
 	let gender = document.getElementsByClassName("button-highlight-gender")[0].innerHTML;
 	let background = document.getElementsByClassName("button-highlight-background")[0].innerHTML;

@@ -86,7 +86,7 @@ namespace Character_Builder.Controllers
                 //D&D Banner
                 IRow row = sheet1.CreateRow(0);
                 row.Height = (short)-1;
-                row.CreateCell(0).SetCellValue("<u>DUNGEONS & DRAGONS<u>");
+                row.CreateCell(0).SetCellValue("DUNGEONS & DRAGONS");
                 row.GetCell(0).CellStyle = style1;
 
                 //Character name
@@ -111,48 +111,13 @@ namespace Character_Builder.Controllers
                 row.CreateCell(1).SetCellValue("Race: " + race);
                 row.GetCell(1).CellStyle = style1;
 
-                //Attributes
-                row = sheet1.CreateRow(3);
-                row.Height = (short)-1;
-                var Str = character.Attributes.Strength;
-                row.CreateCell(0).SetCellValue("Strength: " + Str);
-                row.GetCell(0).CellStyle = style2;
-
-                row = sheet1.CreateRow(4);
-                row.Height = (short)-1;
-                var Dex = character.Attributes.Dexterity;
-                row.CreateCell(0).SetCellValue("Dexterity: " + Dex);
-                row.GetCell(0).CellStyle = style2;
-
-                row = sheet1.CreateRow(5);
-                row.Height = (short)-1;
-                var Con = character.Attributes.Constitution;
-                row.CreateCell(0).SetCellValue("Constitution: " + Con);
-                row.GetCell(0).CellStyle = style2;
-
-                row = sheet1.CreateRow(6);
-                row.Height = (short)-1;
-                var Int = character.Attributes.Intelligence;
-                row.CreateCell(0).SetCellValue("Intelligence: " + Int);
-                row.GetCell(0).CellStyle = style2;
-
-                row = sheet1.CreateRow(7);
-                row.Height = (short)-1;
-                var Wis = character.Attributes.Wisdom;
-                row.CreateCell(0).SetCellValue("Wisdom: " + Wis);
-                row.GetCell(0).CellStyle = style2;
-
-                row = sheet1.CreateRow(8);
-                row.Height = (short)-1;
-                var Cha = character.Attributes.Charisma;
-                row.CreateCell(0).SetCellValue("Charisma: " + Cha);
-                row.GetCell(0).CellStyle = style2;
+                
 
 
                 // 2th column row counter
                 int row_counter = 3;
                 //background
-                row = sheet1.GetRow(row_counter);
+                row = sheet1.CreateRow(row_counter);
                 row.Height = (short)-1;
                 var background = character.Background;
                 row.CreateCell(1).SetCellValue("Background: " + background);
@@ -191,6 +156,7 @@ namespace Character_Builder.Controllers
                 row.CreateCell(1).SetCellValue("HP: " + HitPoints);
                 row.GetCell(1).CellStyle = style1;
 
+
                 //features
                 var features = character.Features;
                 string featStr = "";
@@ -207,6 +173,7 @@ namespace Character_Builder.Controllers
                     row.GetCell(1).CellStyle = style1;
                 }
 
+                
                 //spells
                 var spells = character.Spells;
                 string spellStr = "";
@@ -230,6 +197,44 @@ namespace Character_Builder.Controllers
                 //spellStr = spellStr.Substring(0, spellStr.Length - 5);
                 //row.CreateCell(1).SetCellValue("Spells(" + spells.Count + "): " + spellStr);
                 //row.GetCell(1).CellStyle = style1;
+
+                //Attributes
+                row = sheet1.GetRow(3);
+                row.Height = (short)-1;
+                var Str = character.Attributes.Strength;
+                row.CreateCell(0).SetCellValue("Strength: " + Str);
+                row.GetCell(0).CellStyle = style2;
+
+                row = sheet1.GetRow(4);
+                row.Height = (short)-1;
+                var Dex = character.Attributes.Dexterity;
+                row.CreateCell(0).SetCellValue("Dexterity: " + Dex);
+                row.GetCell(0).CellStyle = style2;
+
+                row = sheet1.GetRow(5);
+                row.Height = (short)-1;
+                var Con = character.Attributes.Constitution;
+                row.CreateCell(0).SetCellValue("Constitution: " + Con);
+                row.GetCell(0).CellStyle = style2;
+
+                row = sheet1.GetRow(6);
+                row.Height = (short)-1;
+                var Int = character.Attributes.Intelligence;
+                row.CreateCell(0).SetCellValue("Intelligence: " + Int);
+                row.GetCell(0).CellStyle = style2;
+
+                row = sheet1.GetRow(7);
+                row.Height = (short)-1;
+                var Wis = character.Attributes.Wisdom;
+                row.CreateCell(0).SetCellValue("Wisdom: " + Wis);
+                row.GetCell(0).CellStyle = style2;
+
+                row = sheet1.GetRow(8);
+                row.Height = (short)-1;
+                var Cha = character.Attributes.Charisma;
+                row.CreateCell(0).SetCellValue("Charisma: " + Cha);
+                row.GetCell(0).CellStyle = style2;
+
 
                 sheet1.AutoSizeColumn(0);
                 sheet1.AutoSizeColumn(1);
