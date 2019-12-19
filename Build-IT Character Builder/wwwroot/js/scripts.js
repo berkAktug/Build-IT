@@ -42,40 +42,6 @@ $(".AttribMinus").click(function () {
     document.getElementById(plusMinus.attr('id').substring(0, 3).concat("Button")).style.width = String(parseInt(holder_attribute_scores.html()) * 100 / 15).concat("%");
 });
 
-(".LevelPlus").click(function () {
-	//debugger;
-	var plusBtn = $(this);
-	var holder_attribute_scores = plusBtn.next();
-
-	var level = parseInt(holder_attribute_scores.html());
-
-	if (level < 20 && TotalLevelPoints >= 1) {
-		if (level < 20) {
-			TotalLevelPoints = TotalLevelPoints - 1;
-			holder_attribute_scores.html(attribute + 1);
-		}
-		
-	}
-	document.getElementById(plusBtn.attr('id').substring(0, 3).concat("Button")).style.width = String(parseInt(holder_attribute_scores.html()) * 100 / 20).concat("%");
-});
-
-$(".LevelMinus").click(function () {
-	//debugger;
-	var plusMinus = $(this);
-	var holder_attribute_scores = plusMinus.prev();
-
-	var level = parseInt(holder_attribute_scores.html());
-
-	if (level > 1 && TotalLevelPoints <= 19) {
-		if (level < 20) {
-			TotalLevelPoints = TotalLevelPoints + 1;
-			holder_attribute_scores.html(level - 1);
-		}
-	}
-
-	document.getElementById(plusMinus.attr('id').substring(0, 3).concat("Button")).style.width = String(parseInt(holder_attribute_scores.html()) * 100 / 20).concat("%");
-});
-
 
 
 
@@ -118,7 +84,7 @@ function highlight2Buttons(evt, type) {
 function createChar() {
 	debugger;
 	let name = "testName";
-	let level = "9";
+	let level = document.getElementById("lvlPoint").innerHTML;
 	let race = document.getElementsByClassName("button-highlight-race")[0].innerHTML;
 	let gender = document.getElementsByClassName("button-highlight-gender")[0].innerHTML;
 	let background = document.getElementsByClassName("button-highlight-background")[0].innerHTML;
