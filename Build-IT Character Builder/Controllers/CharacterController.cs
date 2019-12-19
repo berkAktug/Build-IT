@@ -158,28 +158,39 @@ namespace Character_Builder.Controllers
                 row.GetCell(1).CellStyle = style1;
 
                 //proficiencies
-                row = sheet1.GetRow(++row_counter);
-                row.Height = (short)-1;
+                //row = sheet1.GetRow(++row_counter);
+                //row.Height = (short)-1;
                 var proficiencies = character.Proficiencies;
                 string profStr = "";
                 foreach (var proficiency in proficiencies)
                 {
-                    profStr += proficiency + "  &  ";
+                    row = sheet1.CreateRow(++row_counter);
+                    row = sheet1.GetRow(row_counter);
+                    row.Height = (short)-1;
+                    profStr = proficiency.ToString();
+
+                    //profStr = profStr.Substring(0, profStr.Length - 5);
+                    row.CreateCell(1).SetCellValue("Proficient in: " + profStr);
+                    row.GetCell(1).CellStyle = style1;
                 }
-                profStr = profStr.Substring(0, profStr.Length - 5);
-                row.CreateCell(1).SetCellValue("Proficiencies: " + profStr);
-                row.GetCell(1).CellStyle = style1;
 
                 //armour class
-                row = sheet1.GetRow(++row_counter);
+                row = sheet1.CreateRow(++row_counter);
+                row = sheet1.GetRow(row_counter);
                 row.Height = (short)-1;
                 var armClass = character.ArmourClass;
                 row.CreateCell(1).SetCellValue("Armour Class: " + armClass);
                 row.GetCell(1).CellStyle = style1;
 
+                // Hit Points
+                row = sheet1.CreateRow(++row_counter);
+                row = sheet1.GetRow(row_counter);
+                row.Height = (short)-1;
+                var HitPoints = character.HitPoints;
+                row.CreateCell(1).SetCellValue("HP: " + HitPoints);
+                row.GetCell(1).CellStyle = style1;
+
                 //features
-                //row = sheet1.GetRow(++row_counter);
-                //row.Height = (short)-1;
                 var features = character.Features;
                 string featStr = "";
                 foreach (var feat in features)
@@ -188,27 +199,36 @@ namespace Character_Builder.Controllers
                     row = sheet1.GetRow(row_counter);
                     row.Height = (short)-1;
 
-                    featStr = feat.Title + ": ";
-                    featStr += feat.Description +  " ;";
+                    featStr = feat.Title.Trim() + ": ";
+                    featStr += feat.Description.Trim() +  " ;";
 
-                    //featStr = featStr.Substring(0, featStr.Length - 5);
                     row.CreateCell(1).SetCellValue("Feature: " + featStr);
                     row.GetCell(1).CellStyle = style1;
                 }
 
                 //spells
-                row = sheet1.CreateRow(++row_counter);
-                row = sheet1.GetRow(row_counter);
-                row.Height = (short)-1;
                 var spells = character.Spells;
                 string spellStr = "";
                 foreach (var spell in spells)
                 {
-                    spellStr += spell.Title.Trim() + "  &  ";
+                    row = sheet1.CreateRow(++row_counter);
+                    row = sheet1.GetRow(row_counter);
+                    row.Height = (short)-1;
+                    spellStr = "Spell Name:";
+                    spellStr += spell.Title.Trim() + " Level:";
+                    spellStr += spell.Level.ToString() + " School:";
+                    spellStr += spell.School.Trim() + " Components";
+                    spellStr += spell.Components.Trim() + " Casting Time:";
+                    spellStr += spell.CastingTime.ToString() + " " + spell.CastingTimeType.Trim();
+
+                    //spellStr = spellStr.Substring(0, spellStr.Length - 5);
+                    //row.CreateCell(1).SetCellValue("Spells(" + spells.Count + "): " + spellStr);
+                    row.CreateCell(1).SetCellValue(spellStr);
+                    row.GetCell(1).CellStyle = style1;
                 }
-                spellStr = spellStr.Substring(0, spellStr.Length - 5);
-                row.CreateCell(1).SetCellValue("Spells(" + spells.Count + "): " + spellStr);
-                row.GetCell(1).CellStyle = style1;
+                //spellStr = spellStr.Substring(0, spellStr.Length - 5);
+                //row.CreateCell(1).SetCellValue("Spells(" + spells.Count + "): " + spellStr);
+                //row.GetCell(1).CellStyle = style1;
 
                 sheet1.AutoSizeColumn(0);
                 sheet1.AutoSizeColumn(1);

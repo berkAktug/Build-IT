@@ -139,7 +139,7 @@ namespace Character_Builder.Internal
                 Description = "",
                 SpellRange = 0,
                 SpellRangeType = "",
-                Title = "Null"
+                Title = "Character Has no spells.. Damn Muggots.."
             };
 
             spellList.Add(spell);
