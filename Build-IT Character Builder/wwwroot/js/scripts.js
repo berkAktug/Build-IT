@@ -1,4 +1,5 @@
 ﻿var TotalAttributePoints = 27;
+var TotalLevelPoints = 19;
 
 $(".AttribPlus").click(function () {
     //debugger;
@@ -40,6 +41,7 @@ $(".AttribMinus").click(function () {
 
     document.getElementById(plusMinus.attr('id').substring(0, 3).concat("Button")).style.width = String(parseInt(holder_attribute_scores.html()) * 100 / 15).concat("%");
 });
+
 
 
 function openTab(evt, tabName) {

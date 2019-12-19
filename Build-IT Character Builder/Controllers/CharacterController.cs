@@ -74,18 +74,18 @@ namespace Character_Builder.Controllers
                 ISheet sheet1 = workbook.CreateSheet("CharacterSheet");
 
                 var style1 = workbook.CreateCellStyle();
-                style1.FillForegroundColor = HSSFColor.Blue.Index2;
+                style1.FillForegroundColor = HSSFColor.Yellow.Index2;
                 style1.FillPattern = FillPattern.SolidForeground;
 
                 var style2 = workbook.CreateCellStyle();
-                style1.FillForegroundColor = HSSFColor.Yellow.Index2;
-                style1.FillPattern = FillPattern.SolidForeground;
+                style2.FillForegroundColor = HSSFColor.LightGreen.Index;
+                style2.FillPattern = FillPattern.SolidForeground;
 
 
                 //D&D Banner
                 IRow row = sheet1.CreateRow(0);
                 row.Height = (short)-1;
-                row.CreateCell(0).SetCellValue("DUNGEONS & DRAGONS");
+                row.CreateCell(0).SetCellValue("<u>DUNGEONS & DRAGONS<u>");
                 row.GetCell(0).CellStyle = style1;
 
                 //Character name
@@ -115,37 +115,37 @@ namespace Character_Builder.Controllers
                 row.Height = (short)-1;
                 var Str = character.Attributes.Strength;
                 row.CreateCell(0).SetCellValue("Strength: " + Str);
-                row.GetCell(0).CellStyle = style1;
+                row.GetCell(0).CellStyle = style2;
 
                 row = sheet1.CreateRow(4);
                 row.Height = (short)-1;
                 var Dex = character.Attributes.Dexterity;
                 row.CreateCell(0).SetCellValue("Dexterity: " + Dex);
-                row.GetCell(0).CellStyle = style1;
+                row.GetCell(0).CellStyle = style2;
 
                 row = sheet1.CreateRow(5);
                 row.Height = (short)-1;
                 var Con = character.Attributes.Constitution;
                 row.CreateCell(0).SetCellValue("Constitution: " + Con);
-                row.GetCell(0).CellStyle = style1;
+                row.GetCell(0).CellStyle = style2;
 
                 row = sheet1.CreateRow(6);
                 row.Height = (short)-1;
                 var Int = character.Attributes.Intelligence;
                 row.CreateCell(0).SetCellValue("Intelligence: " + Int);
-                row.GetCell(0).CellStyle = style1;
+                row.GetCell(0).CellStyle = style2;
 
                 row = sheet1.CreateRow(7);
                 row.Height = (short)-1;
                 var Wis = character.Attributes.Wisdom;
                 row.CreateCell(0).SetCellValue("Wisdom: " + Wis);
-                row.GetCell(0).CellStyle = style1;
+                row.GetCell(0).CellStyle = style2;
 
                 row = sheet1.CreateRow(8);
                 row.Height = (short)-1;
                 var Cha = character.Attributes.Charisma;
                 row.CreateCell(0).SetCellValue("Charisma: " + Cha);
-                row.GetCell(0).CellStyle = style1;
+                row.GetCell(0).CellStyle = style2;
 
                 //background
                 row = sheet1.GetRow(3);
@@ -167,22 +167,37 @@ namespace Character_Builder.Controllers
                 row.CreateCell(1).SetCellValue("Proficiencies: " + profStr);
                 row.GetCell(1).CellStyle = style1;
 
-                row = sheet1.CreateRow(5);
+                //armour class
+                row = sheet1.GetRow(5);
                 row.Height = (short)-1;
                 var armClass = character.ArmourClass;
                 row.CreateCell(1).SetCellValue("Armour Class: " + armClass);
                 row.GetCell(1).CellStyle = style1;
 
-                row = sheet1.CreateRow(6);
+                //features
+                row = sheet1.GetRow(6);
                 row.Height = (short)-1;
                 var features = character.Features;
-                string featStr = "CHARACTERMODEL'E FEATURE EKLENECEK";
+                string featStr = "dummy feature";
                 foreach (var feat in features)
                 {
                     featStr += feat + "  &  ";
                 }
                 featStr = featStr.Substring(0, featStr.Length - 5);
                 row.CreateCell(1).SetCellValue("Features: " + featStr);
+                row.GetCell(1).CellStyle = style1;
+
+                //spells
+                row = sheet1.GetRow(7);
+                row.Height = (short)-1;
+                var spells = character.Spells;
+                string spellStr = "";
+                foreach (var spell in spells)
+                {
+                    spellStr += spell.Title.Trim() + "  &  ";
+                }
+                spellStr = spellStr.Substring(0, spellStr.Length - 5);
+                row.CreateCell(1).SetCellValue("Spells(" + spells.Count + "): " + spellStr);
                 row.GetCell(1).CellStyle = style1;
 
                 sheet1.AutoSizeColumn(0);

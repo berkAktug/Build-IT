@@ -454,7 +454,7 @@ namespace Character_Builder.Internal
             {
                 var class_feature = new FeatureModel
                 {
-                    Title = item.CharacterClass.Name,
+                    Title = item.Name,
                     Description = item.Description,
                     LevelRequirement = item.LevelRequirement,
                     FeatureType = FeatureTypes.CharacterClass
