@@ -50,7 +50,8 @@ namespace Character_Builder.Controllers
                 CharacterBackground = charBackground,
                 CharacterClass = charClass,
                 //CharacterLevel = charLevel,
-                CharacterLevel = "3",
+                //CharacterLevel = "3",
+                CharacterLevel = charAttributes[6].ToString(),
                 CharacterProficiencies = charProficiency,
                 CharacterRace = charRace,
                 CharacterAttributes = attrib
@@ -124,8 +125,6 @@ namespace Character_Builder.Controllers
                 row.GetCell(1).CellStyle = style1;
 
                 //proficiencies
-                //row = sheet1.GetRow(++row_counter);
-                //row.Height = (short)-1;
                 var proficiencies = character.Proficiencies;
                 string profStr = "";
                 foreach (var proficiency in proficiencies)
@@ -135,7 +134,6 @@ namespace Character_Builder.Controllers
                     row.Height = (short)-1;
                     profStr = proficiency.ToString();
 
-                    //profStr = profStr.Substring(0, profStr.Length - 5);
                     row.CreateCell(1).SetCellValue("Proficient in: " + profStr);
                     row.GetCell(1).CellStyle = style1;
                 }
@@ -189,14 +187,9 @@ namespace Character_Builder.Controllers
                     spellStr += spell.Components.Trim() + " Casting Time:";
                     spellStr += spell.CastingTime.ToString() + " " + spell.CastingTimeType.Trim();
 
-                    //spellStr = spellStr.Substring(0, spellStr.Length - 5);
-                    //row.CreateCell(1).SetCellValue("Spells(" + spells.Count + "): " + spellStr);
                     row.CreateCell(1).SetCellValue(spellStr);
                     row.GetCell(1).CellStyle = style1;
                 }
-                //spellStr = spellStr.Substring(0, spellStr.Length - 5);
-                //row.CreateCell(1).SetCellValue("Spells(" + spells.Count + "): " + spellStr);
-                //row.GetCell(1).CellStyle = style1;
 
                 //Attributes
                 row = sheet1.GetRow(3);

@@ -42,9 +42,6 @@ $(".AttribMinus").click(function () {
     document.getElementById(plusMinus.attr('id').substring(0, 3).concat("Button")).style.width = String(parseInt(holder_attribute_scores.html()) * 100 / 15).concat("%");
 });
 
-
-
-
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -83,8 +80,9 @@ function highlight2Buttons(evt, type) {
 
 function createChar() {
 	debugger;
-	let name = "testName";
-	let level = document.getElementById("lvlPoint").innerHTML;
+    //let name = "OrcSlayer";
+    var name = document.getElementById("id_character_name").value;
+	var level = document.getElementById("lvlPoint").innerHTML;
 	let race = document.getElementsByClassName("button-highlight-race")[0].innerHTML;
 	let gender = document.getElementsByClassName("button-highlight-gender")[0].innerHTML;
 	let background = document.getElementsByClassName("button-highlight-background")[0].innerHTML;
@@ -102,7 +100,8 @@ function createChar() {
                 /*con: */parseInt(document.getElementById("conPoint").innerHTML),
                 /*int: */parseInt(document.getElementById("intPoint").innerHTML),
                 /*wis: */parseInt(document.getElementById("wisPoint").innerHTML),
-                /*cha: */parseInt(document.getElementById("chaPoint").innerHTML)
+                /*cha: */parseInt(document.getElementById("chaPoint").innerHTML),
+                /*level: */parseInt(document.getElementById("lvlPoint").innerHTML)
 	];
 
 	let character = new CharacterBuilder()

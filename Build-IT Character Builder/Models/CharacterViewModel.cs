@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace Character_Builder.Models
 {
-
     public class CharacterFeatureIdModel
     {
         public FeatureTypes FeatureType { get; set; }
@@ -45,8 +44,7 @@ namespace Character_Builder.Models
         public int SpellRange { get; set; }
         public string SpellRangeType { get; set; }
     }
-
-
+    
     public class FeatureModel
     {
         public FeatureTypes FeatureType { get; set; }

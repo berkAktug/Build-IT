@@ -255,29 +255,6 @@ namespace Character_Builder.Internal
         public List<SpellModel> GetSpellList(ApplicationDbContext context, int PlayerLevel)
         {
             return Instance;
-            //if(instance != null)
-            //{
-            //    return new List<SpellModel>();
-            //}
-
-            //var spellList = new List<SpellModel>();
-
-            //var spell = new SpellModel
-            //{
-            //    Level = 0,
-            //    School = "",
-            //    CastingTime = 0,
-            //    CastingTimeType = "",
-            //    Components = "",
-            //    Description = "",
-            //    SpellRange = 0,
-            //    SpellRangeType = "",
-            //    Title = "Character Has no spells.. Damn Muggots.."
-            //};
-
-            //spellList.Add(spell);
-
-            //return spellList;
         }
     }
 
