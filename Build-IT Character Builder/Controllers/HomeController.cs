@@ -10,13 +10,6 @@ namespace Character_Builder.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly Data.ApplicationDbContext _context;
-
-        public HomeController(Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
         public IActionResult Index()
         {
             return View();
@@ -39,26 +32,6 @@ namespace Character_Builder.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        public IActionResult ListUsers()
-        {
-            List<UsersViewModel> userList = new List<UsersViewModel>();
-
-            //foreach (var item in _context.Users)
-            //{
-                var user = new UsersViewModel
-                {
-                    //Username = item.UserName,
-                    //Email = item.Email
-                    Username = "",
-                    Email = ""
-                };
-
-                userList.Add(user);
-            //}
-
-            return View(userList);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -36,21 +36,21 @@ namespace Character_Builder.Controllers
             var charProficiency = _getCharacterProfiencies(newCharacter.CharacterProficiencies);
             var charAttributes = newCharacter.CharacterAttributes;
 
-            CharacterAttributesModel attrib = new CharacterAttributesModel();
-            attrib.Strength = charAttributes[0];
-            attrib.Dexterity = charAttributes[1];
-            attrib.Constitution = charAttributes[2];
-            attrib.Intelligence = charAttributes[3];
-            attrib.Wisdom = charAttributes[4];
-            attrib.Charisma = charAttributes[5];
+            CharacterAttributesModel attrib = new CharacterAttributesModel
+            {
+                Strength = charAttributes[0],
+                Dexterity = charAttributes[1],
+                Constitution = charAttributes[2],
+                Intelligence = charAttributes[3],
+                Wisdom = charAttributes[4],
+                Charisma = charAttributes[5]
+            };
 
             var charToBuild = new NewCharacterModel
             {
                 CharacterName = charName,
                 CharacterBackground = charBackground,
                 CharacterClass = charClass,
-                //CharacterLevel = charLevel,
-                //CharacterLevel = "3",
                 CharacterLevel = charAttributes[6].ToString(),
                 CharacterProficiencies = charProficiency,
                 CharacterRace = charRace,
@@ -62,11 +62,10 @@ namespace Character_Builder.Controllers
             CharacterModel finishedCharacter = newChar.SetupCharacter(charToBuild);
 
             // Adjust excel according to finished Character
-
-            return saveToExcel(finishedCharacter);
+            return SaveToExcel(finishedCharacter);
         }
 
-        public ActionResult saveToExcel(CharacterModel character)
+        public ActionResult SaveToExcel(CharacterModel character)
         {
             string fileName = string.Format("DD_CharacterSheet-{0:d}.xlsx", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
             using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
@@ -235,7 +234,7 @@ namespace Character_Builder.Controllers
                 workbook.Write(fs);
             }
 
-            return Json(new { fileName = fileName });
+            return Json(new { fileName });
         }
 
         [HttpGet]

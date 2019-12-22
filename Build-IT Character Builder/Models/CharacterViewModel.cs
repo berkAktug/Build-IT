@@ -5,12 +5,6 @@ using System.Threading.Tasks;
 
 namespace Character_Builder.Models
 {
-    public class CharacterFeatureIdModel
-    {
-        public FeatureTypes FeatureType { get; set; }
-        public int ID { get; set; }
-    }
-
     public class CharacterAttributesModel
     {
         public int Strength { get; set; }
@@ -19,17 +13,6 @@ namespace Character_Builder.Models
         public int Intelligence { get; set; }
         public int Wisdom { get; set; }
         public int Charisma { get; set; }
-    }
-
-    public class CharacterViewModel
-    {
-        public string CharacterName { get; set; }
-        public CharacterClassEnumModel CharacterClass { get; set; }
-        public string CharacterClassLevel { get; set; }
-        public BackgroundEnumModel CharacterBackground { get; set; }
-        public RaceEnumModel CharacterRace { get; set; }
-        public CharacterAttributesModel CharacterAttributes { get; set; }
-        public ProficiencyEnumModel CharacterProficiency { get; set; }
     }
 
     public class SpellModel
@@ -77,18 +60,6 @@ namespace Character_Builder.Models
         public BackgroundEnumModel CharacterBackground { get; set; }
         public RaceEnumModel CharacterRace { get; set; }
         public List<ProficiencyEnumModel> CharacterProficiencies { get; set; }
-        public CharacterAttributesModel CharacterAttributes { get; set; }
-    }
-
-    public class InsertCharacterModel
-    {
-        public string CharacterName { get; set; }
-        public string CharacterClassName { get; set; }
-        public string CharacterGender { get; set; }
-        public string CharacterLevel { get; set; }
-        public string CharacterBackground { get; set; }
-        public string CharacterRace { get; set; }
-        public List<string> CharacterProficiencies { get; set; }
         public CharacterAttributesModel CharacterAttributes { get; set; }
     }
 
